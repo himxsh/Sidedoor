@@ -1,0 +1,49 @@
+{
+  "name": "quotes",
+  "url": "https://quotes.toscrape.com/tag/{{tag}}/",
+  "sentence": "Store the text of the first quote as 'quote' and store its author as 'author'.",
+  "inputs": [
+    {
+      "name": "tag",
+      "sample": "humor"
+    }
+  ],
+  "kind": "read",
+  "contract": {
+    "fields": {
+      "quote": {
+        "type": "string",
+        "required": true
+      },
+      "author": {
+        "type": "string",
+        "required": true
+      }
+    }
+  },
+  "health": "healthy",
+  "createdAt": "2026-11-17T21:20:29.098Z",
+  "stats": {
+    "calls": 2,
+    "replays": 3,
+    "cacheHits": 0,
+    "recordings": 1,
+    "repairs": 0,
+    "creditsSpent": 12.026245,
+    "recordingCost": 12.026245,
+    "avgReplayMs": 30173
+  },
+  "sample": {
+    "quote": "“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”",
+    "author": "Jane Austen"
+  },
+  "last": {
+    "at": "2026-11-17T21:22:13.925Z",
+    "ok": true,
+    "data": {
+      "quote": "“There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”",
+      "author": "Albert Einstein"
+    },
+    "durationMs": 20514
+  }
+}

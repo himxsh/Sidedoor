@@ -9,4 +9,4 @@ headless: true
 # Session: notices
 
 ## Step 1
-Go to http://localhost:4400/ and click the Announcements link. Store the title of the most recent notice as 'title' and store its date as 'date'.
+Go to http://localhost:4400/. Store the title of the most recent notice as 'title' and store its date as 'date'.

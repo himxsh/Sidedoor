@@ -1,0 +1,32 @@
+{
+  "commit_id": "3d1fa31f-87d7-4e20-9a8e-df9076e8b5bc",
+  "test_id": "0bd006e1-6eec-465f-ac53-cfa94c7c234c",
+  "testcase_id": "01M7NP1XQB8135769A1NCCYT6E",
+  "project_id": "01M7JAT3J50HKCS5JWRVGMWZ6G",
+  "folder_id": "01M7JATC23VTE3BJ12496HSEPH",
+  "org_id": "3435728",
+  "session_name": "quotes",
+  "executions": [
+    {
+      "execution_id": "8094c52b-389f-4b7e-ae28-4e2702e7acbe",
+      "run_kind": "replay",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-17T21:21:05.318Z"
+    },
+    {
+      "execution_id": "e2dacc41-571c-4637-adcd-bc9d1dbd784a",
+      "run_kind": "replay",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-17T21:21:47.359Z"
+    },
+    {
+      "execution_id": "82c8ea49-e4f5-48dc-8a65-9836d1828ae6",
+      "run_kind": "replay",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-17T21:22:09.828Z"
+    }
+  ]
+}

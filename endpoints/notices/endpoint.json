@@ -1,0 +1,44 @@
+{
+  "name": "notices",
+  "url": "http://localhost:4400/",
+  "sentence": "Store the title of the most recent notice as 'title' and store its date as 'date'.",
+  "inputs": [],
+  "kind": "read",
+  "contract": {
+    "fields": {
+      "title": {
+        "type": "string",
+        "required": true
+      },
+      "date": {
+        "type": "string",
+        "required": true
+      }
+    }
+  },
+  "health": "healthy",
+  "createdAt": "2026-11-17T21:23:21.400Z",
+  "stats": {
+    "calls": 1,
+    "replays": 2,
+    "cacheHits": 0,
+    "recordings": 1,
+    "repairs": 0,
+    "creditsSpent": 6.9220524999999995,
+    "recordingCost": 6.9220524999999995,
+    "avgReplayMs": 18153
+  },
+  "sample": {
+    "title": "Mid-semester exam schedule released",
+    "date": "2026-11-17"
+  },
+  "last": {
+    "at": "2026-11-17T21:23:59.129Z",
+    "ok": true,
+    "data": {
+      "title": "Mid-semester exam schedule released",
+      "date": "2026-11-17"
+    },
+    "durationMs": 13803
+  }
+}

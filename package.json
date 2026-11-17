@@ -13,7 +13,9 @@
   "scripts": {
     "build": "tsc -p .",
     "typecheck": "tsc -p . --noEmit",
-    "dev": "tsx src/cli.ts"
+    "dev": "tsx src/cli.ts",
+    "test": "node --import tsx --test test/*.test.ts",
+    "portal": "node portal/server.mjs"
   },
   "devDependencies": {
     "@types/node": "^20.19.43",
