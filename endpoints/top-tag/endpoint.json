@@ -1,0 +1,38 @@
+{
+  "name": "top-tag",
+  "url": "https://quotes.toscrape.com/",
+  "sentence": "Store the first tag listed in the 'Top Ten tags' box as 'tag'.",
+  "inputs": [],
+  "kind": "read",
+  "contract": {
+    "fields": {
+      "tag": {
+        "type": "string",
+        "required": true
+      }
+    }
+  },
+  "health": "healthy",
+  "createdAt": "2026-11-17T22:16:14.160Z",
+  "stats": {
+    "calls": 0,
+    "replays": 1,
+    "cacheHits": 0,
+    "recordings": 1,
+    "repairs": 0,
+    "creditsSpent": 15.12021,
+    "recordingCost": 15.12021,
+    "avgReplayMs": 24011
+  },
+  "sample": {
+    "tag": "love"
+  },
+  "last": {
+    "at": "2026-11-17T22:16:38.173Z",
+    "ok": true,
+    "data": {
+      "tag": "love"
+    },
+    "durationMs": 24011
+  }
+}

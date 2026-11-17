@@ -24,26 +24,26 @@
   "health": "healthy",
   "createdAt": "2026-11-17T22:03:24.971Z",
   "stats": {
-    "calls": 1,
-    "replays": 2,
+    "calls": 2,
+    "replays": 3,
     "cacheHits": 0,
     "recordings": 1,
     "repairs": 0,
     "creditsSpent": 17.770427499999997,
     "recordingCost": 17.770427499999997,
-    "avgReplayMs": 25122
+    "avgReplayMs": 25295
   },
   "sample": {
     "amount_due": "₹42,500",
     "due_date": "2026-11-30"
   },
   "last": {
-    "at": "2026-11-17T22:08:58.270Z",
+    "at": "2026-11-17T22:14:39.301Z",
     "ok": true,
     "data": {
-      "amount_due": "₹18,000",
-      "due_date": "2026-12-05"
+      "amount_due": "₹0",
+      "due_date": "—"
     },
-    "durationMs": 26099
+    "durationMs": 25640
   }
 }

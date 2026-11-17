@@ -1,0 +1,18 @@
+{
+  "commit_id": "5eabc561-9279-4982-8d82-5f51ef003f1d",
+  "test_id": "d9442c7a-f55e-4a98-817e-09787abc0afc",
+  "testcase_id": "01M7NS8K8WNZ2VC8FHQJYDRCPZ",
+  "project_id": "01M7JAT3J50HKCS5JWRVGMWZ6G",
+  "folder_id": "01M7JATC23VTE3BJ12496HSEPH",
+  "org_id": "3435728",
+  "session_name": "top-tag",
+  "executions": [
+    {
+      "execution_id": "5fc9e2de-82c7-4170-88da-f49810fbea00",
+      "run_kind": "replay",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-17T22:16:33.977Z"
+    }
+  ]
+}
