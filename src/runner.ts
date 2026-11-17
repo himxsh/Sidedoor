@@ -33,6 +33,8 @@ export interface RunResult {
   /** Credits charged (recordings only; replays report none) */
   credits?: number;
   durationMs: number;
+  /** Summaries of steps Kane marked failed */
+  failedSteps: string[];
   runEnd?: any;
   /** Path to the raw NDJSON log of this run */
   logPath?: string;
@@ -110,6 +112,7 @@ export async function runKane(args: string[], opts: RunOptions): Promise<RunResu
     let runEnd: any;
     let lastRemark: string | undefined;
     let evidenceUrl: string | undefined;
+    const failedSteps: string[] = [];
 
     const handleLine = (line: string) => {
       const t = line.trim();
@@ -121,6 +124,7 @@ export async function runKane(args: string[], opts: RunOptions): Promise<RunResu
         return; // not JSON: ignore
       }
       if (ev?.type === "run_end") runEnd = ev;
+      if (ev?.type === "step_end" && ev.status === "failed" && ev.summary) failedSteps.push(String(ev.summary));
       if (typeof ev?.remark === "string") lastRemark = ev.remark;
       evidenceUrl ??= pickEvidenceUrl(ev);
       try {
@@ -157,6 +161,7 @@ export async function runKane(args: string[], opts: RunOptions): Promise<RunResu
         screenshotPath: typeof runEnd?.screenshot_path === "string" ? runEnd.screenshot_path : undefined,
         credits: typeof runEnd?.credits_consumed === "number" ? runEnd.credits_consumed : 0,
         durationMs: Date.now() - started,
+        failedSteps,
         runEnd,
         logPath: opts.logPath,
         stderr,

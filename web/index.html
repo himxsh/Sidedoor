@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sidedoor</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='6' y='3' width='20' height='26' rx='2' fill='%23111'/%3E%3Crect x='17' y='9' width='6' height='16' fill='%2322c55e'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="logo" aria-hidden="true"></span>
+      <div>
+        <h1>Sidedoor</h1>
+        <p class="tag">Any web page, as a JSON endpoint and an agent tool. Kane CLI records the flow once, replays it on every call, and re-records it when the site changes.</p>
+      </div>
+    </div>
+    <div id="mode" class="mode" hidden></div>
+  </header>
+
+  <section class="totals" id="totals" aria-label="Totals"></section>
+
+  <main class="grid">
+    <section class="panel endpoints-panel">
+      <div class="panel-head"><h2>Endpoints</h2><span class="muted" id="queue"></span></div>
+      <div id="endpoints" class="endpoints" data-testid="endpoint-list"><p class="muted">Loading…</p></div>
+    </section>
+
+    <section class="panel try-panel">
+      <div class="panel-head"><h2>Try it</h2></div>
+      <form id="try" class="form">
+        <label>Endpoint <select id="try-name" name="name"></select></label>
+        <div id="try-inputs"></div>
+        <label class="check"><input type="checkbox" id="try-fresh"> Skip cache</label>
+        <button type="submit" id="try-go">Call</button>
+      </form>
+      <div class="curl"><code id="try-curl"></code></div>
+      <pre id="try-out" class="json" data-testid="try-output" aria-live="polite">Pick an endpoint and press Call.</pre>
+    </section>
+
+    <section class="panel timeline-panel">
+      <div class="panel-head"><h2>Activity and repairs</h2><span class="live" id="live">live</span></div>
+      <ol id="timeline" class="timeline"></ol>
+    </section>
+
+    <section class="panel create-panel">
+      <div class="panel-head"><h2>Create an endpoint</h2><span class="muted">One recording, paid once</span></div>
+      <form id="create" class="form">
+        <label>Name <input name="name" required pattern="[a-zA-Z0-9_-]+" placeholder="book-price"></label>
+        <label>URL <input name="url" required type="url" placeholder="https://books.toscrape.com/"></label>
+        <label>Sentence <textarea name="sentence" required rows="3" placeholder="Search for {{title}}. Store its price as 'price'."></textarea></label>
+        <label>Inputs <input name="inputs" placeholder="title=A Light in the Attic"></label>
+        <label class="check"><input type="checkbox" name="action"> Action (has side effects, never cached)</label>
+        <button type="submit">Record with Kane</button>
+      </form>
+      <pre id="create-out" class="json small" hidden></pre>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>Kane CLI does the browser work. Sidedoor stores the recording, checks every result against a contract, and runs the repair loop.</span>
+    <a href="https://github.com/himxsh/Sidedoor">Source</a>
+  </footer>
+  <script src="app.js" type="module"></script>
+</body>
+</html>

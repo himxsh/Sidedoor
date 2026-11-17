@@ -7,3 +7,5 @@ dist/
 endpoints/*/.testmuai/evidence/
 endpoints/*/.testmuai/.backup-tests/
 evidence/shots/
+evidence/build-hook/runs/
+data/*.log

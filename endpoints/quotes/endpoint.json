@@ -24,26 +24,26 @@
   "health": "healthy",
   "createdAt": "2026-11-17T21:20:29.098Z",
   "stats": {
-    "calls": 2,
-    "replays": 3,
-    "cacheHits": 0,
+    "calls": 4,
+    "replays": 4,
+    "cacheHits": 1,
     "recordings": 1,
     "repairs": 0,
     "creditsSpent": 12.026245,
     "recordingCost": 12.026245,
-    "avgReplayMs": 30173
+    "avgReplayMs": 28431
   },
   "sample": {
     "quote": "“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”",
     "author": "Jane Austen"
   },
   "last": {
-    "at": "2026-11-17T21:22:13.925Z",
+    "at": "2026-11-17T21:27:20.359Z",
     "ok": true,
     "data": {
-      "quote": "“There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”",
-      "author": "Albert Einstein"
+      "quote": "“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”",
+      "author": "Jane Austen"
     },
-    "durationMs": 20514
+    "durationMs": 23203
   }
 }

@@ -62,7 +62,7 @@ export function setObjective(md: string, objective: string): string {
   if (i < 0) throw new Error("test file has no '## Step 1'");
   const bodyStart = md.indexOf("\n", i) + 1;
   const nextStep = md.indexOf("\n## ", bodyStart);
-  const tail = nextStep >= 0 ? md.slice(nextStep) : "\n";
+  const tail = nextStep >= 0 ? md.slice(nextStep) : "";
   return md.slice(0, bodyStart) + objective + "\n" + tail;
 }
 

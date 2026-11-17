@@ -1,0 +1,60 @@
+{
+  "commit_id": "f64dcd1f-7b1d-4630-8e46-79da23e2a0e3",
+  "test_id": "e8b01262-2c91-4c8f-9710-9dcfc0b864a2",
+  "testcase_id": "01M7NPH7AGPC9EPBRP4SFM5FHG",
+  "project_id": "01M7JAT3J50HKCS5JWRVGMWZ6G",
+  "folder_id": "01M7JATC23VTE3BJ12496HSEPH",
+  "org_id": "3435728",
+  "session_name": "portal",
+  "executions": [
+    {
+      "execution_id": "6033e6f1-cd33-478b-90d2-5c681a93443c",
+      "run_kind": "replay",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-17T21:39:52.114Z"
+    },
+    {
+      "execution_id": "11143b67-fc00-46a3-b19b-fc3fc645745e",
+      "run_kind": "replay",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-17T21:40:35.665Z"
+    },
+    {
+      "execution_id": "6c0eacdb-d4bd-4618-aea5-bd934b23948a",
+      "run_kind": "replay",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-17T21:41:18.691Z"
+    },
+    {
+      "execution_id": "4475574c-57e8-444d-b70b-ddf732d4b93d",
+      "run_kind": "replay",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-17T21:42:18.611Z"
+    },
+    {
+      "execution_id": "3ec273cd-710f-4d34-a9b5-3c662ce0f1f4",
+      "run_kind": "replay",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-17T21:44:45.405Z"
+    },
+    {
+      "execution_id": "b2437b10-0849-4b43-9814-696aa85e4172",
+      "run_kind": "replay",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-17T21:45:45.073Z"
+    },
+    {
+      "execution_id": "670bf731-e58c-466e-94ad-83954421392b",
+      "run_kind": "replay",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-17T21:46:33.982Z"
+    }
+  ]
+}
