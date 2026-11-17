@@ -1,0 +1,23 @@
+{
+  "name": "sidedoor",
+  "version": "0.1.0",
+  "description": "Turn a website with no API into a JSON endpoint and an MCP tool from one plain-English sentence, powered by Kane CLI.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "sidedoor": "bin/sidedoor.js"
+  },
+  "scripts": {
+    "build": "tsc -p .",
+    "typecheck": "tsc -p . --noEmit",
+    "dev": "tsx src/cli.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  }
+}
