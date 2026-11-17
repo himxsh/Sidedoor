@@ -15,7 +15,10 @@
     "typecheck": "tsc -p . --noEmit",
     "dev": "tsx src/cli.ts",
     "test": "node --import tsx --test test/*.test.ts",
-    "portal": "node portal/server.mjs"
+    "portal": "node portal/server.mjs",
+    "start": "node scripts/start.mjs",
+    "snapshot": "tsx scripts/snapshot.ts",
+    "prepare": "tsc -p ."
   },
   "devDependencies": {
     "@types/node": "^20.19.43",

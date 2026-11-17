@@ -1,0 +1,1 @@
+{ "cleanUrls": true, "headers": [{ "source": "/snapshot.json", "headers": [{ "key": "cache-control", "value": "no-cache" }] }] }

@@ -1,0 +1,1676 @@
+{
+ "capturedAt": "2026-11-17T22:30:10.464Z",
+ "endpoints": [
+  {
+   "name": "book-price",
+   "url": "https://books.toscrape.com/",
+   "sentence": "Click the book whose title is {{title}} on the home page, then store its price as 'price' and its stock availability text as 'availability'.",
+   "kind": "read",
+   "health": "healthy",
+   "inputs": [
+    {
+     "name": "title",
+     "sample": "A Light in the Attic"
+    }
+   ],
+   "returns": {
+    "price": {
+     "type": "string",
+     "required": true
+    },
+    "availability": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "sample": {
+    "price": "£51.77",
+    "availability": "In stock (22 available)"
+   },
+   "last": {
+    "at": "2026-11-17T22:13:34.152Z",
+    "ok": true,
+    "data": {
+     "price": "£53.74",
+     "availability": "In stock (20 available)"
+    },
+    "durationMs": 34198
+   },
+   "lastFailure": {
+    "at": "2026-11-17T22:10:32.753Z",
+    "remark": "replay completed",
+    "violations": [
+     {
+      "field": "availability",
+      "problem": "boolean where text was expected",
+      "value": "false"
+     }
+    ],
+    "evidence": "shots/book-price-mykbmavh.png"
+   },
+   "stats": {
+    "calls": 2,
+    "replays": 4,
+    "cacheHits": 0,
+    "recordings": 2,
+    "repairs": 1,
+    "creditsSpent": 35.206005,
+    "recordingCost": 19.43607,
+    "avgReplayMs": 47055,
+    "creditsSaved": 19.4
+   },
+   "call": "/api/book-price?title=A%20Light%20in%20the%20Attic"
+  },
+  {
+   "name": "fees",
+   "url": "http://localhost:4400/fees",
+   "sentence": "Type {{student_id}} into the Student ID field and click Check fees. Store the amount shown next to 'Amount due' as 'amount_due' and the date shown next to 'Due date' as 'due_date'.",
+   "kind": "read",
+   "health": "healthy",
+   "inputs": [
+    {
+     "name": "student_id",
+     "sample": "S1001"
+    }
+   ],
+   "returns": {
+    "amount_due": {
+     "type": "string",
+     "required": true
+    },
+    "due_date": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "sample": {
+    "amount_due": "₹42,500",
+    "due_date": "2026-11-30"
+   },
+   "last": {
+    "at": "2026-11-17T22:14:39.301Z",
+    "ok": true,
+    "data": {
+     "amount_due": "₹0",
+     "due_date": "—"
+    },
+    "durationMs": 25640
+   },
+   "stats": {
+    "calls": 2,
+    "replays": 3,
+    "cacheHits": 0,
+    "recordings": 1,
+    "repairs": 0,
+    "creditsSpent": 17.770427499999997,
+    "recordingCost": 17.770427499999997,
+    "avgReplayMs": 25295,
+    "creditsSaved": 35.5
+   },
+   "call": "/api/fees?student_id=S1001"
+  },
+  {
+   "name": "leave-request",
+   "url": "http://localhost:4400/leave",
+   "sentence": "Type {{name}} into the Full name field, enter {{from}} in the From date field and {{to}} in the To date field, type {{reason}} into the Reason field, then click Submit request. Store the confirmation number shown on the result page as 'confirmation'.",
+   "kind": "action",
+   "health": "healthy",
+   "inputs": [
+    {
+     "name": "name",
+     "sample": "Test Student"
+    },
+    {
+     "name": "from",
+     "sample": "2026-11-24"
+    },
+    {
+     "name": "to",
+     "sample": "2026-11-25"
+    },
+    {
+     "name": "reason",
+     "sample": "Family function"
+    }
+   ],
+   "returns": {
+    "confirmation": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "sample": {
+    "confirmation": "LR-4102"
+   },
+   "last": {
+    "at": "2026-11-17T22:12:48.316Z",
+    "ok": true,
+    "data": {
+     "confirmation": "LR-4103"
+    },
+    "durationMs": 27646
+   },
+   "stats": {
+    "calls": 1,
+    "replays": 1,
+    "cacheHits": 0,
+    "recordings": 1,
+    "repairs": 0,
+    "creditsSpent": 24.143225,
+    "recordingCost": 24.143225,
+    "avgReplayMs": 27646,
+    "creditsSaved": 24.1
+   },
+   "call": "/api/leave-request?name=Test%20Student&from=2026-11-24&to=2026-11-25&reason=Family%20function"
+  },
+  {
+   "name": "notices",
+   "url": "http://localhost:4400/",
+   "sentence": "Open Announcements, identify the newest notice, then save its title as title and its displayed date as date. Store the title of the most recent notice as 'title' and store its date as 'date'.",
+   "kind": "read",
+   "health": "healthy",
+   "inputs": [],
+   "returns": {
+    "title": {
+     "type": "string",
+     "required": true
+    },
+    "date": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "sample": {
+    "title": "Mid-semester exam schedule released",
+    "date": "2026-11-17"
+   },
+   "last": {
+    "at": "2026-11-17T22:29:27.312Z",
+    "ok": true,
+    "data": {
+     "title": "Mid-semester exam schedule released",
+     "date": "Posted 17 November 2026"
+    },
+    "durationMs": 20067
+   },
+   "lastFailure": {
+    "at": "2026-11-17T22:26:59.968Z",
+    "remark": "replay completed",
+    "violations": [
+     {
+      "field": "title",
+      "problem": "boolean where text was expected",
+      "value": "false"
+     },
+     {
+      "field": "date",
+      "problem": "boolean where text was expected",
+      "value": "false"
+     }
+    ],
+    "evidence": "shots/notices-6zynbk52.png"
+   },
+   "stats": {
+    "calls": 1,
+    "replays": 3,
+    "cacheHits": 0,
+    "recordings": 3,
+    "repairs": 1,
+    "creditsSpent": 45.5258175,
+    "recordingCost": 16.8673175,
+    "avgReplayMs": 29594,
+    "creditsSaved": 0
+   },
+   "call": "/api/notices"
+  },
+  {
+   "name": "quotes",
+   "url": "https://quotes.toscrape.com/tag/{{tag}}/",
+   "sentence": "Store the text of the first quote as 'quote' and store its author as 'author'.",
+   "kind": "read",
+   "health": "healthy",
+   "inputs": [
+    {
+     "name": "tag",
+     "sample": "humor"
+    }
+   ],
+   "returns": {
+    "quote": {
+     "type": "string",
+     "required": true
+    },
+    "author": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "sample": {
+    "quote": "“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”",
+    "author": "Jane Austen"
+   },
+   "last": {
+    "at": "2026-11-17T22:08:15.537Z",
+    "ok": true,
+    "data": {
+     "quote": "“It is better to be hated for what you are than to be loved for what you are not.”",
+     "author": "André Gide"
+    },
+    "durationMs": 20249
+   },
+   "stats": {
+    "calls": 6,
+    "replays": 6,
+    "cacheHits": 1,
+    "recordings": 1,
+    "repairs": 0,
+    "creditsSpent": 12.026245,
+    "recordingCost": 12.026245,
+    "avgReplayMs": 26669,
+    "creditsSaved": 72.2
+   },
+   "call": "/api/quotes?tag=humor"
+  },
+  {
+   "name": "top-tag",
+   "url": "https://quotes.toscrape.com/",
+   "sentence": "Store the first tag listed in the 'Top Ten tags' box as 'tag'.",
+   "kind": "read",
+   "health": "healthy",
+   "inputs": [],
+   "returns": {
+    "tag": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "sample": {
+    "tag": "love"
+   },
+   "last": {
+    "at": "2026-11-17T22:16:38.173Z",
+    "ok": true,
+    "data": {
+     "tag": "love"
+    },
+    "durationMs": 24011
+   },
+   "stats": {
+    "calls": 0,
+    "replays": 1,
+    "cacheHits": 0,
+    "recordings": 1,
+    "repairs": 0,
+    "creditsSpent": 15.12021,
+    "recordingCost": 15.12021,
+    "avgReplayMs": 24011,
+    "creditsSaved": 0
+   },
+   "call": "/api/top-tag"
+  }
+ ],
+ "events": [
+  {
+   "id": "mwl73gbl-0",
+   "at": "2026-11-17T21:19:12.993Z",
+   "type": "create.start",
+   "endpoint": "quotes",
+   "trace": "du8z2rvt",
+   "message": "Recording \"Go to https://quotes.toscrape.com/tag/{{tag}}/. Store the text of the first quote as 'quote' and store its author as 'author'.\"",
+   "data": {
+    "url": "https://quotes.toscrape.com/tag/{{tag}}/",
+    "inputs": [
+     {
+      "name": "tag",
+      "sample": "humor"
+     }
+    ]
+   }
+  },
+  {
+   "id": "mwl75318-1",
+   "at": "2026-11-17T21:20:29.084Z",
+   "type": "create.recorded",
+   "endpoint": "quotes",
+   "trace": "du8z2rvt",
+   "message": "Recorded in 76 s for 12.0 credits",
+   "data": {
+    "values": {
+     "quote": "“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”",
+     "author": "Jane Austen"
+    },
+    "credits": 12.026245
+   }
+  },
+  {
+   "id": "mwl75yki-5",
+   "at": "2026-11-17T21:21:09.954Z",
+   "type": "create.done",
+   "endpoint": "quotes",
+   "trace": "du8z2rvt",
+   "message": "Endpoint \"quotes\" is live",
+   "data": {
+    "contract": {
+     "fields": {
+      "quote": {
+       "type": "string",
+       "required": true
+      },
+      "author": {
+       "type": "string",
+       "required": true
+      }
+     }
+    },
+    "sample": {
+     "quote": "“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”",
+     "author": "Jane Austen"
+    }
+   }
+  },
+  {
+   "id": "mwl768m8-0",
+   "at": "2026-11-17T21:21:22.976Z",
+   "type": "call.start",
+   "endpoint": "quotes",
+   "trace": "xbo873r2",
+   "message": "Replaying with {\"tag\":\"love\"}",
+   "data": {
+    "inputs": {
+     "tag": "love"
+    }
+   }
+  },
+  {
+   "id": "mwl76v6y-4",
+   "at": "2026-11-17T21:21:52.234Z",
+   "type": "call.ok",
+   "endpoint": "quotes",
+   "trace": "xbo873r2",
+   "message": "Verified 2 field(s) in 29.2 s",
+   "data": {
+    "data": {
+     "quote": "“It is better to be hated for what you are than to be loved for what you are not.”",
+     "author": "André Gide"
+    },
+    "durationMs": 29245,
+    "wasBroken": false,
+    "screenshot": "shots/quotes-xbo873r2.png"
+   }
+  },
+  {
+   "id": "mwl76w3j-0",
+   "at": "2026-11-17T21:21:53.407Z",
+   "type": "call.start",
+   "endpoint": "quotes",
+   "trace": "vcdw4do5",
+   "message": "Replaying with {\"tag\":\"life\"}",
+   "data": {
+    "inputs": {
+     "tag": "life"
+    }
+   }
+  },
+  {
+   "id": "mwl77bxi-4",
+   "at": "2026-11-17T21:22:13.926Z",
+   "type": "call.ok",
+   "endpoint": "quotes",
+   "trace": "vcdw4do5",
+   "message": "Verified 2 field(s) in 20.5 s",
+   "data": {
+    "data": {
+     "quote": "“There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”",
+     "author": "Albert Einstein"
+    },
+    "durationMs": 20514,
+    "wasBroken": false,
+    "screenshot": "shots/quotes-vcdw4do5.png"
+   }
+  },
+  {
+   "id": "mwl77g9h-0",
+   "at": "2026-11-17T21:22:19.541Z",
+   "type": "create.start",
+   "endpoint": "notices",
+   "trace": "w2wodhue",
+   "message": "Recording \"Go to http://localhost:4400/. Store the title of the most recent notice as 'title' and store its date as 'date'.\"",
+   "data": {
+    "url": "http://localhost:4400/",
+    "inputs": []
+   }
+  },
+  {
+   "id": "mwl78rzo-1",
+   "at": "2026-11-17T21:23:21.396Z",
+   "type": "create.recorded",
+   "endpoint": "notices",
+   "trace": "w2wodhue",
+   "message": "Recorded in 62 s for 6.9 credits",
+   "data": {
+    "values": {
+     "title": "Mid-semester exam schedule released",
+     "date": "2026-11-17"
+    },
+    "credits": 6.9220524999999995
+   }
+  },
+  {
+   "id": "mwl799cw-5",
+   "at": "2026-11-17T21:23:43.904Z",
+   "type": "create.done",
+   "endpoint": "notices",
+   "trace": "w2wodhue",
+   "message": "Endpoint \"notices\" is live",
+   "data": {
+    "contract": {
+     "fields": {
+      "title": {
+       "type": "string",
+       "required": true
+      },
+      "date": {
+       "type": "string",
+       "required": true
+      }
+     }
+    },
+    "sample": {
+     "title": "Mid-semester exam schedule released",
+     "date": "2026-11-17"
+    }
+   }
+  },
+  {
+   "id": "mwl79aga-0",
+   "at": "2026-11-17T21:23:45.322Z",
+   "type": "call.start",
+   "endpoint": "notices",
+   "trace": "qdl1acat",
+   "message": "Replaying with {}",
+   "data": {
+    "inputs": {}
+   }
+  },
+  {
+   "id": "mwl79l3u-4",
+   "at": "2026-11-17T21:23:59.130Z",
+   "type": "call.ok",
+   "endpoint": "notices",
+   "trace": "qdl1acat",
+   "message": "Verified 2 field(s) in 13.8 s",
+   "data": {
+    "data": {
+     "title": "Mid-semester exam schedule released",
+     "date": "2026-11-17"
+    },
+    "durationMs": 13803,
+    "wasBroken": false,
+    "screenshot": "shots/notices-qdl1acat.png"
+   }
+  },
+  {
+   "id": "mwl7degs-0",
+   "at": "2026-11-17T21:26:57.148Z",
+   "type": "call.start",
+   "endpoint": "quotes",
+   "trace": "l6p252yp",
+   "message": "Replaying with {\"tag\":\"books\"}",
+   "data": {
+    "inputs": {
+     "tag": "books"
+    }
+   }
+  },
+  {
+   "id": "mwl7dwdl-4",
+   "at": "2026-11-17T21:27:20.361Z",
+   "type": "call.ok",
+   "endpoint": "quotes",
+   "trace": "l6p252yp",
+   "message": "Verified 2 field(s) in 23.2 s",
+   "data": {
+    "data": {
+     "quote": "“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”",
+     "author": "Jane Austen"
+    },
+    "durationMs": 23203,
+    "wasBroken": false,
+    "screenshot": "shots/quotes-l6p252yp.png"
+   }
+  },
+  {
+   "id": "mwl7e2wn-5",
+   "at": "2026-11-17T21:27:28.823Z",
+   "type": "call.cached",
+   "endpoint": "quotes",
+   "trace": "cg4ka6km",
+   "message": "Served from cache",
+   "data": {
+    "inputs": {
+     "tag": "books"
+    }
+   }
+  },
+  {
+   "id": "mwl840ai-0",
+   "at": "2026-11-17T21:47:38.490Z",
+   "type": "call.start",
+   "endpoint": "notices",
+   "trace": "gqenbuow",
+   "message": "Replaying with {}",
+   "data": {
+    "inputs": {}
+   }
+  },
+  {
+   "id": "mwl84w4k-4",
+   "at": "2026-11-17T21:48:19.748Z",
+   "type": "call.failed",
+   "endpoint": "notices",
+   "trace": "gqenbuow",
+   "message": "Contract check failed: title: boolean where text was expected; date: boolean where text was expected",
+   "data": {
+    "violations": [
+     {
+      "field": "title",
+      "problem": "boolean where text was expected",
+      "value": "false"
+     },
+     {
+      "field": "date",
+      "problem": "boolean where text was expected",
+      "value": "false"
+     }
+    ],
+    "values": {
+     "title": "false",
+     "date": "false"
+    },
+    "remark": "replay completed",
+    "screenshot": "shots/notices-gqenbuow.png"
+   }
+  },
+  {
+   "id": "mwl84w4n-5",
+   "at": "2026-11-17T21:48:19.751Z",
+   "type": "guard.detect",
+   "endpoint": "notices",
+   "trace": "gqenbuow",
+   "message": "Replay broke the contract (title: boolean where text was expected; date: boolean where text was expected); repairing",
+   "data": {
+    "violations": [
+     {
+      "field": "title",
+      "problem": "boolean where text was expected",
+      "value": "false"
+     },
+     {
+      "field": "date",
+      "problem": "boolean where text was expected",
+      "value": "false"
+     }
+    ]
+   }
+  },
+  {
+   "id": "mwl84w4w-6",
+   "at": "2026-11-17T21:48:19.760Z",
+   "type": "guard.rerecord",
+   "endpoint": "notices",
+   "trace": "gqenbuow",
+   "message": "Kane re-records the flow",
+   "data": {
+    "objective": null
+   }
+  },
+  {
+   "id": "mwl86314-a",
+   "at": "2026-11-17T21:49:15.352Z",
+   "type": "guard.check",
+   "endpoint": "notices",
+   "trace": "gqenbuow",
+   "message": "Re-recorded result fails the contract",
+   "data": {
+    "values": {
+     "title": "",
+     "date": ""
+    },
+    "violations": [
+     {
+      "field": "*",
+      "problem": "re-record failed"
+     }
+    ],
+    "credits": 9.749107500000001,
+    "remark": "The agent did not open the Announcements link before trying to read the most recent notice. No notice title or date was available on the dashboard.\nOpen Announcements first, then identify the newest notice and save both its title and date. Add a check that a notice record is visible before setting either variable."
+   }
+  },
+  {
+   "id": "mwl8631p-b",
+   "at": "2026-11-17T21:49:15.373Z",
+   "type": "guard.rerecord",
+   "endpoint": "notices",
+   "trace": "gqenbuow",
+   "message": "Retrying with Kane's own fix: \"Open Announcements first, then identify the newest notice and save both its title and date. Add a check that a notice record is visible before setting either variable.\"",
+   "data": {
+    "hint": "Open Announcements first, then identify the newest notice and save both its title and date. Add a check that a notice record is visible before setting either variable."
+   }
+  },
+  {
+   "id": "mwl8631t-c",
+   "at": "2026-11-17T21:49:15.377Z",
+   "type": "guard.rerecord",
+   "endpoint": "notices",
+   "trace": "gqenbuow",
+   "message": "Kane re-records the flow with a new sentence",
+   "data": {
+    "objective": "Go to http://localhost:4400/. Open Announcements first, then identify the newest notice and save both its title and date. Add a check that a notice record is visible before setting either variable. Store the title of the most recent notice as 'title' and store its date as 'date'."
+   }
+  },
+  {
+   "id": "mwl87w1n-h",
+   "at": "2026-11-17T21:50:39.611Z",
+   "type": "guard.check",
+   "endpoint": "notices",
+   "trace": "gqenbuow",
+   "message": "Re-recorded result passes the contract",
+   "data": {
+    "values": {
+     "title": "Mid-semester exam schedule released",
+     "date": "17 November 2026",
+     "notice_record_visible": "true"
+    },
+    "violations": [],
+    "credits": 17.793439999999997,
+    "remark": "Opened the Announcements page as requested.\nIdentified the newest visible notice: “Mid-semester exam schedule released,” posted 17 November 2026.\nCompleted the request and remained on the Announcements page."
+   }
+  },
+  {
+   "id": "mwl88ase-o",
+   "at": "2026-11-17T21:50:58.718Z",
+   "type": "guard.verify",
+   "endpoint": "notices",
+   "trace": "gqenbuow",
+   "message": "Verification replay passed",
+   "data": {
+    "values": {
+     "notice_record_visible": "true",
+     "title": "Mid-semester exam schedule released",
+     "date": "17 November 2026"
+    },
+    "violations": [],
+    "screenshot": "shots/notices-gqenbuow-ver.png"
+   }
+  },
+  {
+   "id": "mwl88asm-p",
+   "at": "2026-11-17T21:50:58.726Z",
+   "type": "guard.swap",
+   "endpoint": "notices",
+   "trace": "gqenbuow",
+   "message": "New recording swapped in; endpoint healthy",
+   "data": {
+    "data": {
+     "title": "Mid-semester exam schedule released",
+     "date": "17 November 2026"
+    }
+   }
+  },
+  {
+   "id": "mwl88g0i-q",
+   "at": "2026-11-17T21:51:05.490Z",
+   "type": "call.start",
+   "endpoint": "notices",
+   "trace": "zek4zs3v",
+   "message": "Replaying with {}",
+   "data": {
+    "inputs": {}
+   }
+  },
+  {
+   "id": "mwl88trc-x",
+   "at": "2026-11-17T21:51:23.304Z",
+   "type": "call.ok",
+   "endpoint": "notices",
+   "trace": "zek4zs3v",
+   "message": "Verified 2 field(s) in 17.8 s",
+   "data": {
+    "data": {
+     "title": "Mid-semester exam schedule released",
+     "date": "17 November 2026"
+    },
+    "durationMs": 17811,
+    "wasBroken": false,
+    "screenshot": "shots/notices-zek4zs3v.png"
+   }
+  },
+  {
+   "id": "mwl8j5t7-0",
+   "at": "2026-11-17T21:59:25.483Z",
+   "type": "call.start",
+   "endpoint": "quotes",
+   "trace": "r1pru1ir",
+   "message": "Replaying with {\"tag\":\"love\"}",
+   "data": {
+    "inputs": {
+     "tag": "love"
+    }
+   }
+  },
+  {
+   "id": "mwl8jpwx-4",
+   "at": "2026-11-17T21:59:51.537Z",
+   "type": "call.ok",
+   "endpoint": "quotes",
+   "trace": "r1pru1ir",
+   "message": "Verified 2 field(s) in 26.0 s",
+   "data": {
+    "data": {
+     "quote": "“It is better to be hated for what you are than to be loved for what you are not.”",
+     "author": "André Gide"
+    },
+    "durationMs": 26040,
+    "wasBroken": false,
+    "screenshot": "shots/quotes-r1pru1ir.png"
+   }
+  },
+  {
+   "id": "mwl8jpz2-5",
+   "at": "2026-11-17T21:59:51.614Z",
+   "type": "create.start",
+   "endpoint": "book-price",
+   "trace": "t4gep6ev",
+   "message": "Recording \"Go to https://books.toscrape.com/. Click the book whose title is {{title}} on the home page, then store its price as 'price' and its stock availability text as 'availability'.\"",
+   "data": {
+    "url": "https://books.toscrape.com/",
+    "inputs": [
+     {
+      "name": "title",
+      "sample": "A Light in the Attic"
+     }
+    ]
+   }
+  },
+  {
+   "id": "mwl8lgyo-6",
+   "at": "2026-11-17T22:01:13.248Z",
+   "type": "create.recorded",
+   "endpoint": "book-price",
+   "trace": "t4gep6ev",
+   "message": "Recorded in 82 s for 19.4 credits",
+   "data": {
+    "values": {
+     "price": "£51.77",
+     "availability": "In stock (22 available)"
+    },
+    "credits": 19.43607
+   }
+  },
+  {
+   "id": "mwl8m97l-c",
+   "at": "2026-11-17T22:01:49.857Z",
+   "type": "create.done",
+   "endpoint": "book-price",
+   "trace": "t4gep6ev",
+   "message": "Endpoint \"book-price\" is live",
+   "data": {
+    "contract": {
+     "fields": {
+      "price": {
+       "type": "string",
+       "required": true
+      },
+      "availability": {
+       "type": "string",
+       "required": true
+      }
+     }
+    },
+    "sample": {
+     "price": "£51.77",
+     "availability": "In stock (22 available)"
+    }
+   }
+  },
+  {
+   "id": "mwl8mo8g-0",
+   "at": "2026-11-17T22:02:09.328Z",
+   "type": "create.start",
+   "endpoint": "fees",
+   "trace": "dcj89fmy",
+   "message": "Recording \"Go to http://localhost:4400/fees. Type {{student_id}} into the Student ID field and click Check fees. Store the amount shown next to 'Amount due' as 'amount_due' and the date shown next to 'Due date' as 'due_date'.\"",
+   "data": {
+    "url": "http://localhost:4400/fees",
+    "inputs": [
+     {
+      "name": "student_id",
+      "sample": "S1001"
+     }
+    ]
+   }
+  },
+  {
+   "id": "mwl8oali-1",
+   "at": "2026-11-17T22:03:24.966Z",
+   "type": "create.recorded",
+   "endpoint": "fees",
+   "trace": "dcj89fmy",
+   "message": "Recorded in 76 s for 17.8 credits",
+   "data": {
+    "values": {
+     "amount_due": "₹42,500",
+     "due_date": "2026-11-30"
+    },
+    "credits": 17.770427499999997
+   }
+  },
+  {
+   "id": "mwl8ot8i-8",
+   "at": "2026-11-17T22:03:49.122Z",
+   "type": "create.done",
+   "endpoint": "fees",
+   "trace": "dcj89fmy",
+   "message": "Endpoint \"fees\" is live",
+   "data": {
+    "contract": {
+     "fields": {
+      "amount_due": {
+       "type": "string",
+       "required": true
+      },
+      "due_date": {
+       "type": "string",
+       "required": true
+      }
+     }
+    },
+    "sample": {
+     "amount_due": "₹42,500",
+     "due_date": "2026-11-30"
+    }
+   }
+  },
+  {
+   "id": "mwl8oxvm-0",
+   "at": "2026-11-17T22:03:55.138Z",
+   "type": "create.start",
+   "endpoint": "leave-request",
+   "trace": "ct38dux9",
+   "message": "Recording \"Go to http://localhost:4400/leave. Type {{name}} into the Full name field, enter {{from}} in the From date field and {{to}} in the To date field, type {{reason}} into the Reason field, then click Submit request. Store the confirmation number shown on the result page as 'confirmation'.\"",
+   "data": {
+    "url": "http://localhost:4400/leave",
+    "inputs": [
+     {
+      "name": "name",
+      "sample": "Test Student"
+     },
+     {
+      "name": "from",
+      "sample": "2026-11-24"
+     },
+     {
+      "name": "to",
+      "sample": "2026-11-25"
+     },
+     {
+      "name": "reason",
+      "sample": "Family function"
+     }
+    ]
+   }
+  },
+  {
+   "id": "mwl8rkpw-1",
+   "at": "2026-11-17T22:05:58.052Z",
+   "type": "create.recorded",
+   "endpoint": "leave-request",
+   "trace": "ct38dux9",
+   "message": "Recorded in 123 s for 24.1 credits",
+   "data": {
+    "values": {
+     "confirmation": "LR-4102"
+    },
+    "credits": 24.143225
+   }
+  },
+  {
+   "id": "mwl8rkq2-2",
+   "at": "2026-11-17T22:05:58.058Z",
+   "type": "create.done",
+   "endpoint": "leave-request",
+   "trace": "ct38dux9",
+   "message": "Endpoint \"leave-request\" is live",
+   "data": {
+    "contract": {
+     "fields": {
+      "confirmation": {
+       "type": "string",
+       "required": true
+      }
+     }
+    },
+    "sample": {
+     "confirmation": "LR-4102"
+    }
+   }
+  },
+  {
+   "id": "mwl8rp3o-0",
+   "at": "2026-11-17T22:06:03.732Z",
+   "type": "create.start",
+   "endpoint": "notices",
+   "trace": "s2vzsmw9",
+   "message": "Recording \"Go to http://localhost:4400/notices. Store the title of the most recent notice as 'title' and store its date as 'date'.\"",
+   "data": {
+    "url": "http://localhost:4400/notices",
+    "inputs": []
+   }
+  },
+  {
+   "id": "mwl8svpo-1",
+   "at": "2026-11-17T22:06:58.956Z",
+   "type": "create.recorded",
+   "endpoint": "notices",
+   "trace": "s2vzsmw9",
+   "message": "Recorded in 55 s for 10.7 credits",
+   "data": {
+    "values": {
+     "title": "Mid-semester exam schedule released",
+     "date": "2026-11-17"
+    },
+    "credits": 10.681404999999998
+   }
+  },
+  {
+   "id": "mwl8tasc-5",
+   "at": "2026-11-17T22:07:18.492Z",
+   "type": "create.done",
+   "endpoint": "notices",
+   "trace": "s2vzsmw9",
+   "message": "Endpoint \"notices\" is live",
+   "data": {
+    "contract": {
+     "fields": {
+      "title": {
+       "type": "string",
+       "required": true
+      },
+      "date": {
+       "type": "string",
+       "required": true
+      }
+     }
+    },
+    "sample": {
+     "title": "Mid-semester exam schedule released",
+     "date": "2026-11-17"
+    }
+   }
+  },
+  {
+   "id": "mwl8thkh-0",
+   "at": "2026-11-17T22:07:27.281Z",
+   "type": "call.start",
+   "endpoint": "notices",
+   "trace": "wyxmuv4q",
+   "message": "Replaying with {}",
+   "data": {
+    "inputs": {}
+   }
+  },
+  {
+   "id": "mwl8tu3x-4",
+   "at": "2026-11-17T22:07:43.533Z",
+   "type": "call.ok",
+   "endpoint": "notices",
+   "trace": "wyxmuv4q",
+   "message": "Verified 2 field(s) in 16.2 s",
+   "data": {
+    "data": {
+     "title": "Mid-semester exam schedule released",
+     "date": "2026-11-17"
+    },
+    "durationMs": 16239,
+    "wasBroken": false,
+    "screenshot": "shots/notices-wyxmuv4q.png"
+   }
+  },
+  {
+   "id": "mwl8u36b-0",
+   "at": "2026-11-17T22:07:55.283Z",
+   "type": "call.start",
+   "endpoint": "quotes",
+   "trace": "3bbex0fl",
+   "message": "Replaying with {\"tag\":\"love\"}",
+   "data": {
+    "inputs": {
+     "tag": "love"
+    }
+   }
+  },
+  {
+   "id": "mwl8uisy-4",
+   "at": "2026-11-17T22:08:15.538Z",
+   "type": "call.ok",
+   "endpoint": "quotes",
+   "trace": "3bbex0fl",
+   "message": "Verified 2 field(s) in 20.2 s",
+   "data": {
+    "data": {
+     "quote": "“It is better to be hated for what you are than to be loved for what you are not.”",
+     "author": "André Gide"
+    },
+    "durationMs": 20249,
+    "wasBroken": false,
+    "screenshot": "shots/quotes-3bbex0fl.png"
+   }
+  },
+  {
+   "id": "mwl8uvmv-0",
+   "at": "2026-11-17T22:08:32.167Z",
+   "type": "call.start",
+   "endpoint": "fees",
+   "trace": "hldrtik3",
+   "message": "Replaying with {\"student_id\":\"S1002\"}",
+   "data": {
+    "inputs": {
+     "student_id": "S1002"
+    }
+   }
+  },
+  {
+   "id": "mwl8vfrz-7",
+   "at": "2026-11-17T22:08:58.271Z",
+   "type": "call.ok",
+   "endpoint": "fees",
+   "trace": "hldrtik3",
+   "message": "Verified 2 field(s) in 26.1 s",
+   "data": {
+    "data": {
+     "amount_due": "₹18,000",
+     "due_date": "2026-12-05"
+    },
+    "durationMs": 26099,
+    "wasBroken": false,
+    "screenshot": "shots/fees-hldrtik3.png"
+   }
+  },
+  {
+   "id": "mwl8vko3-0",
+   "at": "2026-11-17T22:09:04.611Z",
+   "type": "call.start",
+   "endpoint": "book-price",
+   "trace": "mykbmavh",
+   "message": "Replaying with {\"title\":\"Soumission\"}",
+   "data": {
+    "inputs": {
+     "title": "Soumission"
+    }
+   }
+  },
+  {
+   "id": "mwl8xgoh-6",
+   "at": "2026-11-17T22:10:32.753Z",
+   "type": "call.failed",
+   "endpoint": "book-price",
+   "trace": "mykbmavh",
+   "message": "Contract check failed: availability: boolean where text was expected",
+   "data": {
+    "violations": [
+     {
+      "field": "availability",
+      "problem": "boolean where text was expected",
+      "value": "false"
+     }
+    ],
+    "values": {
+     "price": "£50.10",
+     "availability": "false"
+    },
+    "remark": "replay completed",
+    "screenshot": "shots/book-price-mykbmavh.png"
+   }
+  },
+  {
+   "id": "mwl8xgok-7",
+   "at": "2026-11-17T22:10:32.756Z",
+   "type": "guard.detect",
+   "endpoint": "book-price",
+   "trace": "mykbmavh",
+   "message": "Replay broke the contract (availability: boolean where text was expected); repairing",
+   "data": {
+    "violations": [
+     {
+      "field": "availability",
+      "problem": "boolean where text was expected",
+      "value": "false"
+     }
+    ]
+   }
+  },
+  {
+   "id": "mwl8xgov-8",
+   "at": "2026-11-17T22:10:32.767Z",
+   "type": "guard.rerecord",
+   "endpoint": "book-price",
+   "trace": "mykbmavh",
+   "message": "Kane re-records the flow",
+   "data": {
+    "objective": null
+   }
+  },
+  {
+   "id": "mwl8z4bn-e",
+   "at": "2026-11-17T22:11:50.051Z",
+   "type": "guard.check",
+   "endpoint": "book-price",
+   "trace": "mykbmavh",
+   "message": "Re-recorded result passes the contract",
+   "data": {
+    "values": {
+     "price": "£50.10",
+     "availability": "In stock (20 available)"
+    },
+    "violations": [],
+    "credits": 15.769934999999997,
+    "remark": "Opened the book titled “Soumission” from the home page on Books to Scrape.\nSaved the book’s price as £50.10.\nSaved the availability as “In stock (20 available).”"
+   }
+  },
+  {
+   "id": "mwl8zqxx-k",
+   "at": "2026-11-17T22:12:19.365Z",
+   "type": "guard.verify",
+   "endpoint": "book-price",
+   "trace": "mykbmavh",
+   "message": "Verification replay passed",
+   "data": {
+    "values": {
+     "price": "£50.10",
+     "availability": "In stock (20 available)"
+    },
+    "violations": [],
+    "screenshot": "shots/book-price-mykbmavh-ver.png"
+   }
+  },
+  {
+   "id": "mwl8zqy5-l",
+   "at": "2026-11-17T22:12:19.373Z",
+   "type": "guard.swap",
+   "endpoint": "book-price",
+   "trace": "mykbmavh",
+   "message": "New recording swapped in; endpoint healthy",
+   "data": {
+    "data": {
+     "price": "£50.10",
+     "availability": "In stock (20 available)"
+    }
+   }
+  },
+  {
+   "id": "mwl8zry2-0",
+   "at": "2026-11-17T22:12:20.666Z",
+   "type": "call.start",
+   "endpoint": "leave-request",
+   "trace": "d7utneka",
+   "message": "Replaying with {\"name\":\"Riya\",\"from\":\"2026-11-26\",\"to\":\"2026-11-27\",\"reason\":\"Medical\"}",
+   "data": {
+    "inputs": {
+     "name": "Riya",
+     "from": "2026-11-26",
+     "to": "2026-11-27",
+     "reason": "Medical"
+    }
+   }
+  },
+  {
+   "id": "mwl90da5-b",
+   "at": "2026-11-17T22:12:48.317Z",
+   "type": "call.ok",
+   "endpoint": "leave-request",
+   "trace": "d7utneka",
+   "message": "Verified 1 field(s) in 27.6 s",
+   "data": {
+    "data": {
+     "confirmation": "LR-4103"
+    },
+    "durationMs": 27646,
+    "wasBroken": false,
+    "screenshot": "shots/leave-request-d7utneka.png"
+   }
+  },
+  {
+   "id": "mwl90m9a-0",
+   "at": "2026-11-17T22:12:59.950Z",
+   "type": "call.start",
+   "endpoint": "book-price",
+   "trace": "a6sg5jaz",
+   "message": "Replaying with {\"title\":\"Tipping the Velvet\"}",
+   "data": {
+    "inputs": {
+     "title": "Tipping the Velvet"
+    }
+   }
+  },
+  {
+   "id": "mwl91cnd-6",
+   "at": "2026-11-17T22:13:34.153Z",
+   "type": "call.ok",
+   "endpoint": "book-price",
+   "trace": "a6sg5jaz",
+   "message": "Verified 2 field(s) in 34.2 s",
+   "data": {
+    "data": {
+     "price": "£53.74",
+     "availability": "In stock (20 available)"
+    },
+    "durationMs": 34198,
+    "wasBroken": false,
+    "screenshot": "shots/book-price-a6sg5jaz.png"
+   }
+  },
+  {
+   "id": "mwl9274m-y",
+   "at": "2026-11-17T22:14:13.654Z",
+   "type": "call.start",
+   "endpoint": "fees",
+   "trace": "qrofdn2e",
+   "message": "Replaying with {\"student_id\":\"S1003\"}",
+   "data": {
+    "inputs": {
+     "student_id": "S1003"
+    }
+   }
+  },
+  {
+   "id": "mwl92qx2-15",
+   "at": "2026-11-17T22:14:39.302Z",
+   "type": "call.ok",
+   "endpoint": "fees",
+   "trace": "qrofdn2e",
+   "message": "Verified 2 field(s) in 25.6 s",
+   "data": {
+    "data": {
+     "amount_due": "₹0",
+     "due_date": "—"
+    },
+    "durationMs": 25640,
+    "wasBroken": false,
+    "screenshot": "shots/fees-qrofdn2e.png"
+   }
+  },
+  {
+   "id": "mwl93nu0-16",
+   "at": "2026-11-17T22:15:21.960Z",
+   "type": "create.start",
+   "endpoint": "top-tag",
+   "trace": "b858c3hs",
+   "message": "Recording \"Go to https://quotes.toscrape.com/. Store the first tag listed in the 'Top Ten tags' box as 'tag'.\"",
+   "data": {
+    "url": "https://quotes.toscrape.com/",
+    "inputs": []
+   }
+  },
+  {
+   "id": "mwl94s3y-17",
+   "at": "2026-11-17T22:16:14.158Z",
+   "type": "create.recorded",
+   "endpoint": "top-tag",
+   "trace": "b858c3hs",
+   "message": "Recorded in 52 s for 15.1 credits",
+   "data": {
+    "values": {
+     "tag": "love"
+    },
+    "credits": 15.12021
+   }
+  },
+  {
+   "id": "mwl95an2-1a",
+   "at": "2026-11-17T22:16:38.174Z",
+   "type": "create.done",
+   "endpoint": "top-tag",
+   "trace": "b858c3hs",
+   "message": "Endpoint \"top-tag\" is live",
+   "data": {
+    "contract": {
+     "fields": {
+      "tag": {
+       "type": "string",
+       "required": true
+      }
+     }
+    },
+    "sample": {
+     "tag": "love"
+    }
+   }
+  },
+  {
+   "id": "mwl95ia6-1b",
+   "at": "2026-11-17T22:16:48.078Z",
+   "type": "call.start",
+   "endpoint": "notices",
+   "trace": "vyfw6ywd",
+   "message": "Replaying with {}",
+   "data": {
+    "inputs": {}
+   }
+  },
+  {
+   "id": "mwl962wq-1f",
+   "at": "2026-11-17T22:17:14.810Z",
+   "type": "call.ok",
+   "endpoint": "notices",
+   "trace": "vyfw6ywd",
+   "message": "Verified 2 field(s) in 26.7 s",
+   "data": {
+    "data": {
+     "title": "Mid-semester exam schedule released",
+     "date": "17 November 2026"
+    },
+    "durationMs": 26727,
+    "wasBroken": false,
+    "screenshot": "shots/notices-vyfw6ywd.png"
+   }
+  },
+  {
+   "id": "mwl9flzo-0",
+   "at": "2026-11-17T22:24:39.444Z",
+   "type": "create.start",
+   "endpoint": "notices",
+   "trace": "9dmehfal",
+   "message": "Recording \"Go to http://localhost:4400/. Store the title of the most recent notice as 'title' and store its date as 'date'.\"",
+   "data": {
+    "url": "http://localhost:4400/",
+    "inputs": []
+   }
+  },
+  {
+   "id": "mwl9gy4u-1",
+   "at": "2026-11-17T22:25:41.838Z",
+   "type": "create.recorded",
+   "endpoint": "notices",
+   "trace": "9dmehfal",
+   "message": "Recorded in 62 s for 16.9 credits",
+   "data": {
+    "values": {
+     "title": "Mid-semester exam schedule released",
+     "date": "2026-11-17"
+    },
+    "credits": 16.8673175
+   }
+  },
+  {
+   "id": "mwl9hbsq-5",
+   "at": "2026-11-17T22:25:59.546Z",
+   "type": "create.done",
+   "endpoint": "notices",
+   "trace": "9dmehfal",
+   "message": "Endpoint \"notices\" is live",
+   "data": {
+    "contract": {
+     "fields": {
+      "title": {
+       "type": "string",
+       "required": true
+      },
+      "date": {
+       "type": "string",
+       "required": true
+      }
+     }
+    },
+    "sample": {
+     "title": "Mid-semester exam schedule released",
+     "date": "2026-11-17"
+    }
+   }
+  },
+  {
+   "id": "mwl9hj1u-1g",
+   "at": "2026-11-17T22:26:08.946Z",
+   "type": "call.start",
+   "endpoint": "notices",
+   "trace": "6zynbk52",
+   "message": "Replaying with {}",
+   "data": {
+    "inputs": {}
+   }
+  },
+  {
+   "id": "mwl9imf4-1k",
+   "at": "2026-11-17T22:26:59.968Z",
+   "type": "call.failed",
+   "endpoint": "notices",
+   "trace": "6zynbk52",
+   "message": "Contract check failed: title: boolean where text was expected; date: boolean where text was expected",
+   "data": {
+    "violations": [
+     {
+      "field": "title",
+      "problem": "boolean where text was expected",
+      "value": "false"
+     },
+     {
+      "field": "date",
+      "problem": "boolean where text was expected",
+      "value": "false"
+     }
+    ],
+    "values": {
+     "title": "false",
+     "date": "false"
+    },
+    "remark": "replay completed",
+    "screenshot": "shots/notices-6zynbk52.png"
+   }
+  },
+  {
+   "id": "mwl9imf7-1l",
+   "at": "2026-11-17T22:26:59.971Z",
+   "type": "guard.detect",
+   "endpoint": "notices",
+   "trace": "6zynbk52",
+   "message": "Replay broke the contract (title: boolean where text was expected; date: boolean where text was expected); repairing",
+   "data": {
+    "violations": [
+     {
+      "field": "title",
+      "problem": "boolean where text was expected",
+      "value": "false"
+     },
+     {
+      "field": "date",
+      "problem": "boolean where text was expected",
+      "value": "false"
+     }
+    ]
+   }
+  },
+  {
+   "id": "mwl9imfk-1m",
+   "at": "2026-11-17T22:26:59.984Z",
+   "type": "guard.rerecord",
+   "endpoint": "notices",
+   "trace": "6zynbk52",
+   "message": "Kane re-records the flow",
+   "data": {
+    "objective": null
+   }
+  },
+  {
+   "id": "mwl9jp66-1q",
+   "at": "2026-11-17T22:27:50.190Z",
+   "type": "guard.check",
+   "endpoint": "notices",
+   "trace": "6zynbk52",
+   "message": "Re-recorded result fails the contract",
+   "data": {
+    "values": {
+     "title": "",
+     "date": ""
+    },
+    "violations": [
+     {
+      "field": "*",
+      "problem": "re-record failed"
+     }
+    ],
+    "credits": 8.850865,
+    "remark": "The agent tried to save the date before opening the Announcements page and reading the most recent notice. It also never collected a notice title.\nOpen Announcements, identify the newest notice, then save its title as title and its displayed date as date."
+   }
+  },
+  {
+   "id": "mwl9jp8i-1r",
+   "at": "2026-11-17T22:27:50.274Z",
+   "type": "guard.rerecord",
+   "endpoint": "notices",
+   "trace": "6zynbk52",
+   "message": "Retrying with Kane's own fix: \"Open Announcements, identify the newest notice, then save its title as title and its displayed date as date.\"",
+   "data": {
+    "hint": "Open Announcements, identify the newest notice, then save its title as title and its displayed date as date."
+   }
+  },
+  {
+   "id": "mwl9jp8x-1s",
+   "at": "2026-11-17T22:27:50.289Z",
+   "type": "guard.rerecord",
+   "endpoint": "notices",
+   "trace": "6zynbk52",
+   "message": "Kane re-records the flow with a new sentence",
+   "data": {
+    "objective": "Go to http://localhost:4400/. Open Announcements, identify the newest notice, then save its title as title and its displayed date as date. Store the title of the most recent notice as 'title' and store its date as 'date'."
+   }
+  },
+  {
+   "id": "mwl9lcmb-1x",
+   "at": "2026-11-17T22:29:07.235Z",
+   "type": "guard.check",
+   "endpoint": "notices",
+   "trace": "6zynbk52",
+   "message": "Re-recorded result passes the contract",
+   "data": {
+    "values": {
+     "title": "Mid-semester exam schedule released",
+     "date": "Posted 17 November 2026",
+     "title_2": "Mid-semester exam schedule released",
+     "date_2": "Posted 17 November 2026"
+    },
+    "violations": [],
+    "credits": 19.807635,
+    "remark": "Opened the Announcements page to find the newest notice.\nIdentified the newest notice as “Mid-semester exam schedule released,” dated “Posted 17 November 2026.”\nThe requested newest notice details were successfully retrieved."
+   }
+  },
+  {
+   "id": "mwl9ls3t-24",
+   "at": "2026-11-17T22:29:27.305Z",
+   "type": "guard.verify",
+   "endpoint": "notices",
+   "trace": "6zynbk52",
+   "message": "Verification replay passed",
+   "data": {
+    "values": {
+     "title": "Mid-semester exam schedule released",
+     "date": "Posted 17 November 2026",
+     "title_2": "Mid-semester exam schedule released",
+     "date_2": "Posted 17 November 2026"
+    },
+    "violations": [],
+    "screenshot": "shots/notices-6zynbk52-ver.png"
+   }
+  },
+  {
+   "id": "mwl9ls42-25",
+   "at": "2026-11-17T22:29:27.314Z",
+   "type": "guard.swap",
+   "endpoint": "notices",
+   "trace": "6zynbk52",
+   "message": "New recording swapped in; endpoint healthy",
+   "data": {
+    "data": {
+     "title": "Mid-semester exam schedule released",
+     "date": "Posted 17 November 2026"
+    }
+   }
+  }
+ ],
+ "calls": {
+  "quotes": {
+   "at": "2026-11-17T22:08:15.538Z",
+   "result": {
+    "endpoint": "quotes",
+    "ok": true,
+    "verified": true,
+    "data": {
+     "quote": "“It is better to be hated for what you are than to be loved for what you are not.”",
+     "author": "André Gide"
+    },
+    "trace": "3bbex0fl"
+   }
+  },
+  "notices": {
+   "at": "2026-11-17T22:29:27.314Z",
+   "result": {
+    "endpoint": "notices",
+    "ok": true,
+    "verified": true,
+    "repaired": true,
+    "data": {
+     "title": "Mid-semester exam schedule released",
+     "date": "Posted 17 November 2026"
+    },
+    "trace": "6zynbk52"
+   }
+  },
+  "fees": {
+   "at": "2026-11-17T22:14:39.302Z",
+   "result": {
+    "endpoint": "fees",
+    "ok": true,
+    "verified": true,
+    "data": {
+     "amount_due": "₹0",
+     "due_date": "—"
+    },
+    "trace": "qrofdn2e"
+   }
+  },
+  "book-price": {
+   "at": "2026-11-17T22:13:34.153Z",
+   "result": {
+    "endpoint": "book-price",
+    "ok": true,
+    "verified": true,
+    "data": {
+     "price": "£53.74",
+     "availability": "In stock (20 available)"
+    },
+    "trace": "a6sg5jaz"
+   }
+  },
+  "leave-request": {
+   "at": "2026-11-17T22:12:48.317Z",
+   "result": {
+    "endpoint": "leave-request",
+    "ok": true,
+    "verified": true,
+    "data": {
+     "confirmation": "LR-4103"
+    },
+    "trace": "d7utneka"
+   }
+  },
+  "top-tag": {
+   "at": "2026-11-17T22:16:38.173Z",
+   "result": {
+    "endpoint": "top-tag",
+    "ok": true,
+    "verified": true,
+    "data": {
+     "tag": "love"
+    }
+   }
+  }
+ }
+}
