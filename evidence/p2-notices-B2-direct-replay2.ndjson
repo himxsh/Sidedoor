@@ -1,0 +1,35 @@
+{"type":"stream_start","cli_version":"0.10.4","surface":"testmd","pid":66298,"v":1,"ts":"2026-11-17T21:15:14.978Z"}
+{"type":"test_md_step_start","step_index":1,"heading":"Step 1","ref":null,"v":1,"ts":"2026-11-17T21:15:21.554Z"}
+{"type":"run_start","objective":"Go to http://localhost:4400/ and click the Announcements link. Store the title of the most recent notice as 'title' and store its date as 'date'.","timestamp":1794950121,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-17T21:15:21.580Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 5 actions","recording_length":5,"v":1,"ts":"2026-11-17T21:15:21.581Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-17T21:15:21.582Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"https://kaneai-playground.lambdatest.io/","v":1,"ts":"2026-11-17T21:15:21.703Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Navigate to http://localhost:4400/","action_type":"navigate","success":true,"v":1,"ts":"2026-11-17T21:15:21.731Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Navigate to http://localhost:4400/","action_type":"navigate","v":1,"ts":"2026-11-17T21:15:21.732Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.2,"summary":"navigate: Navigate to http://localhost:4400/","ordinal":1,"id":"0-1","kind":"navigate","screenshot":"screenshot.jpg","action_id":"2e8ae9ce-cfae-4555-85db-658507b7e386","v":1,"ts":"2026-11-17T21:15:21.735Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-17T21:15:21.736Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://localhost:4400/","v":1,"ts":"2026-11-17T21:15:21.808Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Clicking the Announcements link in the left sidebar","action_type":"click","success":true,"v":1,"ts":"2026-11-17T21:15:22.397Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Clicking the Announcements link in the left sidebar","action_type":"click","v":1,"ts":"2026-11-17T21:15:22.397Z"}
+{"type":"step_end","index":2,"status":"passed","duration":0.7,"summary":"click: Clicking the Announcements link in the left sidebar","ordinal":2,"id":"0-2","kind":"click","screenshot":"screenshot.jpg","action_id":"9ed26bd7-6596-400e-82aa-d2751bec79fc","v":1,"ts":"2026-11-17T21:15:22.448Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-17T21:15:22.448Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"http://localhost:4400/announcements","v":1,"ts":"2026-11-17T21:15:22.517Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Waiting for the Announcements heading to be visible","action_type":"wait","success":true,"v":1,"ts":"2026-11-17T21:15:26.838Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Waiting for the Announcements heading to be visible","action_type":"wait","v":1,"ts":"2026-11-17T21:15:26.839Z"}
+{"type":"step_end","index":3,"status":"passed","duration":4.4,"summary":"wait: Waiting for the Announcements heading to be visible","ordinal":3,"id":"0-3","kind":"wait","screenshot":"screenshot.jpg","action_id":"ca7e5656-16bb-448a-8639-63d86d4c65cc","v":1,"ts":"2026-11-17T21:15:26.840Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-17T21:15:26.840Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"http://localhost:4400/announcements","v":1,"ts":"2026-11-17T21:15:26.923Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Extracting the title of the most recent notice","action_type":"analyze","success":true,"v":1,"ts":"2026-11-17T21:15:26.995Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Extracting the title of the most recent notice","action_type":"analyze","v":1,"ts":"2026-11-17T21:15:26.995Z"}
+{"type":"step_end","index":4,"status":"passed","duration":0.2,"summary":"analyze: Extracting the title of the most recent notice","ordinal":4,"id":"0-4","kind":"analyze","screenshot":"screenshot.jpg","action_id":"c2dd9691-3351-4eda-a46f-0cb468aae293","v":1,"ts":"2026-11-17T21:15:26.997Z"}
+{"type":"step_start","index":5,"objective":"Step 5","v":1,"ts":"2026-11-17T21:15:26.998Z"}
+{"type":"step_event","index":5,"event":"screenshot","detail":"http://localhost:4400/announcements","v":1,"ts":"2026-11-17T21:15:27.059Z"}
+{"type":"step_event","index":5,"event":"action","detail":"Extracting the date of the most recent notice","action_type":"analyze","success":true,"v":1,"ts":"2026-11-17T21:15:27.113Z"}
+{"type":"step_event","index":5,"event":"reasoning","detail":"Extracting the date of the most recent notice","action_type":"analyze","v":1,"ts":"2026-11-17T21:15:27.114Z"}
+{"type":"step_end","index":5,"status":"passed","duration":0.1,"summary":"analyze: Extracting the date of the most recent notice","ordinal":5,"id":"0-5","kind":"analyze","screenshot":"screenshot.jpg","action_id":"6ab2011a-ddb8-452d-ac6a-3c648c6290d2","v":1,"ts":"2026-11-17T21:15:27.116Z"}
+{"type":"run_end","run_id":"run-0","status":"passed","summary":"","reason":"replay completed","duration":5.56,"final_url":"http://localhost:4400/announcements","actions_executed":5,"screenshot_path":"/Users/himeshjain/.testmuai/kaneai/sessions/1eb958eb-98c0-45a0-abb4-ee8210fc6bc3/scratch/0/replay-test/screenshots/step_005.png","run_dir":"/Users/himeshjain/.testmuai/kaneai/sessions/1eb958eb-98c0-45a0-abb4-ee8210fc6bc3/scratch/0/replay-test","total_runs":1,"context":{"memory":{},"variables":{"title":{"syntax":"{{title}}","value":"Mid-semester exam schedule released","secret":false},"date":{"syntax":"{{date}}","value":"17 November 2026","secret":false}},"pointer":""},"variables_out":{"title":{"syntax":"{{title}}","value":"Mid-semester exam schedule released","secret":false},"date":{"syntax":"{{date}}","value":"17 November 2026","secret":false}},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-17T21:15:27.134Z"}
+{"type":"test_md_step_end","step_index":1,"status":"passed","duration_s":5.56,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-17T21:15:27.139Z"}
+{"type":"test_md_evidence_ingest","status":"ok","evidence_id":"7f4fa017-3fb7-4c6e-b29d-788e4e813a0a","v":1,"ts":"2026-11-17T21:15:32.336Z"}
+{"type":"test_md_summary","overall_status":"passed","duration_s":11,"steps":{"total":1,"passed":1,"failed":0,"skipped":0,"replay_decisions":1,"author_decisions":0},"adaptive_heal":{"triggered":false},"commit":{"committed":false,"reason":"readonly_fallback"},"artifacts":{"replaced":false},"upload":{"performed":true,"succeeded":true},"cancelled":false,"v":1,"ts":"2026-11-17T21:15:32.342Z"}
+{"type":"coverage","status":"skipped","reason":"not_assurance_project","pack":"/Users/himeshjain/.testmuai/kaneai/sessions/1eb958eb-98c0-45a0-abb4-ee8210fc6bc3/evidence/7f4fa017-3fb7-4c6e-b29d-788e4e813a0a.evidence","v":1,"ts":"2026-11-17T21:15:32.351Z"}
+{"type":"test_md_done","overall_status":"passed","duration_s":11,"session_id":"1eb958eb-98c0-45a0-abb4-ee8210fc6bc3","coverage":{"status":"skipped"},"v":1,"ts":"2026-11-17T21:15:32.351Z"}

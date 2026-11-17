@@ -152,7 +152,7 @@ export async function runKane(args: string[], opts: RunOptions): Promise<RunResu
         status,
         exitCode: code,
         values: extractValues(runEnd),
-        remark: runEnd?.summary ?? runEnd?.remark ?? runEnd?.reason ?? runEnd?.error ?? lastRemark,
+        remark: runEnd?.summary || runEnd?.reason || runEnd?.remark || runEnd?.error || lastRemark,
         evidenceUrl: evidenceUrl ?? deepFindUrl(runEnd),
         screenshotPath: typeof runEnd?.screenshot_path === "string" ? runEnd.screenshot_path : undefined,
         credits: typeof runEnd?.credits_consumed === "number" ? runEnd.credits_consumed : 0,
