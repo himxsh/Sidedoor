@@ -1,5 +1,5 @@
 {
- "capturedAt": "2026-11-17T22:30:10.464Z",
+ "capturedAt": "2026-11-17T22:35:16.955Z",
  "endpoints": [
   {
    "name": "book-price",
@@ -166,7 +166,7 @@
   {
    "name": "notices",
    "url": "http://localhost:4400/",
-   "sentence": "Open Announcements, identify the newest notice, then save its title as title and its displayed date as date. Store the title of the most recent notice as 'title' and store its date as 'date'.",
+   "sentence": "Store the title of the most recent notice as 'title' and store its date as 'date'.",
    "kind": "read",
    "health": "healthy",
    "inputs": [],
@@ -185,40 +185,23 @@
     "date": "2026-11-17"
    },
    "last": {
-    "at": "2026-11-17T22:29:27.312Z",
+    "at": "2026-11-17T22:35:15.948Z",
     "ok": true,
     "data": {
      "title": "Mid-semester exam schedule released",
-     "date": "Posted 17 November 2026"
+     "date": "2026-11-17"
     },
-    "durationMs": 20067
-   },
-   "lastFailure": {
-    "at": "2026-11-17T22:26:59.968Z",
-    "remark": "replay completed",
-    "violations": [
-     {
-      "field": "title",
-      "problem": "boolean where text was expected",
-      "value": "false"
-     },
-     {
-      "field": "date",
-      "problem": "boolean where text was expected",
-      "value": "false"
-     }
-    ],
-    "evidence": "shots/notices-6zynbk52.png"
+    "durationMs": 18045
    },
    "stats": {
-    "calls": 1,
-    "replays": 3,
+    "calls": 0,
+    "replays": 1,
     "cacheHits": 0,
-    "recordings": 3,
-    "repairs": 1,
-    "creditsSpent": 45.5258175,
-    "recordingCost": 16.8673175,
-    "avgReplayMs": 29594,
+    "recordings": 1,
+    "repairs": 0,
+    "creditsSpent": 13.063165000000001,
+    "recordingCost": 13.063165000000001,
+    "avgReplayMs": 18045,
     "creditsSaved": 0
    },
    "call": "/api/notices"
@@ -1591,6 +1574,59 @@
     "data": {
      "title": "Mid-semester exam schedule released",
      "date": "Posted 17 November 2026"
+    }
+   }
+  },
+  {
+   "id": "mwl9rjm6-0",
+   "at": "2026-11-17T22:33:56.238Z",
+   "type": "create.start",
+   "endpoint": "notices",
+   "trace": "f1okg4iv",
+   "message": "Recording \"Go to http://localhost:4400/. Store the title of the most recent notice as 'title' and store its date as 'date'.\"",
+   "data": {
+    "url": "http://localhost:4400/",
+    "inputs": []
+   }
+  },
+  {
+   "id": "mwl9sv6v-1",
+   "at": "2026-11-17T22:34:57.895Z",
+   "type": "create.recorded",
+   "endpoint": "notices",
+   "trace": "f1okg4iv",
+   "message": "Recorded in 62 s for 13.1 credits",
+   "data": {
+    "values": {
+     "title": "Mid-semester exam schedule released",
+     "date": "2026-11-17"
+    },
+    "credits": 13.063165000000001
+   }
+  },
+  {
+   "id": "mwl9t94e-5",
+   "at": "2026-11-17T22:35:15.950Z",
+   "type": "create.done",
+   "endpoint": "notices",
+   "trace": "f1okg4iv",
+   "message": "Endpoint \"notices\" is live",
+   "data": {
+    "contract": {
+     "fields": {
+      "title": {
+       "type": "string",
+       "required": true
+      },
+      "date": {
+       "type": "string",
+       "required": true
+      }
+     }
+    },
+    "sample": {
+     "title": "Mid-semester exam schedule released",
+     "date": "2026-11-17"
     }
    }
   }

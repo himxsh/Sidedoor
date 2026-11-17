@@ -1,7 +1,7 @@
 {
   "name": "notices",
   "url": "http://localhost:4400/",
-  "sentence": "Open Announcements, identify the newest notice, then save its title as title and its displayed date as date. Store the title of the most recent notice as 'title' and store its date as 'date'.",
+  "sentence": "Store the title of the most recent notice as 'title' and store its date as 'date'.",
   "inputs": [],
   "kind": "read",
   "contract": {
@@ -17,46 +17,28 @@
     }
   },
   "health": "healthy",
-  "createdAt": "2026-11-17T22:25:41.841Z",
+  "createdAt": "2026-11-17T22:34:57.900Z",
   "stats": {
-    "calls": 1,
-    "replays": 3,
+    "calls": 0,
+    "replays": 1,
     "cacheHits": 0,
-    "recordings": 3,
-    "repairs": 1,
-    "creditsSpent": 45.5258175,
-    "recordingCost": 16.8673175,
-    "avgReplayMs": 29594
+    "recordings": 1,
+    "repairs": 0,
+    "creditsSpent": 13.063165000000001,
+    "recordingCost": 13.063165000000001,
+    "avgReplayMs": 18045
   },
   "sample": {
     "title": "Mid-semester exam schedule released",
     "date": "2026-11-17"
   },
   "last": {
-    "at": "2026-11-17T22:29:27.312Z",
+    "at": "2026-11-17T22:35:15.948Z",
     "ok": true,
     "data": {
       "title": "Mid-semester exam schedule released",
-      "date": "Posted 17 November 2026"
+      "date": "2026-11-17"
     },
-    "durationMs": 20067
-  },
-  "lastFailure": {
-    "at": "2026-11-17T22:26:59.968Z",
-    "remark": "replay completed",
-    "violations": [
-      {
-        "field": "title",
-        "problem": "boolean where text was expected",
-        "value": "false"
-      },
-      {
-        "field": "date",
-        "problem": "boolean where text was expected",
-        "value": "false"
-      }
-    ],
-    "evidence": "shots/notices-6zynbk52.png"
-  },
-  "repairAttempts": 0
+    "durationMs": 18045
+  }
 }
