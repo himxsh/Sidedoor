@@ -29,3 +29,10 @@ test("variables block is stripped from the frontmatter", () => {
 test("setObjective rewrites step 1", () => {
   assert.equal(setObjective("---\n---\n\n## Step 1\nold sentence\n", "new one"), "---\n---\n\n## Step 1\nnew one\n");
 });
+
+test("kaneFix keeps the actionable part of a Kane remark", async () => {
+  const { kaneFix } = await import("../src/engine.js");
+  const remark = "The dashboard only provides a link to announcements, not the notice title and date themselves. The agent treated the missing details on this landing page as a final condition instead of following the visible Announcements link.\nOpen Announcements, identify the newest notice, then save its title and date. Do not assert that the dashboard must contain those details when it offers an announcements link.";
+  assert.equal(kaneFix(remark), "Open Announcements, identify the newest notice, then save its title and date.");
+  assert.equal(kaneFix("single line"), undefined);
+});

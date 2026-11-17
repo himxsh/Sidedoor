@@ -352,14 +352,42 @@ async function rerecordAndVerify(ep: Endpoint, inputs: Variables, trace: string,
   return { ok: !violations.length, final, rec, violations, shot };
 }
 
+/** The actionable part of a Kane failure remark: the paragraph after the diagnosis. */
+export function kaneFix(remark?: string): string | undefined {
+  if (!remark) return undefined;
+  const paras = remark.split(/\n+/).map((s) => s.trim()).filter(Boolean);
+  if (paras.length < 2) return undefined;
+  const fix = paras.slice(1).join(" ");
+  // Drop "Do not ..." / "Update the run to ..." framing that only makes sense to a test author.
+  const cleaned = fix
+    .split(/(?<=\.)\s+/)
+    .filter((s) => !/^(do not|don't|avoid)\b/i.test(s))
+    .join(" ")
+    .replace(/^update the (run|test) to\s+/i, "")
+    .trim();
+  if (cleaned.length < 12 || cleaned.length > 400) return undefined;
+  return cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
+}
+
 async function guard(name: string, inputs: Variables, trace: string, detected: Violation[]): Promise<CallResult> {
   const ep = await loadEndpoint(name);
   ep.health = "repairing";
   await saveEndpoint(ep);
   await emit({ type: "guard.detect", endpoint: name, trace, message: `Replay broke the contract (${detected.map((v) => `${v.field}: ${v.problem}`).join("; ")}); repairing`, data: { violations: detected } });
-  const g = await rerecordAndVerify(ep, inputs, trace);
+  let g = await rerecordAndVerify(ep, inputs, trace);
+  let hinted: string | undefined;
+  // Second automatic attempt: Kane's failure remark usually ends with what to do instead
+  // ("Open Announcements, identify the newest notice, then save..."). Put that in front of the sentence.
+  // No AI model on our side: Kane wrote the hint.
+  const fix = kaneFix(g.rec.remark);
+  if (!g.ok && fix) {
+    hinted = `${fix} ${ep.sentence}`;
+    await emit({ type: "guard.rerecord", endpoint: name, trace, message: `Retrying with Kane's own fix: "${fix}"`, data: { hint: fix } });
+    g = await rerecordAndVerify(ep, inputs, trace, objectiveFor(ep.url, hinted));
+  }
   if (g.ok) {
     const data = pickFields(ep.contract, g.final.values);
+    if (hinted) ep.sentence = hinted;
     ep.health = "healthy";
     ep.stats.repairs++;
     ep.repairAttempts = 0;

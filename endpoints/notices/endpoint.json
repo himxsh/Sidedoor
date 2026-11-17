@@ -1,7 +1,7 @@
 {
   "name": "notices",
   "url": "http://localhost:4400/",
-  "sentence": "Store the title of the most recent notice as 'title' and store its date as 'date'.",
+  "sentence": "Open Announcements first, then identify the newest notice and save both its title and date. Add a check that a notice record is visible before setting either variable. Store the title of the most recent notice as 'title' and store its date as 'date'.",
   "inputs": [],
   "kind": "read",
   "contract": {
@@ -19,26 +19,44 @@
   "health": "healthy",
   "createdAt": "2026-11-17T21:23:21.400Z",
   "stats": {
-    "calls": 1,
-    "replays": 2,
+    "calls": 3,
+    "replays": 5,
     "cacheHits": 0,
-    "recordings": 1,
-    "repairs": 0,
-    "creditsSpent": 6.9220524999999995,
+    "recordings": 3,
+    "repairs": 1,
+    "creditsSpent": 34.4646,
     "recordingCost": 6.9220524999999995,
-    "avgReplayMs": 18153
+    "avgReplayMs": 22894
   },
   "sample": {
     "title": "Mid-semester exam schedule released",
     "date": "2026-11-17"
   },
   "last": {
-    "at": "2026-11-17T21:23:59.129Z",
+    "at": "2026-11-17T21:51:23.303Z",
     "ok": true,
     "data": {
       "title": "Mid-semester exam schedule released",
-      "date": "2026-11-17"
+      "date": "17 November 2026"
     },
-    "durationMs": 13803
-  }
+    "durationMs": 17811
+  },
+  "lastFailure": {
+    "at": "2026-11-17T21:48:19.748Z",
+    "remark": "replay completed",
+    "violations": [
+      {
+        "field": "title",
+        "problem": "boolean where text was expected",
+        "value": "false"
+      },
+      {
+        "field": "date",
+        "problem": "boolean where text was expected",
+        "value": "false"
+      }
+    ],
+    "evidence": "shots/notices-gqenbuow.png"
+  },
+  "repairAttempts": 0
 }
