@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 // sidedoor CLI: create | call | repair | list | serve | mcp
+import { kaneState, setKane } from "./kane-switch.js"; // TODO(remove-kane-switch)
 import { callEndpoint, createEndpoint, repairEndpoint, SidedoorError } from "./engine.js";
 import { listEndpoints } from "./store.js";
 import type { InputSpec, Kind } from "./store.js";
@@ -16,6 +17,7 @@ const HELP = `sidedoor: turn a web page with no API into a JSON endpoint and an 
   sidedoor list
   sidedoor serve [--port 3030]        HTTP API + dashboard
   sidedoor mcp                        MCP server (stdio) for Claude Code, Cursor, Codex...
+  sidedoor kane [on|off]              show or set the Kane CLI master switch (off = no runs, no credits)
 `;
 
 function parse(argv: string[]) {
@@ -79,6 +81,12 @@ async function main() {
     case "serve": {
       const { startServer } = await import("./server.js");
       await startServer(Number(flags.port || process.env.PORT || 3030));
+      break;
+    }
+    case "kane": { // TODO(remove-kane-switch): temporary credit guard
+      const arg = rest[0];
+      if (arg === "on" || arg === "off") setKane(arg === "on");
+      console.log(JSON.stringify(kaneState(), null, 2));
       break;
     }
     case "mcp": {

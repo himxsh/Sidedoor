@@ -10,9 +10,12 @@ import { replay } from "../src/runner.js";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const OUT = path.join(ROOT, "evidence", "build-hook");
+// TODO(remove-kane-switch): the build hook is a local dev check (it only runs on file edits on this
+// machine), so it opts in past the server's Kane switch. An explicit SIDEDOOR_KANE=off still wins.
+process.env.SIDEDOOR_KANE ??= "on";
 const WATCH = [/^web\//, /^portal\//, /^src\/server\.ts$/];
 const TESTS = [
-  { name: "dashboard", dir: "tests/kane/dashboard", url: "http://localhost:3030/health", start: ["npx", ["tsx", "src/cli.ts", "serve", "--port", "3030"]] },
+  { name: "dashboard", test: "dashboard-2", dir: "tests/kane/dashboard", url: "http://localhost:3030/health", start: ["npx", ["tsx", "src/cli.ts", "serve", "--port", "3030"]] },
   { name: "portal", dir: "tests/kane/portal", url: "http://localhost:4400/health", start: ["node", ["portal/server.mjs"]] },
 ] as const;
 
@@ -53,7 +56,7 @@ async function main() {
     const dir = path.join(ROOT, t.dir);
     const stamp = new Date().toISOString().replace(/[:.]/g, "-");
     const log = path.join(OUT, "runs", `${stamp}-${t.name}.ndjson`);
-    const r = await replay(path.join(dir, `.testmuai/tests/${t.name}_test.md`), { cwd: dir, timeoutSec: 180, logPath: log, extraArgs: ["--no-adaptive-heal"] });
+    const r = await replay(path.join(dir, `.testmuai/tests/${(t as { test?: string }).test ?? t.name}_test.md`), { cwd: dir, timeoutSec: 180, logPath: log, extraArgs: ["--no-adaptive-heal"] });
     const entry = { at: new Date().toISOString(), test: t.name, trigger: file, status: r.status, durationMs: r.durationMs, reason: r.runEnd?.reason, failedSteps: r.failedSteps, remark: r.remark, log: path.relative(ROOT, log) };
     await appendFile(path.join(OUT, "runs.jsonl"), JSON.stringify(entry) + "\n");
     if (r.status !== "passed") {
@@ -64,7 +67,7 @@ async function main() {
       }
       await copyFile(log, path.join(OUT, `failed-${stamp}-${t.name}.ndjson`));
       await appendFile(path.join(OUT, "failures.jsonl"), JSON.stringify({ ...entry, screenshot: shot && path.relative(ROOT, shot) }) + "\n");
-      const objective = (await readFile(path.join(dir, `.testmuai/tests/${t.name}_test.md`), "utf8")).split("## Step 1")[1]?.trim();
+      const objective = (await readFile(path.join(dir, `.testmuai/tests/${(t as { test?: string }).test ?? t.name}_test.md`), "utf8")).split("## Step 1")[1]?.trim();
       failures.push(
         `Kane build check FAILED for the ${t.name} (after editing ${file || "?"}).\n` +
         `  Test: ${objective}\n` +

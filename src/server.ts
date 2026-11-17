@@ -6,6 +6,7 @@
 //   GET      /api/events          live event stream (SSE); /api/events/history for the log
 //   GET      /evidence/...        screenshots and NDJSON logs of every run
 //   GET      /                    dashboard
+import { kaneState, setKane } from "./kane-switch.js"; // TODO(remove-kane-switch)
 import { existsSync, createReadStream } from "node:fs";
 import { readFile, stat } from "node:fs/promises";
 import http from "node:http";
@@ -63,7 +64,17 @@ export async function handle(req: http.IncomingMessage, res: http.ServerResponse
     return res.end();
   }
   try {
-    if (p === "/health") return send(res, 200, { ok: true, queue: queueState() });
+    if (p === "/health") return send(res, 200, { ok: true, queue: queueState(), kane: kaneState() });
+    // TODO(remove-kane-switch): temporary master switch. Anyone can read it; only this machine can change it.
+    if (p === "/api/kane" && req.method === "GET") return send(res, 200, kaneState());
+    if (p === "/api/kane" && req.method === "POST") {
+      const ip = req.socket.remoteAddress ?? "";
+      const local = ip === "127.0.0.1" || ip === "::1" || ip === "::ffff:127.0.0.1";
+      if (!local || req.headers["x-forwarded-for"]) return send(res, 403, { error: "The Kane switch can only be changed on the machine running Sidedoor (sidedoor kane on|off)." });
+      const b = await readJson(req);
+      if (kaneState().source === "env") return send(res, 409, { error: "SIDEDOOR_KANE is set in the environment, which overrides the switch.", ...kaneState() });
+      return send(res, 200, setKane(b.enabled === true || b.enabled === "true" || b.enabled === "on"));
+    }
     if (p === "/api/endpoints" && req.method === "GET") return send(res, 200, (await listEndpoints()).map(publicEndpoint));
     if (p === "/api/endpoints" && req.method === "POST") {
       const b = await readJson(req);

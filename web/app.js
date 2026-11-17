@@ -15,6 +15,8 @@ async function boot() {
   try {
     state.endpoints = await getJSON("/api/endpoints");
     state.events = await getJSON("/api/events/history?limit=400");
+    // Static hosts answer unknown paths with index.html, so check the shape, not just the status.
+    if (!Array.isArray(state.endpoints) || !Array.isArray(state.events)) throw new Error("no API");
   } catch {
     const snap = await getJSON("snapshot.json");
     state.mode = "playback";
@@ -28,10 +30,41 @@ async function boot() {
     $("#live").classList.add("off");
   }
   render();
+  $("#kane").onclick = toggleKane;
+  renderKane();
   if (state.mode === "live") {
     connect();
     setInterval(refresh, 10000);
   }
+}
+
+// TODO(remove-kane-switch): temporary master switch. Only the machine running Sidedoor can flip it.
+async function renderKane() {
+  const b = $("#kane");
+  let k = { enabled: false, source: "hosted" };
+  if (state.mode === "live") {
+    try { k = await getJSON("/api/kane"); } catch {}
+  }
+  state.kane = k;
+  b.setAttribute("aria-checked", String(k.enabled));
+  b.dataset.on = String(k.enabled);
+  $("#kane-label").textContent = `Kane CLI ${k.enabled ? "on" : "off"}`;
+  b.title = state.mode === "playback"
+    ? "Hosted copy: Kane CLI is off here. Nothing can spend credits; this page plays back real recorded runs."
+    : k.enabled ? "Kane runs are allowed (calls, creates, repairs spend credits). Click to switch off."
+    : "Kane runs are blocked: no calls, creates or repairs, no credits spent. Click to switch on (only works on this machine).";
+  b.disabled = state.mode === "playback" || k.source === "env";
+  $("#create-go").disabled = !k.enabled;
+  $("#kane-note").hidden = k.enabled;
+}
+
+async function toggleKane() {
+  try {
+    await getJSON("/api/kane", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ enabled: !state.kane?.enabled }) });
+  } catch (e) {
+    alert(e.body?.error || e.message);
+  }
+  renderKane();
 }
 
 async function refresh() {

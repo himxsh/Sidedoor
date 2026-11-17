@@ -6,8 +6,8 @@
 
 Plenty of useful data lives behind sites with no API: a college portal, a supplier catalogue, an internal dashboard. Sidedoor takes one sentence ("store the amount next to 'Amount due' as 'amount_due'"). Kane CLI records the browser flow once, and Sidedoor turns the recording into a typed endpoint (`GET /api/fees?student_id=S1002`) and an MCP tool any agent can call. Every call replays the recording and checks the result against a contract built from the first run. When the site changes and a replay breaks the contract, Sidedoor has Kane re-record the flow, checks the new result, replays it once more to prove it, and swaps it in. No human touches it, and Sidedoor has no AI key of its own.
 
-- **Live playback** (real recorded runs, nothing to install): _link added at deploy_
-- **Demo portal** (the made-up campus site the endpoints read): _link added at deploy_
+- **Live playback** (real recorded runs, nothing to install): https://getsidedoor.pages.dev
+- **Demo portal** (the made-up campus site the endpoints read): https://getsidedoor.pages.dev/campus/ (add `?layout=b` to see the redesign)
 - **Video** (under 3 minutes): _link added at upload_
 
 Built for the Kane CLI Online Hackathon (TestMu AI).
@@ -106,6 +106,7 @@ That took 3 min 20 s with no human step. Every event is in `data/events.jsonl`; 
 
 - `evidence/build-hook/failed-*-dashboard.png` / `.ndjson`: I deliberately shipped a dashboard change that left the health badge empty. Kane failed at step 5 ("the status badge next to the name 'quotes' contains the text 'healthy'"), the hook exited 2, the edit was blocked, and the fix followed. This happened twice, both kept.
 - `evidence/build-hook/false-pass/`: an honest miss. My **first** dashboard test let the same bug through, because the vague assertion let Kane fall back to a lenient visual check. The test was re-recorded with a stricter sentence (`dashboard_test.v1.md` is the old one), and that is the test that caught it above.
+- `evidence/build-hook/failed-2026-11-17T22-4*-dashboard.*`: a real, unplanned catch. After the Kane switch was added to the header, the `quotes` card sat below the fold and Kane's viewport-only check failed. The test was re-recorded with a scroll step (`dashboard-2_test.md`; the old one is `dashboard_test.v2.md`).
 - `evidence/build-hook/runs.jsonl`: every hook run (14 so far), pass or fail.
 
 ### Phase 2 findings that shaped the design
@@ -138,7 +139,24 @@ On a hosted copy, add `?layout=b` to any URL instead.
 
 ## Hosted playback
 
-`npm run snapshot` writes `web/snapshot.json` (endpoints, the event log, one real call per endpoint) and copies Kane's screenshots to `web/evidence/`. When the dashboard can't reach `/api`, it switches to playback of those real runs. That is the hosted copy: `web/` deploys as a static site and `portal/` as one serverless function (`portal/api/index.mjs`).
+`npm run snapshot` writes `web/snapshot.json` (endpoints, the event log, one real call per endpoint) and copies Kane's screenshots to `web/evidence/`. When the dashboard can't reach `/api`, it switches to playback of those real runs. That is the hosted copy on Cloudflare Pages: `web/` is the static site, and `web/_worker.js` serves the portal under `/campus/` from the same `portal/app.mjs` handler. Kane never runs there.
+
+```bash
+npm run snapshot && npx wrangler pages deploy web --project-name getsidedoor
+```
+
+## Kane switch (temporary)
+
+While the project is public, Kane CLI is **off** by default so nobody can spend the account's credits. When it is off, calls, creates and repairs return `503` with a hint; cached reads are still served.
+
+```bash
+npx tsx src/cli.ts kane on
+```
+
+- Stored in `sidedoor.config.json` (`{"kane": "off"}`); the `SIDEDOOR_KANE=on|off` env var overrides it.
+- The dashboard has a switch in the header. The server only accepts it from localhost (403 otherwise), and on the hosted playback it is disabled.
+- The build hook opts in on its own (`SIDEDOOR_KANE ??= "on"`).
+- Every piece is marked `TODO(remove-kane-switch)` for removal once the project is finished.
 
 ## Limits (honest)
 

@@ -16,8 +16,12 @@
         <p class="tag">Any web page, as a JSON endpoint and an agent tool. Kane CLI records the flow once, replays it on every call, and re-records it when the site changes.</p>
       </div>
     </div>
-    <div id="mode" class="mode" hidden></div>
+    <div class="top-right">
+      <button type="button" id="kane" class="kane-switch" role="switch" aria-checked="false" data-on="false"><span class="knob" aria-hidden="true"></span><span id="kane-label">Kane CLI off</span></button>
+      <div id="mode" class="mode" hidden></div>
+    </div>
   </header>
+  <p id="kane-note" class="kane-note" hidden>Kane CLI is switched off: calls are served from cache or refused, and nothing can spend credits.</p>
 
   <section class="totals" id="totals" aria-label="Totals"></section>
 
@@ -52,7 +56,7 @@
         <label>Sentence <textarea name="sentence" required rows="3" placeholder="Search for {{title}}. Store its price as 'price'."></textarea></label>
         <label>Inputs <input name="inputs" placeholder="title=A Light in the Attic"></label>
         <label class="check"><input type="checkbox" name="action"> Action (has side effects, never cached)</label>
-        <button type="submit">Record with Kane</button>
+        <button type="submit" id="create-go">Record with Kane</button>
       </form>
       <pre id="create-out" class="json small" hidden></pre>
     </section>

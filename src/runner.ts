@@ -7,6 +7,7 @@ import { spawn } from "node:child_process";
 import { createWriteStream } from "node:fs";
 import { mkdir } from "node:fs/promises";
 import path from "node:path";
+import { kaneEnabled, KaneOffError } from "./kane-switch.js";
 
 export type RunStatus = "passed" | "failed" | "not_started" | "timeout";
 
@@ -92,6 +93,7 @@ export function extractValues(runEnd: any): Record<string, unknown> {
 
 /** Low-level: run kane-cli with the given subcommand args. */
 export async function runKane(args: string[], opts: RunOptions): Promise<RunResult> {
+  if (!kaneEnabled()) throw new KaneOffError(); // TODO(remove-kane-switch)
   const timeoutSec = opts.timeoutSec ?? 240;
   const fullArgs = [...args, "--agent", "--headless", "--timeout", String(timeoutSec), ...(opts.extraArgs ?? [])];
   if (opts.variables && Object.keys(opts.variables).length) {

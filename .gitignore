@@ -9,3 +9,9 @@ endpoints/*/.testmuai/.backup-tests/
 evidence/shots/
 evidence/build-hook/runs/
 data/*.log
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
