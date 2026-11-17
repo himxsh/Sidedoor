@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "sidedoor": {
+      "command": "npx",
+      "args": ["tsx", "src/cli.ts", "mcp"],
+      "env": { "SIDEDOOR_HOME": "." }
+    }
+  }
+}

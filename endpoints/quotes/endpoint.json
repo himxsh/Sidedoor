@@ -24,26 +24,26 @@
   "health": "healthy",
   "createdAt": "2026-11-17T21:20:29.098Z",
   "stats": {
-    "calls": 4,
-    "replays": 4,
+    "calls": 5,
+    "replays": 5,
     "cacheHits": 1,
     "recordings": 1,
     "repairs": 0,
     "creditsSpent": 12.026245,
     "recordingCost": 12.026245,
-    "avgReplayMs": 28431
+    "avgReplayMs": 27953
   },
   "sample": {
     "quote": "“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”",
     "author": "Jane Austen"
   },
   "last": {
-    "at": "2026-11-17T21:27:20.359Z",
+    "at": "2026-11-17T21:59:51.534Z",
     "ok": true,
     "data": {
-      "quote": "“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”",
-      "author": "Jane Austen"
+      "quote": "“It is better to be hated for what you are than to be loved for what you are not.”",
+      "author": "André Gide"
     },
-    "durationMs": 23203
+    "durationMs": 26040
   }
 }

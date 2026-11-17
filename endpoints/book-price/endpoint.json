@@ -1,0 +1,49 @@
+{
+  "name": "book-price",
+  "url": "https://books.toscrape.com/",
+  "sentence": "Click the book whose title is {{title}} on the home page, then store its price as 'price' and its stock availability text as 'availability'.",
+  "inputs": [
+    {
+      "name": "title",
+      "sample": "A Light in the Attic"
+    }
+  ],
+  "kind": "read",
+  "contract": {
+    "fields": {
+      "price": {
+        "type": "string",
+        "required": true
+      },
+      "availability": {
+        "type": "string",
+        "required": true
+      }
+    }
+  },
+  "health": "healthy",
+  "createdAt": "2026-11-17T22:01:13.276Z",
+  "stats": {
+    "calls": 0,
+    "replays": 1,
+    "cacheHits": 0,
+    "recordings": 1,
+    "repairs": 0,
+    "creditsSpent": 19.43607,
+    "recordingCost": 19.43607,
+    "avgReplayMs": 36576
+  },
+  "sample": {
+    "price": "£51.77",
+    "availability": "In stock (22 available)"
+  },
+  "last": {
+    "at": "2026-11-17T22:01:49.855Z",
+    "ok": true,
+    "data": {
+      "price": "£51.77",
+      "availability": "In stock (22 available)"
+    },
+    "durationMs": 36576
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "commit_id": "4f7d7e7c-e558-4b95-a31b-56d29afde282",
+  "test_id": "a7490a3e-68e0-4513-87c4-5fc3f8e3842f",
+  "testcase_id": "01M7NRC6XB6AFA2JMBBV9Z16DM",
+  "project_id": "01M7JAT3J50HKCS5JWRVGMWZ6G",
+  "folder_id": "01M7JATC23VTE3BJ12496HSEPH",
+  "org_id": "3435728",
+  "session_name": "book-price",
+  "executions": [
+    {
+      "execution_id": "0df02668-c2bc-4b9d-a60b-8d3074554985",
+      "run_kind": "replay",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-17T22:01:45.575Z"
+    }
+  ]
+}
