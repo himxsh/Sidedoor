@@ -1,0 +1,55 @@
+[
+  {
+    "role": "assistant",
+    "tool_call": "ToolSearch",
+    "input": {
+      "query": "select:mcp__sidedoor__quotes,mcp__sidedoor__create_endpoint",
+      "max_results": 5
+    }
+  },
+  {
+    "role": "tool",
+    "result": ""
+  },
+  {
+    "role": "assistant",
+    "tool_call": "mcp__sidedoor__quotes",
+    "input": {
+      "tag": "love"
+    }
+  },
+  {
+    "role": "assistant",
+    "tool_call": "mcp__sidedoor__create_endpoint",
+    "input": {
+      "name": "book-price",
+      "url": "https://books.toscrape.com/",
+      "sentence": "Click the book whose title is {{title}} on the home page, then store its price as 'price' and its stock availability text as 'availability'.",
+      "inputs": [
+        {
+          "name": "title",
+          "sample": "A Light in the Attic"
+        }
+      ],
+      "kind": "read"
+    }
+  },
+  {
+    "role": "tool",
+    "result": "{\n  \"endpoint\": \"quotes\",\n  \"ok\": true,\n  \"verified\": true,\n  \"data\": {\n    \"quote\": \"“It is better to be hated for what you are than to be loved for what you are not.”\",\n    \"author\": \"André Gide\"\n  },\n  \"inputs\": {\n    \"tag\": \"love\"\n  },\n  \"durationMs\": 26054,\n  \"cached\": false,\n  \"health\": \"healthy\",\n  \"evidence\": {\n    \"log\": \"quotes/2026-11-17T21-59-25-485Z-call.ndjson\",\n    \"screenshot\": \"shots/quotes-r1pru1ir.png\"\n  },\n  \"trace\": \"r1pru1ir\"\n}"
+  },
+  {
+    "role": "tool",
+    "result": "{\n  \"created\": \"book-price\",\n  \"tool\": \"book_price\",\n  \"returns\": {\n    \"price\": {\n      \"type\": \"string\",\n      \"required\": true\n    },\n    \"availability\": {\n      \"type\": \"string\",\n      \"required\": true\n    }\n  },\n  \"sample\": {\n    \"price\": \"£51.77\",\n    \"availability\": \"In stock (22 available)\"\n  },\n  \"recordingCredits\": 19.43607\n}"
+  },
+  {
+    "role": "assistant",
+    "text": "1. **Quote (tag \"love\"):** \"It is better to be hated for what you are than to be loved for what you are not.\" — André Gide\n\n2. **Created tool:** `book-price`, callable as `book_price`, for https://books.toscrape.com/. It takes `title` and returns `price` and `availability`.\n\n3. **Sample result** for \"A Light in the Attic\":\n   - price: £51.77\n   - availability: In stock (22 available)"
+  },
+  {
+    "role": "final",
+    "result": "1. **Quote (tag \"love\"):** \"It is better to be hated for what you are than to be loved for what you are not.\" — André Gide\n\n2. **Created tool:** `book-price`, callable as `book_price`, for https://books.toscrape.com/. It takes `title` and returns `price` and `availability`.\n\n3. **Sample result** for \"A Light in the Attic\":\n   - price: £51.77\n   - availability: In stock (22 available)",
+    "duration_ms": 151307,
+    "num_turns": 4
+  }
+]
