@@ -1,0 +1,25 @@
+{
+  "commit_id": "895e3278-20ec-47af-ba0e-b3d336a539d8",
+  "test_id": "768b6e4d-9ee7-4745-8aa2-34733dac22a5",
+  "testcase_id": "01M7NRGE8XP0SD57K8F3VVWHHA",
+  "project_id": "01M7JAT3J50HKCS5JWRVGMWZ6G",
+  "folder_id": "01M7JATC23VTE3BJ12496HSEPH",
+  "org_id": "3435728",
+  "session_name": "fees",
+  "executions": [
+    {
+      "execution_id": "3c7f6210-e800-4ecc-85d3-4135806f7364",
+      "run_kind": "replay",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-17T22:03:45.100Z"
+    },
+    {
+      "execution_id": "6dfd9fb3-6045-4a74-9942-dc2155f5bb52",
+      "run_kind": "replay",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-17T22:08:53.920Z"
+    }
+  ]
+}

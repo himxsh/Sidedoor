@@ -1,0 +1,40 @@
+{"type":"stream_start","cli_version":"0.10.4","surface":"testmd","pid":13309,"v":1,"ts":"2026-11-17T22:08:33.586Z"}
+{"type":"test_md_step_start","step_index":1,"heading":"Step 1","ref":null,"v":1,"ts":"2026-11-17T22:08:45.428Z"}
+{"type":"run_start","objective":"Go to http://localhost:4400/fees. Type {{student_id}} into the Student ID field and click Check fees. Store the amount shown next to 'Amount due' as 'amount_due' and the date shown next to 'Due date' as 'due_date'.","timestamp":1794953325,"environment":{"resolution":"1920x1080"},"v":1,"ts":"2026-11-17T22:08:45.460Z"}
+{"type":"step_event","index":0,"event":"replay_started","detail":"replaying 6 actions","recording_length":6,"v":1,"ts":"2026-11-17T22:08:45.462Z"}
+{"type":"step_start","index":1,"objective":"Step 1","v":1,"ts":"2026-11-17T22:08:45.464Z"}
+{"type":"step_event","index":1,"event":"screenshot","detail":"https://kaneai-playground.lambdatest.io/","v":1,"ts":"2026-11-17T22:08:45.594Z"}
+{"type":"step_event","index":1,"event":"action","detail":"Navigate to http://localhost:4400/fees","action_type":"navigate","success":true,"v":1,"ts":"2026-11-17T22:08:45.658Z"}
+{"type":"step_event","index":1,"event":"reasoning","detail":"Navigate to http://localhost:4400/fees","action_type":"navigate","v":1,"ts":"2026-11-17T22:08:45.659Z"}
+{"type":"step_end","index":1,"status":"passed","duration":0.2,"summary":"navigate: Navigate to http://localhost:4400/fees","ordinal":1,"id":"0-1","kind":"navigate","screenshot":"screenshot.jpg","action_id":"84e03854-4ee7-4f68-8e97-815fe60be8af","v":1,"ts":"2026-11-17T22:08:45.664Z"}
+{"type":"step_start","index":2,"objective":"Step 2","v":1,"ts":"2026-11-17T22:08:45.670Z"}
+{"type":"step_event","index":2,"event":"screenshot","detail":"http://localhost:4400/fees","v":1,"ts":"2026-11-17T22:08:45.745Z"}
+{"type":"step_event","index":2,"event":"action","detail":"Waiting for the queued steps to complete","action_type":"wait","success":true,"v":1,"ts":"2026-11-17T22:08:46.752Z"}
+{"type":"step_event","index":2,"event":"reasoning","detail":"Waiting for the queued steps to complete","action_type":"wait","v":1,"ts":"2026-11-17T22:08:46.753Z"}
+{"type":"step_end","index":2,"status":"passed","duration":1.1,"summary":"wait: Waiting for the queued steps to complete","ordinal":2,"id":"0-2","kind":"wait","screenshot":"screenshot.jpg","action_id":"75e4fecd-d3d5-4365-a102-12f38d2a5e4e","v":1,"ts":"2026-11-17T22:08:46.756Z"}
+{"type":"step_start","index":3,"objective":"Step 3","v":1,"ts":"2026-11-17T22:08:46.757Z"}
+{"type":"step_event","index":3,"event":"screenshot","detail":"http://localhost:4400/fees","v":1,"ts":"2026-11-17T22:08:46.823Z"}
+{"type":"step_event","index":3,"event":"action","detail":"Type \"{{global.student_id}}\" into \"Student ID\"","action_type":"fill","success":true,"v":1,"ts":"2026-11-17T22:08:46.977Z"}
+{"type":"step_event","index":3,"event":"reasoning","detail":"Type \"{{global.student_id}}\" into \"Student ID\"","action_type":"fill","v":1,"ts":"2026-11-17T22:08:46.977Z"}
+{"type":"step_end","index":3,"status":"passed","duration":0.2,"summary":"fill: Type \"{{global.student_id}}\" into \"Student ID\"","ordinal":3,"id":"0-3","kind":"fill","screenshot":"screenshot.jpg","action_id":"c9309a55-3db7-4280-9218-eb973d268f97","v":1,"ts":"2026-11-17T22:08:47.024Z"}
+{"type":"step_start","index":4,"objective":"Step 4","v":1,"ts":"2026-11-17T22:08:47.025Z"}
+{"type":"step_event","index":4,"event":"screenshot","detail":"http://localhost:4400/fees","v":1,"ts":"2026-11-17T22:08:47.078Z"}
+{"type":"step_event","index":4,"event":"action","detail":"Click \"Check fees\"","action_type":"click","success":true,"v":1,"ts":"2026-11-17T22:08:47.671Z"}
+{"type":"step_event","index":4,"event":"reasoning","detail":"Click \"Check fees\"","action_type":"click","v":1,"ts":"2026-11-17T22:08:47.673Z"}
+{"type":"step_end","index":4,"status":"passed","duration":0.6,"summary":"click: Click \"Check fees\"","ordinal":4,"id":"0-4","kind":"click","screenshot":"screenshot.jpg","action_id":"83bd6840-1521-4666-89e1-0a4f2a44a77a","v":1,"ts":"2026-11-17T22:08:47.704Z"}
+{"type":"step_start","index":5,"objective":"Step 5","v":1,"ts":"2026-11-17T22:08:47.704Z"}
+{"type":"step_event","index":5,"event":"screenshot","detail":"http://localhost:4400/fees?id=S1002","v":1,"ts":"2026-11-17T22:08:47.771Z"}
+{"type":"step_event","index":5,"event":"action","detail":"Reading the amount due from the fee details","action_type":"analyze","success":true,"v":1,"ts":"2026-11-17T22:08:47.801Z"}
+{"type":"step_event","index":5,"event":"reasoning","detail":"Reading the amount due from the fee details","action_type":"analyze","v":1,"ts":"2026-11-17T22:08:47.802Z"}
+{"type":"step_end","index":5,"status":"passed","duration":0.1,"summary":"analyze: Reading the amount due from the fee details","ordinal":5,"id":"0-5","kind":"analyze","screenshot":"screenshot.jpg","action_id":"e155e13f-07cc-461c-ba4c-3b4a426af683","v":1,"ts":"2026-11-17T22:08:47.802Z"}
+{"type":"step_start","index":6,"objective":"Step 6","v":1,"ts":"2026-11-17T22:08:47.803Z"}
+{"type":"step_event","index":6,"event":"screenshot","detail":"http://localhost:4400/fees?id=S1002","v":1,"ts":"2026-11-17T22:08:47.854Z"}
+{"type":"step_event","index":6,"event":"action","detail":"Reading the due date from the fee details","action_type":"analyze","success":true,"v":1,"ts":"2026-11-17T22:08:52.562Z"}
+{"type":"step_event","index":6,"event":"reasoning","detail":"Reading the due date from the fee details","action_type":"analyze","v":1,"ts":"2026-11-17T22:08:52.562Z"}
+{"type":"step_end","index":6,"status":"passed","duration":4.8,"summary":"analyze: Reading the due date from the fee details","ordinal":6,"id":"0-6","kind":"analyze","screenshot":"screenshot.jpg","action_id":"f111d76e-a3c4-48ad-8a2e-5604c9ba9950","v":1,"ts":"2026-11-17T22:08:52.563Z"}
+{"type":"run_end","run_id":"run-0","status":"passed","summary":"","reason":"replay completed","duration":7.11,"final_url":"http://localhost:4400/fees?id=S1002","actions_executed":6,"screenshot_path":"/Users/himeshjain/.testmuai/kaneai/sessions/1f2deaf9-82fd-4cf7-a9a3-dd596127189e/scratch/0/replay-test/screenshots/step_006.png","run_dir":"/Users/himeshjain/.testmuai/kaneai/sessions/1f2deaf9-82fd-4cf7-a9a3-dd596127189e/scratch/0/replay-test","total_runs":1,"context":{"memory":{},"variables":{"amount_due":{"syntax":"{{amount_due}}","value":"₹18,000","secret":false},"due_date":{"syntax":"{{due_date}}","value":"2026-12-05","secret":false}},"pointer":""},"variables_out":{"amount_due":{"syntax":"{{amount_due}}","value":"₹18,000","secret":false},"due_date":{"syntax":"{{due_date}}","value":"2026-12-05","secret":false}},"store_out":{},"result_code":100,"reason_code":"success.complete","v":1,"ts":"2026-11-17T22:08:52.567Z"}
+{"type":"test_md_step_end","step_index":1,"status":"passed","duration_s":7.11,"ref_kind":null,"unit_kind":null,"inlined_count":null,"failed_sub_step_index":null,"v":1,"ts":"2026-11-17T22:08:52.569Z"}
+{"type":"test_md_evidence_ingest","status":"ok","evidence_id":"6dfd9fb3-6045-4a74-9942-dc2155f5bb52","v":1,"ts":"2026-11-17T22:08:57.001Z"}
+{"type":"test_md_summary","overall_status":"passed","duration_s":16,"steps":{"total":1,"passed":1,"failed":0,"skipped":0,"replay_decisions":1,"author_decisions":0},"adaptive_heal":{"triggered":false},"commit":{"committed":false,"reason":"readonly_fallback"},"artifacts":{"replaced":false},"upload":{"performed":true,"succeeded":true},"cancelled":false,"v":1,"ts":"2026-11-17T22:08:57.010Z"}
+{"type":"coverage","status":"skipped","reason":"not_assurance_project","pack":"/Users/himeshjain/.testmuai/kaneai/sessions/1f2deaf9-82fd-4cf7-a9a3-dd596127189e/evidence/6dfd9fb3-6045-4a74-9942-dc2155f5bb52.evidence","v":1,"ts":"2026-11-17T22:08:57.016Z"}
+{"type":"test_md_done","overall_status":"passed","duration_s":16,"session_id":"1f2deaf9-82fd-4cf7-a9a3-dd596127189e","coverage":{"status":"skipped"},"v":1,"ts":"2026-11-17T22:08:57.016Z"}

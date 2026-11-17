@@ -1,0 +1,18 @@
+{
+  "commit_id": "3bf6b116-3338-44f9-b1c3-e3fa91beb398",
+  "test_id": "84169e3d-da37-4f0e-a019-fc358a4d94a9",
+  "testcase_id": "01M7NRKP3Q4DQQ1K08GV2EQ676",
+  "project_id": "01M7JAT3J50HKCS5JWRVGMWZ6G",
+  "folder_id": "01M7JATC23VTE3BJ12496HSEPH",
+  "org_id": "3435728",
+  "session_name": "leave-request",
+  "executions": [
+    {
+      "execution_id": "030edf3d-8140-4505-af6f-6326fd94bb00",
+      "run_kind": "replay",
+      "status": "passed",
+      "valid": true,
+      "at": "2026-11-17T22:12:43.431Z"
+    }
+  ]
+}

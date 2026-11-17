@@ -2,24 +2,24 @@
   "test_id": "a7490a3e-68e0-4513-87c4-5fc3f8e3842f",
   "version": "v4",
   "auto_heal_version": "AH2",
-  "session_id": "4f7d7e7c-e558-4b95-a31b-56d29afde282",
+  "session_id": "1a1c9410-b80d-4c37-9fc5-07d990f1f08b",
   "org_id": "3435728",
   "user_id": "3614387",
   "url": "",
-  "start_timestamp": "2026-11-17T21:59:56.277Z",
-  "end_timestamp": "2026-11-17T22:00:57.373Z",
+  "start_timestamp": "2026-11-17T22:10:34.712Z",
+  "end_timestamp": "2026-11-17T22:11:32.974Z",
   "status": "success",
-  "commit_id": "4f7d7e7c-e558-4b95-a31b-56d29afde282",
+  "commit_id": "1a1c9410-b80d-4c37-9fc5-07d990f1f08b",
   "instructions": [
     {
       "content_type": "generative_block",
-      "instruction_id": "generative_block_f42601b4e2d0473795197fb38d0352dd",
-      "generative_id": "f42601b4e2d0473795197fb38d0352dd",
+      "instruction_id": "generative_block_c92673e760d9436a8fbc15dec57203d4",
+      "generative_id": "c92673e760d9436a8fbc15dec57203d4",
       "objective": "Go to https://books.toscrape.com/. Click the book whose title is {{global.title}} on the home page, then store its price as 'price' and its stock availability text as 'availability'.",
       "status": "success",
       "children": [
         {
-          "instruction_id": "b00e3f22-4b9f-436f-8dcb-9d2e1f944d3b",
+          "instruction_id": "c52bdf84-14ba-4f64-9bdd-0b96b5e60bee",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Navigate to https://books.toscrape.com/",
@@ -30,12 +30,12 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "1f00845c-bcce-4f6a-879c-d7d73ba0fd82",
-              "instruction_id": "b00e3f22-4b9f-436f-8dcb-9d2e1f944d3b",
+              "operation_id": "ba85a4d5-6978-4335-92ca-fa202780f953",
+              "instruction_id": "c52bdf84-14ba-4f64-9bdd-0b96b5e60bee",
               "instruction": "Navigate to https://books.toscrape.com/",
               "intent": "Navigate to https://books.toscrape.com/",
-              "operation_start": "2026-11-17T22:00:13.647576+00:00",
-              "operation_end": "2026-11-17T22:00:15.969Z",
+              "operation_start": "2026-11-17T22:10:56.438834+00:00",
+              "operation_end": "2026-11-17T22:10:58.804Z",
               "status": "success",
               "command": "OPEN",
               "name": "",
@@ -60,7 +60,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/1f00845c-bcce-4f6a-879c-d7d73ba0fd82.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/ba85a4d5-6978-4335-92ca-fa202780f953.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -158,8 +158,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-11-17T22:00:13.647576+00:00",
-          "end_timestamp": "2026-11-17T22:00:15.969Z",
+          "start_timestamp": "2026-11-17T22:10:56.438834+00:00",
+          "end_timestamp": "2026-11-17T22:10:58.804Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -185,7 +185,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "f42601b4e2d0473795197fb38d0352dd",
+          "generative_id": "c92673e760d9436a8fbc15dec57203d4",
           "plan_id": "",
           "generative_objective": "Go to https://books.toscrape.com/. Click the book whose title is {{global.title}} on the home page, then store its price as 'price' and its stock availability text as 'availability'.",
           "error_message": "",
@@ -196,7 +196,7 @@
           "reasoning": "Navigate to https://books.toscrape.com/"
         },
         {
-          "instruction_id": "b933ca51-7a38-405d-b650-e2c81405665e",
+          "instruction_id": "aaf3d535-7596-4009-8ef4-9b6e7732cbe5",
           "instruction_class": "driver_action",
           "module_id": "",
           "instruction": "Clicking the book titled {{global.title}} on the home page",
@@ -207,12 +207,12 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "54b761b3-f7e4-4f5a-9136-19f811d203fe",
-              "instruction_id": "b933ca51-7a38-405d-b650-e2c81405665e",
+              "operation_id": "6732b14e-8edd-4fcc-a0c7-a83ce4780a1b",
+              "instruction_id": "aaf3d535-7596-4009-8ef4-9b6e7732cbe5",
               "instruction": "Clicking the book titled {{global.title}} on the home page",
               "intent": "Clicking the book titled {{global.title}} on the home page",
-              "operation_start": "2026-11-17T22:00:22.473738+00:00",
-              "operation_end": "2026-11-17T22:00:23.009Z",
+              "operation_start": "2026-11-17T22:11:03.701369+00:00",
+              "operation_end": "2026-11-17T22:11:04.122Z",
               "status": "success",
               "command": "CLICK",
               "name": "",
@@ -237,7 +237,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/54b761b3-f7e4-4f5a-9136-19f811d203fe.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/6732b14e-8edd-4fcc-a0c7-a83ce4780a1b.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -293,7 +293,7 @@
               "clicks_order_code": "se_js_ac",
               "selector": [
                 {
-                  "selector": "internal:role=link[name=\"A Light in the Attic\"i]",
+                  "selector": "internal:role=link[name=\"Soumission\"i] >> nth=0",
                   "score": 100,
                   "isXPath": false,
                   "type": "css"
@@ -338,11 +338,11 @@
               "api_data": {},
               "output_variables": {},
               "visual_context": {
-                "x": 782,
+                "x": 1232,
                 "y": 514,
                 "confidence": 0,
                 "bbox": {
-                  "x": 685,
+                  "x": 1135,
                   "y": 437,
                   "width": 195,
                   "height": 155
@@ -351,7 +351,7 @@
                 "viewport_width": 1920,
                 "viewport_height": 1080,
                 "scale_factor": null,
-                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/54b761b3-f7e4-4f5a-9136-19f811d203fe.webp",
+                "raw_image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/6732b14e-8edd-4fcc-a0c7-a83ce4780a1b.webp",
                 "raw_image_sas_url": "",
                 "annotated_image_url": "",
                 "annotated_image_sas_url": ""
@@ -360,8 +360,8 @@
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-11-17T22:00:22.473738+00:00",
-          "end_timestamp": "2026-11-17T22:00:23.009Z",
+          "start_timestamp": "2026-11-17T22:11:03.701369+00:00",
+          "end_timestamp": "2026-11-17T22:11:04.122Z",
           "type": "agent_generated",
           "tags": [],
           "html_paths": [],
@@ -387,7 +387,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "f42601b4e2d0473795197fb38d0352dd",
+          "generative_id": "c92673e760d9436a8fbc15dec57203d4",
           "plan_id": "",
           "generative_objective": "Go to https://books.toscrape.com/. Click the book whose title is {{global.title}} on the home page, then store its price as 'price' and its stock availability text as 'availability'.",
           "error_message": "",
@@ -399,18 +399,18 @@
         },
         {
           "content_type": "until_block",
-          "instruction_id": "until_7f9351e3",
-          "condition": "the heading 'A Light in the Attic' is visible",
+          "instruction_id": "until_e1e790fd",
+          "condition": "the heading \"Product Information\" is visible",
           "max_retries": 10,
           "settle_ms": 500,
           "current_count": 0,
           "condition_met": true,
           "children": [
             {
-              "instruction_id": "b00006e0-e6c5-49ec-b8fd-3a22de7b5d97",
+              "instruction_id": "6f8a8e81-604f-4301-bca8-494a8c65e42d",
               "instruction_class": "driver_action",
               "module_id": "",
-              "instruction": "Waiting for the heading A Light in the Attic to be visible",
+              "instruction": "Waiting for the selected book detail page to load",
               "command": "WAIT",
               "error": null,
               "parent_instruction_id": "",
@@ -418,17 +418,17 @@
               "classification_error": {},
               "operations": [
                 {
-                  "operation_id": "0d9f332a-f8db-4771-b394-de79a49e6566",
-                  "instruction_id": "b00006e0-e6c5-49ec-b8fd-3a22de7b5d97",
-                  "instruction": "Waiting for the heading A Light in the Attic to be visible",
-                  "intent": "Waiting for the heading A Light in the Attic to be visible",
-                  "operation_start": "2026-11-17T22:00:31.394334+00:00",
-                  "operation_end": "2026-11-17T22:00:36.036Z",
+                  "operation_id": "d5529cd3-2a32-4542-87f9-8c081f6f2581",
+                  "instruction_id": "6f8a8e81-604f-4301-bca8-494a8c65e42d",
+                  "instruction": "Waiting for the selected book detail page to load",
+                  "intent": "Waiting for the selected book detail page to load",
+                  "operation_start": "2026-11-17T22:11:12.433546+00:00",
+                  "operation_end": "2026-11-17T22:11:16.480Z",
                   "status": "success",
                   "command": "WAIT",
                   "name": "",
                   "target": "",
-                  "value": "1000",
+                  "value": "500",
                   "message": "",
                   "operation_dict": "",
                   "frame": "",
@@ -437,7 +437,7 @@
                   "grounded_by": "",
                   "error_message": "",
                   "code_snippet": "",
-                  "sub_instruction_obj": "{\"operation\":\"Waiting for the heading A Light in the Attic to be visible\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"WAIT\"},\"reasoning\":\"PRIMARY: wait for the heading \\\"A Light in the Attic\\\" to be visible\",\"variable\":{},\"secrets\":{},\"params\":{}}",
+                  "sub_instruction_obj": "{\"operation\":\"Waiting for the selected book detail page to load\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"WAIT\"},\"reasoning\":\"PRIMARY: wait for the selected book product detail page to load\",\"variable\":{},\"secrets\":{},\"params\":{}}",
                   "test_id": "",
                   "test_version": "",
                   "action": "",
@@ -448,7 +448,7 @@
                   "update_time_stamp": "",
                   "locator_variable": "",
                   "locator_variable_name": "",
-                  "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/0d9f332a-f8db-4771-b394-de79a49e6566.webp",
+                  "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/d5529cd3-2a32-4542-87f9-8c081f6f2581.webp",
                   "alternative_xpaths": [],
                   "attribute": "",
                   "value_description": "",
@@ -542,12 +542,12 @@
                   "api_data": {},
                   "output_variables": {},
                   "visual_context": null,
-                  "reasoning": "PRIMARY: wait for the heading \"A Light in the Attic\" to be visible"
+                  "reasoning": "PRIMARY: wait for the selected book product detail page to load"
                 }
               ],
               "status": "success",
-              "start_timestamp": "2026-11-17T22:00:31.394334+00:00",
-              "end_timestamp": "2026-11-17T22:00:36.036Z",
+              "start_timestamp": "2026-11-17T22:11:12.433546+00:00",
+              "end_timestamp": "2026-11-17T22:11:16.480Z",
               "type": "agent_generated",
               "tags": [],
               "html_paths": [],
@@ -581,7 +581,7 @@
               "reason": "",
               "title": "",
               "used_variables": [],
-              "reasoning": "PRIMARY: wait for the heading \"A Light in the Attic\" to be visible"
+              "reasoning": "PRIMARY: wait for the selected book product detail page to load"
             }
           ],
           "generative_id": "",
@@ -590,10 +590,10 @@
           "status": "success"
         },
         {
-          "instruction_id": "33921eef-5beb-4c27-85cc-7cf82d8ab8c0",
+          "instruction_id": "bdb3a02c-9e0b-440a-ae48-4aa92600f877",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Reading the book price from the product details",
+          "instruction": "Reading the selected book price",
           "command": "TEXTUAL_ANALYZER",
           "error": null,
           "parent_instruction_id": "",
@@ -601,11 +601,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "a7398359-f8a9-4d70-83a6-6df0766d0714",
-              "instruction_id": "33921eef-5beb-4c27-85cc-7cf82d8ab8c0",
-              "instruction": "Reading the book price from the product details",
-              "intent": "Reading the book price from the product details",
-              "operation_start": "2026-11-17T22:00:48.446047+00:00",
+              "operation_id": "f016b16d-2468-4c45-804b-3a40e30fb7b3",
+              "instruction_id": "bdb3a02c-9e0b-440a-ae48-4aa92600f877",
+              "instruction": "Reading the selected book price",
+              "intent": "Reading the selected book price",
+              "operation_start": "2026-11-17T22:11:24.081976+00:00",
               "operation_end": "",
               "status": "success",
               "command": "TEXTUAL_ANALYZER",
@@ -620,7 +620,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Reading the book price from the product details\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"the book's price in the product details\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"el(17).textContent.trim()\",\"wrapped_js\":\"(els) => {\\n  const __m = {17: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (el(17).textContent.trim());\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:role=paragraph >> internal:has-text=\\\"£\\\"i\"],\"operator\":\"equals\",\"transforms\":[\"strip\"],\"query\":\"the book's price in the product details\",\"expected_value\":\"\",\"needs_unit_conversion\":false,\"condition\":\"the book's price is stored as {{price}}\"}",
+              "sub_instruction_obj": "{\"operation\":\"Reading the selected book price\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"the price of the selected book shown beside its title\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"el(17).textContent.trim()\",\"wrapped_js\":\"(els) => {\\n  const __m = {17: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (el(17).textContent.trim());\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:role=paragraph >> internal:has-text=\\\"£50.10\\\"i\"],\"operator\":\"equals\",\"transforms\":[\"strip\"],\"query\":\"the price of the selected book shown beside its title\",\"expected_value\":\"\",\"needs_unit_conversion\":false,\"condition\":\"The price of the selected book is saved as {{price}}.\"}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -631,7 +631,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/a7398359-f8a9-4d70-83a6-6df0766d0714.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/f016b16d-2468-4c45-804b-3a40e30fb7b3.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -639,7 +639,7 @@
               "navigation_direction": "",
               "tagified_image_url": "",
               "query_variable_name": "price",
-              "query_variable_value": "£51.77",
+              "query_variable_value": "£50.10",
               "query_variable_type": "",
               "expected_value": "",
               "queried_value": "",
@@ -724,14 +724,14 @@
               "until_settle_ms": 0,
               "api_data": {},
               "output_variables": {
-                "price": "£51.77"
+                "price": "£50.10"
               },
               "visual_context": null,
-              "reasoning": "the book's price in the product details"
+              "reasoning": "the price of the selected book shown beside its title"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-11-17T22:00:48.446047+00:00",
+          "start_timestamp": "2026-11-17T22:11:24.081976+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -758,7 +758,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "f42601b4e2d0473795197fb38d0352dd",
+          "generative_id": "c92673e760d9436a8fbc15dec57203d4",
           "plan_id": "",
           "generative_objective": "Go to https://books.toscrape.com/. Click the book whose title is {{global.title}} on the home page, then store its price as 'price' and its stock availability text as 'availability'.",
           "error_message": "",
@@ -766,13 +766,13 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "the book's price in the product details"
+          "reasoning": "the price of the selected book shown beside its title"
         },
         {
-          "instruction_id": "1ecbc716-9caa-4d0a-97db-e442896c7577",
+          "instruction_id": "25a0078c-711e-4039-acd8-ac8cdb2e1fc5",
           "instruction_class": "driver_action",
           "module_id": "",
-          "instruction": "Reading the book stock availability from the product information",
+          "instruction": "Reading the selected book stock availability",
           "command": "TEXTUAL_ANALYZER",
           "error": null,
           "parent_instruction_id": "",
@@ -780,11 +780,11 @@
           "classification_error": {},
           "operations": [
             {
-              "operation_id": "4fae389d-60a1-4cde-93c6-055588eab4f8",
-              "instruction_id": "1ecbc716-9caa-4d0a-97db-e442896c7577",
-              "instruction": "Reading the book stock availability from the product information",
-              "intent": "Reading the book stock availability from the product information",
-              "operation_start": "2026-11-17T22:00:48.447305+00:00",
+              "operation_id": "6539dc45-29d7-4212-bdae-8953f7ac79f4",
+              "instruction_id": "25a0078c-711e-4039-acd8-ac8cdb2e1fc5",
+              "instruction": "Reading the selected book stock availability",
+              "intent": "Reading the selected book stock availability",
+              "operation_start": "2026-11-17T22:11:24.083379+00:00",
               "operation_end": "",
               "status": "success",
               "command": "TEXTUAL_ANALYZER",
@@ -799,7 +799,7 @@
               "grounded_by": "",
               "error_message": "",
               "code_snippet": "",
-              "sub_instruction_obj": "{\"operation\":\"Reading the book stock availability from the product information\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"the book's stock availability text in the product information table\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"el(44).textContent.trim()\",\"wrapped_js\":\"(els) => {\\n  const __m = {44: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (el(44).textContent.trim());\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:role=cell[name=\\\"In stock (22 available)\\\"i]\"],\"operator\":\"equals\",\"transforms\":[\"strip\"],\"query\":\"the book's stock availability text in the product information table\",\"expected_value\":\"\",\"needs_unit_conversion\":false,\"condition\":\"the book's stock availability text is stored as {{availability}}\"}",
+              "sub_instruction_obj": "{\"operation\":\"Reading the selected book stock availability\",\"agent\":\"Operation Agent\",\"operation_dict\":{\"operation_type\":\"TEXTUAL_ANALYZER\"},\"reasoning\":\"the stock availability text in the selected book's product information table\",\"variable\":{},\"secrets\":{},\"params\":{},\"code_js\":\"el(44).textContent.trim()\",\"wrapped_js\":\"(els) => {\\n  const __m = {44: 0};\\n  const el = (i) => els[__m[i]];\\n  const __v = (el(44).textContent.trim());\\n  return (typeof __v === 'boolean' ? String(__v) : __v);\\n}\",\"locators\":[\"internal:role=cell[name=\\\"In stock (20 available)\\\"i]\"],\"operator\":\"equals\",\"transforms\":[\"strip\"],\"query\":\"the stock availability text in the selected book's product information table\",\"expected_value\":\"\",\"needs_unit_conversion\":false,\"condition\":\"The stock availability text of the selected book is saved as {{availability}}.\"}",
               "test_id": "",
               "test_version": "",
               "action": "",
@@ -810,7 +810,7 @@
               "update_time_stamp": "",
               "locator_variable": "",
               "locator_variable_name": "",
-              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/4fae389d-60a1-4cde-93c6-055588eab4f8.webp",
+              "image_url": "https://prodauteurartefacts.blob.core.windows.net/test-screenshots/test_screenshots/untagged_screenshot/6539dc45-29d7-4212-bdae-8953f7ac79f4.webp",
               "alternative_xpaths": [],
               "attribute": "",
               "value_description": "",
@@ -818,7 +818,7 @@
               "navigation_direction": "",
               "tagified_image_url": "",
               "query_variable_name": "availability",
-              "query_variable_value": "In stock (22 available)",
+              "query_variable_value": "In stock (20 available)",
               "query_variable_type": "",
               "expected_value": "",
               "queried_value": "",
@@ -903,14 +903,14 @@
               "until_settle_ms": 0,
               "api_data": {},
               "output_variables": {
-                "availability": "In stock (22 available)"
+                "availability": "In stock (20 available)"
               },
               "visual_context": null,
-              "reasoning": "the book's stock availability text in the product information table"
+              "reasoning": "the stock availability text in the selected book's product information table"
             }
           ],
           "status": "success",
-          "start_timestamp": "2026-11-17T22:00:48.447305+00:00",
+          "start_timestamp": "2026-11-17T22:11:24.083379+00:00",
           "end_timestamp": "",
           "type": "agent_generated",
           "tags": [],
@@ -937,7 +937,7 @@
           "network_assertion_content": {},
           "screenshot_command": "",
           "smartui_contents": {},
-          "generative_id": "f42601b4e2d0473795197fb38d0352dd",
+          "generative_id": "c92673e760d9436a8fbc15dec57203d4",
           "plan_id": "",
           "generative_objective": "Go to https://books.toscrape.com/. Click the book whose title is {{global.title}} on the home page, then store its price as 'price' and its stock availability text as 'availability'.",
           "error_message": "",
@@ -945,7 +945,7 @@
           "reason": "",
           "title": "",
           "used_variables": [],
-          "reasoning": "the book's stock availability text in the product information table"
+          "reasoning": "the stock availability text in the selected book's product information table"
         }
       ],
       "error_message": null,
@@ -953,9 +953,9 @@
       "result_code": null,
       "bifurcation_context": [],
       "approach_reason": [
-        "Opened the requested book, “A Light in the Attic,” from the home page.",
-        "Recorded the book’s price as £51.77.",
-        "Recorded the stock availability as “In stock (22 available).”"
+        "Opened the book titled “Soumission” from the home page on Books to Scrape.",
+        "Saved the book’s price as £50.10.",
+        "Saved the availability as “In stock (20 available).”"
       ],
       "one_liner": null
     }
@@ -963,13 +963,13 @@
   "modules": [],
   "uploaded_files": [],
   "test_params": [],
-  "test_level_variables": "[{\"name\":\"price\",\"value\":\"£51.77\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"availability\",\"value\":\"In stock (22 available)\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"}]",
+  "test_level_variables": "[{\"name\":\"price\",\"value\":\"£50.10\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"},{\"name\":\"availability\",\"value\":\"In stock (20 available)\",\"value_type\":\"test_level\",\"variable_description\":\"ANALYZE result\"}]",
   "test_global_variables": [
     {
       "id": 620158,
       "name": "title",
-      "value": "A Light in the Attic",
-      "session_value": "A Light in the Attic",
+      "value": "Soumission",
+      "session_value": "Soumission",
       "is_persist": false,
       "environment_id": 0,
       "environment_name": "No Env"

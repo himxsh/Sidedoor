@@ -1,0 +1,49 @@
+{
+  "name": "fees",
+  "url": "http://localhost:4400/fees",
+  "sentence": "Type {{student_id}} into the Student ID field and click Check fees. Store the amount shown next to 'Amount due' as 'amount_due' and the date shown next to 'Due date' as 'due_date'.",
+  "inputs": [
+    {
+      "name": "student_id",
+      "sample": "S1001"
+    }
+  ],
+  "kind": "read",
+  "contract": {
+    "fields": {
+      "amount_due": {
+        "type": "string",
+        "required": true
+      },
+      "due_date": {
+        "type": "string",
+        "required": true
+      }
+    }
+  },
+  "health": "healthy",
+  "createdAt": "2026-11-17T22:03:24.971Z",
+  "stats": {
+    "calls": 1,
+    "replays": 2,
+    "cacheHits": 0,
+    "recordings": 1,
+    "repairs": 0,
+    "creditsSpent": 17.770427499999997,
+    "recordingCost": 17.770427499999997,
+    "avgReplayMs": 25122
+  },
+  "sample": {
+    "amount_due": "₹42,500",
+    "due_date": "2026-11-30"
+  },
+  "last": {
+    "at": "2026-11-17T22:08:58.270Z",
+    "ok": true,
+    "data": {
+      "amount_due": "₹18,000",
+      "due_date": "2026-12-05"
+    },
+    "durationMs": 26099
+  }
+}

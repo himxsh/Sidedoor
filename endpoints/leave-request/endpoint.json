@@ -1,0 +1,55 @@
+{
+  "name": "leave-request",
+  "url": "http://localhost:4400/leave",
+  "sentence": "Type {{name}} into the Full name field, enter {{from}} in the From date field and {{to}} in the To date field, type {{reason}} into the Reason field, then click Submit request. Store the confirmation number shown on the result page as 'confirmation'.",
+  "inputs": [
+    {
+      "name": "name",
+      "sample": "Test Student"
+    },
+    {
+      "name": "from",
+      "sample": "2026-11-24"
+    },
+    {
+      "name": "to",
+      "sample": "2026-11-25"
+    },
+    {
+      "name": "reason",
+      "sample": "Family function"
+    }
+  ],
+  "kind": "action",
+  "contract": {
+    "fields": {
+      "confirmation": {
+        "type": "string",
+        "required": true
+      }
+    }
+  },
+  "health": "healthy",
+  "createdAt": "2026-11-17T22:05:58.058Z",
+  "stats": {
+    "calls": 1,
+    "replays": 1,
+    "cacheHits": 0,
+    "recordings": 1,
+    "repairs": 0,
+    "creditsSpent": 24.143225,
+    "recordingCost": 24.143225,
+    "avgReplayMs": 27646
+  },
+  "sample": {
+    "confirmation": "LR-4102"
+  },
+  "last": {
+    "at": "2026-11-17T22:12:48.316Z",
+    "ok": true,
+    "data": {
+      "confirmation": "LR-4103"
+    },
+    "durationMs": 27646
+  }
+}

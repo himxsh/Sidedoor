@@ -24,26 +24,39 @@
   "health": "healthy",
   "createdAt": "2026-11-17T22:01:13.276Z",
   "stats": {
-    "calls": 0,
-    "replays": 1,
+    "calls": 2,
+    "replays": 4,
     "cacheHits": 0,
-    "recordings": 1,
-    "repairs": 0,
-    "creditsSpent": 19.43607,
+    "recordings": 2,
+    "repairs": 1,
+    "creditsSpent": 35.206005,
     "recordingCost": 19.43607,
-    "avgReplayMs": 36576
+    "avgReplayMs": 47055
   },
   "sample": {
     "price": "£51.77",
     "availability": "In stock (22 available)"
   },
   "last": {
-    "at": "2026-11-17T22:01:49.855Z",
+    "at": "2026-11-17T22:13:34.152Z",
     "ok": true,
     "data": {
-      "price": "£51.77",
-      "availability": "In stock (22 available)"
+      "price": "£53.74",
+      "availability": "In stock (20 available)"
     },
-    "durationMs": 36576
-  }
+    "durationMs": 34198
+  },
+  "lastFailure": {
+    "at": "2026-11-17T22:10:32.753Z",
+    "remark": "replay completed",
+    "violations": [
+      {
+        "field": "availability",
+        "problem": "boolean where text was expected",
+        "value": "false"
+      }
+    ],
+    "evidence": "shots/book-price-mykbmavh.png"
+  },
+  "repairAttempts": 0
 }
