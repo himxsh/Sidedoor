@@ -65,13 +65,4 @@ input[type=checkbox] { width: auto; }
 .live.off { color: var(--muted); }
 .foot { display: flex; justify-content: space-between; gap: 16px; padding: 8px 24px 32px; max-width: 1280px; margin: 0 auto; color: var(--muted); font-size: 13px; flex-wrap: wrap; }
 
-/* TODO(remove-kane-switch): temporary Kane CLI master switch */
 .top-right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
-.kane-switch { display: inline-flex; align-items: center; gap: 8px; font: inherit; font-size: 12px; font-weight: 600; padding: 5px 12px 5px 5px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--muted); cursor: pointer; }
-.kane-switch .knob { width: 28px; height: 16px; border-radius: 999px; background: var(--line); position: relative; transition: background .15s; }
-.kane-switch .knob::after { content: ""; position: absolute; top: 2px; left: 2px; width: 12px; height: 12px; border-radius: 50%; background: var(--panel); box-shadow: 0 0 0 1px var(--line); transition: transform .15s; }
-.kane-switch[data-on="true"] { color: var(--ink); border-color: var(--accent); }
-.kane-switch[data-on="true"] .knob { background: var(--accent); }
-.kane-switch[data-on="true"] .knob::after { transform: translateX(12px); }
-.kane-switch:disabled { cursor: not-allowed; }
-.kane-note { max-width: 1280px; margin: 0 auto; padding: 0 24px 8px; font-size: 12px; color: var(--muted); }

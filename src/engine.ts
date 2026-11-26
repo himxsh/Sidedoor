@@ -2,7 +2,6 @@
 import { existsSync } from "node:fs";
 import { copyFile, cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { kaneEnabled, KaneOffError } from "./kane-switch.js"; // TODO(remove-kane-switch): temporary credit guard
 import { buildContract, pickFields, storedNames, validate, type Violation } from "./contract.js";
 import { emit, newTrace } from "./events.js";
 import { record, replay, stripVariablesBlock, type RunResult, type Variables } from "./runner.js";
@@ -42,15 +41,6 @@ export const queueState = () => ({ running, waiting: waiting.length, maxBrowsers
 export class SidedoorError extends Error {
   constructor(message: string, public status = 400, public details?: Record<string, unknown>) {
     super(message);
-  }
-}
-
-/** Refuse before any Kane work starts when the master switch is off (src/kane-switch.ts). */
-// TODO(remove-kane-switch): temporary, remove once the project is ready (see README "Kane switch").
-function assertKane() {
-  if (!kaneEnabled()) {
-    const e = new KaneOffError();
-    throw new SidedoorError(e.message, e.status, { kane: "off", hint: e.hint });
   }
 }
 
@@ -150,7 +140,6 @@ export interface CreateOptions {
 
 export async function createEndpoint(o: CreateOptions) {
   const name = o.name;
-  assertKane();
   if (!NAME_RE.test(name)) throw new SidedoorError("name must match [a-zA-Z0-9_-]{1,48}");
   if (!/^https?:\/\//.test(o.url)) throw new SidedoorError("url must start with http:// or https://");
   const dir = endpointDir(name);
@@ -257,7 +246,6 @@ export async function callEndpoint(name: string, given: Record<string, unknown> 
     const running = inflight.get(key);
     if (running) return running;
   }
-  assertKane();
   const p = withEndpointLock(name, () => doCall(name, inputs, opts));
   if (ep.kind === "read") {
     inflight.set(key, p);
@@ -427,7 +415,6 @@ async function guard(name: string, inputs: Variables, trace: string, detected: V
 
 // ---------- repair_endpoint (§4.5 step 5) ----------
 export async function repairEndpoint(name: string, opts: { sentence?: string; inputs?: Record<string, unknown> } = {}): Promise<CallResult & { attempt: number; attemptsLeft: number }> {
-  assertKane();
   return withEndpointLock(name, async () => {
     const ep = await loadEndpoint(name);
     const attempt = (ep.repairAttempts ?? 0) + 1;

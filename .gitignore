@@ -15,3 +15,11 @@ data/*.log
 .dev.vars*
 !.dev.vars.example
 !.env.example
+
+# demo video renders and audio (uploaded to YouTube, not committed)
+speedrun-video/
+*.mp4
+*.mov
+*.webm
+*.wav
+*.mp3

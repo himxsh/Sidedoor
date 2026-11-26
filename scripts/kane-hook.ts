@@ -10,9 +10,6 @@ import { replay } from "../src/runner.js";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const OUT = path.join(ROOT, "evidence", "build-hook");
-// TODO(remove-kane-switch): the build hook is a local dev check (it only runs on file edits on this
-// machine), so it opts in past the server's Kane switch. An explicit SIDEDOOR_KANE=off still wins.
-process.env.SIDEDOOR_KANE ??= "on";
 const WATCH = [/^web\//, /^portal\//, /^src\/server\.ts$/];
 const TESTS = [
   { name: "dashboard", test: "dashboard-2", dir: "tests/kane/dashboard", url: "http://localhost:3030/health", start: ["npx", ["tsx", "src/cli.ts", "serve", "--port", "3030"]] },
