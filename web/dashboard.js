@@ -259,6 +259,10 @@ function renderPlayback() {
   const show = (i) => {
     picks.querySelectorAll("[data-run]").forEach((b) => b.setAttribute("aria-pressed", String(+b.dataset.run === i)));
     $("#pb-detail").innerHTML = runs[i].kind === "repair" ? repairView(runs[i]) : callView(runs[i]);
+    $("#pb-detail").querySelectorAll("[data-copy]").forEach((b) => (b.onclick = async () => {
+      try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = "Copied"; } catch { b.textContent = "Copy failed"; }
+      setTimeout(() => (b.textContent = "Copy"), 1500);
+    }));
   };
   picks.querySelectorAll("[data-run]").forEach((b) => (b.onclick = () => show(+b.dataset.run)));
   if (runs.length) show(0);
@@ -272,6 +276,30 @@ const epOf = (name) => state.endpoints.find((e) => e.name === name);
 const hostOf = (ep) => { try { return new URL(ep.url.replace(/\{\{.*?\}\}/g, "x")).host; } catch { return ""; } };
 const sitePhrase = (ep) => (/localhost|127\.0\.0\.1/.test(hostOf(ep)) ? "the demo campus portal" : hostOf(ep));
 const inputsOf = (evs) => evs.find((e) => e.type === "call.start")?.data?.inputs ?? {};
+
+// The local command that repeats a recorded call (GET for reads, POST JSON for actions).
+function callCmd(ep, name, inputs, fresh = false) {
+  if (ep?.kind === "action") return `curl -X POST localhost:3030/api/${name} -H 'content-type: application/json' -d '${JSON.stringify(inputs)}'`;
+  const q = new URLSearchParams(inputs);
+  if (fresh) q.set("fresh", "1");
+  const qs = q.toString();
+  return `curl 'localhost:3030/api/${name}${qs ? "?" + qs : ""}'`;
+}
+
+const SETUP = "npm install -g @testmuai/kane-cli && kane-cli login\ngit clone https://github.com/himxsh/Sidedoor.git\ncd Sidedoor && npm install && npm start";
+
+// Per-run "Try it yourself": the exact commands, copyable, with the one-time setup folded away.
+function tryBlock(cmds, note) {
+  const code = (c) => `<div class="pb-cmd"><code>${esc(c)}</code><button type="button" class="pill pill-sm" data-copy="${esc(c)}">Copy</button></div>`;
+  return `<div class="pb-try"><span class="lbl">Try it yourself</span>
+    ${cmds.map(code).join("")}
+    <p class="hint">${note}</p>
+    <details class="pb-setup"><summary>First time? Set it up locally (about 5 minutes)</summary>
+      <p class="hint">Needs Node 20 or newer and your own TestMu AI account. Kane runs the browser on your machine.</p>
+      ${code(SETUP)}
+      <p class="hint">This starts the portal on <code>localhost:4400</code> and Sidedoor on <code>localhost:3030</code>. Then run the commands above.</p>
+    </details></div>`;
+}
 
 function callView(r) {
   const ep = epOf(r.endpoint);
@@ -290,6 +318,9 @@ function callView(r) {
     ${ep ? `<p class="pb-sentence"><span class="lbl">The one sentence behind it</span>${esc(ep.sentence)}</p>` : ""}
     ${Object.keys(inputs).length ? `<div><span class="lbl">Called with</span>${kv(inputs)}</div>` : ""}
     <div><span class="lbl">Returned</span>${kv(ok.data?.data)}</div>
+    ${tryBlock([callCmd(ep, r.endpoint, inputs)], action
+      ? "This submits the form for real on your local copy of the portal, so you get a new confirmation number."
+      : "You get the page's current values back as JSON, checked against the same contract. Change the inputs to ask for something else.")}
   </div>`;
 }
 
@@ -323,6 +354,11 @@ function repairView(r) {
     <p class="pb-text">${story}</p>
     <div><span class="lbl">Broken result</span>${kv(failed.data?.values)}</div>
     <div><span class="lbl">Repaired result</span>${kv(swap.data?.data)}</div>
+    ${portal
+      ? tryBlock([`curl -XPOST 'localhost:4400/__layout?set=b'`, callCmd(ep, r.endpoint, inputsOf(r.evs), true)],
+        "The first command switches the portal to its redesigned layout. The second skips the cache, so the saved recording breaks and Sidedoor repairs it. Watch each step in the activity log at <code>localhost:3030/dashboard</code>. Switch the layout back with <code>?set=a</code>.")
+      : tryBlock([callCmd(ep, r.endpoint, inputsOf(r.evs), true)],
+        "This repair started on its own when a replay broke, so it can't be forced on a site you don't control. Calling it shows the repaired recording still works. To see a repair on demand, use the notices run.")}
     <details class="pb-steps"><summary>Every step</summary><ul class="steps">${steps.map(([k, cls, m]) => `<li><span class="pill pill-sm k ${cls}">${esc(k)}</span><span>${esc(m)}</span></li>`).join("")}</ul></details>
   </div>`;
 }

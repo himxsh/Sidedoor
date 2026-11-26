@@ -309,6 +309,12 @@ input[type=checkbox] { width: auto; accent-color: var(--accent); }
 .pb-kv dd { margin: 0; overflow-wrap: anywhere; }
 .pb-steps summary { cursor: pointer; font-size: 14px; color: var(--muted); }
 .pb-steps .steps { margin-top: 12px; }
-.pb-cta .json { margin-top: 16px; }
-.pb-cta .hint { margin-top: 12px; }
+.pb-try { display: grid; gap: 8px; padding-top: 16px; border-top: 1px solid var(--line); }
+.pb-info .pb-try .lbl { margin-bottom: 0; }
+.pb-cmd { display: flex; gap: 12px; align-items: flex-start; justify-content: space-between; background: var(--ink); color: var(--surface); border-radius: 12px; padding: 10px 10px 10px 16px; }
+.pb-cmd code { font-size: 12px; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; }
+.pb-cmd .pill { flex: none; background: var(--dark-line); color: var(--surface); }
+.pb-cmd button.pill:hover:not(:disabled) { background: var(--surface); color: var(--ink); }
+.pb-setup summary { cursor: pointer; font-size: 13px; color: var(--muted); }
+.pb-setup > * + * { margin-top: 8px; }
 @media (max-width: 900px) { .pb-detail { grid-template-columns: 1fr; } .pb-info { position: static; } }
