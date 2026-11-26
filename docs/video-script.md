@@ -1,5 +1,7 @@
 # Video shot list (under 3:00, PLAN.md §7)
 
+> Superseded by [demo-script.md](demo-script.md), which is built around the `/sidedoor` plugin and has voiceover lines. This shot list is kept for the dashboard-only version.
+
 Before recording:
 
 ```bash

@@ -1,0 +1,10 @@
+{
+  "name": "sidedoor",
+  "version": "0.1.0",
+  "description": "Turn any web page into a verified, self-repairing agent tool from one sentence: /sidedoor <url> <task>. Kane CLI records the flow once; every later call is a cheap, contract-checked replay.",
+  "author": { "name": "Himesh Jain", "url": "https://github.com/himxsh" },
+  "homepage": "https://getsidedoor.pages.dev",
+  "repository": "https://github.com/himxsh/Sidedoor",
+  "license": "MIT",
+  "keywords": ["mcp", "kane-cli", "browser-automation", "scraping", "api"]
+}

@@ -56,6 +56,27 @@ claude mcp add sidedoor -- npx -y getsidedoor
 
 The agent starts with `create_endpoint`, `repair_endpoint` and `list_endpoints`, and gets one typed tool per endpoint it (or you) creates.
 
+### `/sidedoor` in Claude Code (plugin)
+
+The plugin bundles the MCP server and a `/sidedoor` command. Install it from inside Claude Code:
+
+```
+/plugin install sidedoor --marketplace himxsh/Sidedoor
+```
+
+(On Claude Code before 2.1.275, run `/plugin marketplace add himxsh/Sidedoor` first, then `/plugin install sidedoor@sidedoor`.)
+
+Then, while chatting:
+
+```
+/sidedoor go through https://books.toscrape.com/ and get the price and stock of "Tipping the Velvet"
+/sidedoor book-price "Sapiens"
+/sidedoor fix book-price
+/sidedoor list
+```
+
+The first form drafts an endpoint: a name, `{{inputs}}` taken from the parts of your task that vary, and a direct sentence. It shows you the draft and the one-time cost, has Kane record it, and answers your question. After that, the same request is a replay of the saved endpoint. If an endpoint already covers your request, `/sidedoor` calls it instead of recording again. Endpoints that submit forms are never recorded or repaired without your yes. The plugin lives in `plugin/`.
+
 If `kane-cli` is not on your `PATH`, create, call and repair return an error that says how to install it (or set `SIDEDOOR_KANE_BIN` to the binary).
 
 ## Run the demo from the repo (about 2 minutes)
@@ -210,6 +231,7 @@ scripts/          kane-hook.ts (build hook), snapshot.ts, start.mjs
 endpoints/<name>/ endpoint.json + Kane test + recording
 evidence/         Kane logs and screenshots, build-hook failures, MCP session
 tests/kane/       the build hook's Kane UI tests;  test/  unit tests (npm test)
+plugin/           Claude Code plugin: /sidedoor skill + MCP server (marketplace in .claude-plugin/)
 ```
 
 MIT licence.

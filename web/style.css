@@ -149,6 +149,9 @@ span.pill { cursor: default; }
 .cmd-tag { flex: none; width: 96px; text-align: center; padding: 0 8px; height: 25px; line-height: 25px; border-radius: var(--r-pill); background: var(--accent); color: var(--on-accent); font-size: 12px; font-weight: 500; }
 .cmd-code { flex: 1 1 auto; min-width: 0; padding: 12px 0; font-size: 14px; line-height: 1.5; overflow-wrap: anywhere; }
 .cmd-code::before { content: "$ "; color: var(--accent); }
+.cmd-code-slash::before { content: none; }
+.cmd-note { margin: -4px 0 4px 24px; font-size: 13px; opacity: .75; }
+.cmd-note code { font-size: 13px; }
 .cmd-copy { flex: none; height: 44px; padding: 0 20px; border: 0; border-radius: var(--r-pill); background: var(--ink); color: var(--surface); font: 500 13px var(--body); cursor: pointer; }
 .cmd-copy:hover { background: #000; }
 .cmd-copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }

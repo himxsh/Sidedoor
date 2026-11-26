@@ -1,0 +1,13 @@
+{
+  "name": "sidedoor",
+  "owner": { "name": "Himesh Jain", "url": "https://github.com/himxsh" },
+  "metadata": { "description": "Sidedoor: any web page as a verified, self-repairing agent tool." },
+  "plugins": [
+    {
+      "name": "sidedoor",
+      "source": "./plugin",
+      "description": "/sidedoor <url> <task>: Kane records the flow once, Sidedoor turns it into a typed MCP tool that checks every result and repairs itself when the site changes.",
+      "version": "0.1.0"
+    }
+  ]
+}

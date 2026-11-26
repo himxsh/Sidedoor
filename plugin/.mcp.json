@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "sidedoor": {
+      "command": "npx",
+      "args": ["-y", "getsidedoor", "mcp"]
+    }
+  }
+}
