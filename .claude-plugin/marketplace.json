@@ -7,7 +7,7 @@
       "name": "sidedoor",
       "source": "./plugin",
       "description": "/sidedoor <url> <task>: Kane records the flow once, Sidedoor turns it into a typed MCP tool that checks every result and repairs itself when the site changes.",
-      "version": "0.1.0"
+      "version": "0.1.1"
     }
   ]
 }
