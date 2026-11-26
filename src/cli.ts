@@ -16,6 +16,7 @@ const HELP = `Sidedoor: turn a web page with no API into a JSON endpoint and an 
   sidedoor list
   sidedoor serve [--port 3030]        HTTP API, dashboard (/dashboard), playground (/playground)
   sidedoor mcp                        MCP server (stdio) for Claude Code, Cursor, Codex...
+                                      (also the default when an MCP client starts sidedoor with no command)
 `;
 
 function parse(argv: string[]) {
@@ -38,7 +39,9 @@ function parse(argv: string[]) {
 }
 
 async function main() {
-  const [cmd, ...rest] = process.argv.slice(2);
+  const [given, ...rest] = process.argv.slice(2);
+  // No command and no terminal on stdin: an MCP client (Claude Code, Cursor...) started us. Speak MCP.
+  const cmd = given ?? (process.stdin.isTTY ? undefined : "mcp");
   const { pos, flags, inputs } = parse(rest);
   const out = (o: unknown) => console.log(JSON.stringify(o, null, 2));
   switch (cmd) {

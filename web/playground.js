@@ -166,7 +166,7 @@ function renderUse(s, m) {
   const snippets = [];
   if (!known || state.mode === "playback") {
     const flags = [`--name ${name}`, `--url ${sq(s.url || "https://example.com/")}`, ...s.inputs.map((i) => `--input ${sq(`${i.name}=${i.sample}`)}`), ...(s.kind === "action" ? ["--action"] : [])];
-    snippets.push(["Create it", `npx @himeshjain/sidedoor create ${flags.join(" ")} ${dq(s.sentence || "Store the page title as 'title'.")}`]);
+    snippets.push(["Create it", `npx getsidedoor create ${flags.join(" ")} ${dq(s.sentence || "Store the page title as 'title'.")}`]);
   }
   snippets.push(["curl", s.kind === "action"
     ? `curl -X POST ${url} -H 'content-type: application/json' -d ${sq(body)}`
@@ -174,8 +174,8 @@ function renderUse(s, m) {
   snippets.push(["JavaScript", s.kind === "action"
     ? `const r = await fetch("${url}", {\n  method: "POST",\n  headers: { "content-type": "application/json" },\n  body: JSON.stringify(${body}),\n});\nconst { ok, data } = await r.json();`
     : `const r = await fetch("${url}");\nconst { ok, verified, data } = await r.json();`]);
-  snippets.push([`MCP (tool: ${tool})`, `{ "mcpServers": { "sidedoor": { "command": "npx", "args": ["-y", "@himeshjain/sidedoor", "mcp"] } } }`]);
-  snippets.push(["Claude Code", "claude mcp add sidedoor -- npx -y @himeshjain/sidedoor mcp"]);
+  snippets.push([`MCP (tool: ${tool})`, `{ "mcpServers": { "sidedoor": { "command": "npx", "args": ["-y", "getsidedoor", "mcp"] } } }`]);
+  snippets.push(["Claude Code", "claude mcp add sidedoor -- npx -y getsidedoor"]);
   $("#use").innerHTML = snippets.map(([t, code], i) => `<div class="snip"><div class="snip-head"><h3>${esc(t)}</h3><button type="button" class="pill pill-sm" data-copy="${i}">Copy</button></div><pre class="json">${esc(code)}</pre></div>`).join("");
   $("#use").querySelectorAll("[data-copy]").forEach((b) => (b.onclick = async () => {
     try { await navigator.clipboard.writeText(snippets[Number(b.dataset.copy)][1]); b.textContent = "Copied"; } catch { b.textContent = "Select and copy"; }

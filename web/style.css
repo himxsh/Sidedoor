@@ -144,6 +144,14 @@ span.pill { cursor: default; }
 .run-row { margin-top: 64px; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start; justify-content: space-between; }
 .run-row > div { flex: 1 1 320px; }
 .run pre { flex: 1 1 520px; min-width: 0; margin: 0; padding: 24px; border: 1px solid var(--dark-line); border-radius: 20px; color: var(--surface); font-size: 14px; line-height: 1.8; white-space: pre-wrap; word-break: break-word; }
+.cmds { flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+.cmd { display: flex; align-items: center; gap: 16px; min-height: 64px; padding: 0 10px 0 12px; background: var(--surface); color: var(--ink); border-radius: var(--r-pill); }
+.cmd-tag { flex: none; width: 96px; text-align: center; padding: 0 8px; height: 25px; line-height: 25px; border-radius: var(--r-pill); background: var(--accent); color: var(--on-accent); font-size: 12px; font-weight: 500; }
+.cmd-code { flex: 1 1 auto; min-width: 0; padding: 12px 0; font-size: 14px; line-height: 1.5; overflow-wrap: anywhere; }
+.cmd-code::before { content: "$ "; color: var(--accent); }
+.cmd-copy { flex: none; height: 44px; padding: 0 20px; border: 0; border-radius: var(--r-pill); background: var(--ink); color: var(--surface); font: 500 13px var(--body); cursor: pointer; }
+.cmd-copy:hover { background: #000; }
+.cmd-copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .site-foot { padding-top: 24px; padding-bottom: 24px; border-top: 1px solid var(--dark-line); display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; font-size: 14px; color: var(--dark-muted); }
 .site-foot a { color: var(--dark-muted); }
 

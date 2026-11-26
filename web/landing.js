@@ -141,3 +141,16 @@ async function loadSnapshot() {
   } catch { /* keep the fallback values */ }
 }
 loadSnapshot();
+
+// Copy buttons on the install commands.
+document.querySelectorAll(".cmd-copy").forEach((b) => (b.onclick = async () => {
+  const code = b.parentElement.querySelector(".cmd-code");
+  let ok = false;
+  try { await navigator.clipboard.writeText(code.textContent); ok = true; } catch {
+    const r = document.createRange(); r.selectNodeContents(code);
+    const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    try { ok = document.execCommand("copy"); } catch {}
+  }
+  b.textContent = ok ? "Copied" : "Press ⌘C";
+  setTimeout(() => (b.textContent = "Copy"), 1600);
+}));

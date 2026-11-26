@@ -1,5 +1,5 @@
 {
-  "name": "@himeshjain/sidedoor",
+  "name": "getsidedoor",
   "version": "0.1.0",
   "description": "Turn a website with no API into a JSON endpoint and an MCP tool from one plain-English sentence, powered by Kane CLI.",
   "keywords": [

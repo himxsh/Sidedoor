@@ -29,7 +29,7 @@ export function setModePill(el, mode) {
   el.title = mode === "live" ? "Connected to your local Sidedoor server" : "Real recorded runs from snapshot.json";
 }
 
-export const NPX = "npx @himeshjain/sidedoor serve";
+export const NPX = "npx getsidedoor serve";
 export const shotUrl = (s) => `/evidence/${String(s).replace(/^\/?(evidence\/)?/, "")}`;
 
 // Event type -> [label, style] for status pills.
