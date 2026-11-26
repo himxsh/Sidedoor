@@ -25,7 +25,7 @@ async function boot() {
     state.events = snap.events;
     const m = $("#mode");
     m.hidden = false;
-    m.textContent = `Playback of real recorded runs (captured ${new Date(snap.capturedAt).toLocaleString()}). Run it locally to call endpoints live: npx @himxsh/sidedoor serve`;
+    m.textContent = `Playback of real recorded runs (captured ${new Date(snap.capturedAt).toLocaleString()}). Run it locally to call endpoints live: npx @himeshjain/sidedoor serve`;
     $("#live").textContent = "playback";
     $("#live").classList.add("off");
   }
@@ -221,7 +221,7 @@ $("#create").onsubmit = async (ev) => {
   const out = $("#create-out");
   out.hidden = false;
   if (state.mode === "playback") {
-    out.textContent = "Creating needs Kane CLI on your machine: npx @himxsh/sidedoor serve";
+    out.textContent = "Creating needs Kane CLI on your machine: npx @himeshjain/sidedoor serve";
     return;
   }
   const inputs = String(f.get("inputs") || "").split(",").map((s) => s.trim()).filter(Boolean).map((s) => {
