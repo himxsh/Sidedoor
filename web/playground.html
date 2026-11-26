@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sidedoor Playground</title>
+<meta name="description" content="Give Sidedoor a URL and one sentence. Watch Kane record it, Sidedoor verify it, and get the JSON endpoint and MCP tool.">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#C41E16">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&amp;family=Inter:wght@400;500&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site-head">
+<a class="brand" href="/"><img src="/icons/logo-96.png" alt="">Sidedoor</a>
+<div class="head-right">
+<nav class="navs" aria-label="Pages">
+<a class="pill" href="/">Home</a>
+<a class="pill" href="/dashboard">Dashboard</a>
+<a class="pill" href="/playground" aria-current="page">Playground</a>
+</nav>
+<span id="mode" class="pill mode-pill" hidden></span>
+</div>
+</header>
+
+<main class="app">
+<div class="app-title">
+<h1 class="d">Playground</h1>
+<p class="note">A URL and one sentence in. A verified endpoint out.</p>
+</div>
+
+<div class="workspace">
+<section class="panel prompt" aria-labelledby="prompt-h">
+<div class="panel-head"><h2 id="prompt-h">Prompt</h2></div>
+
+<div class="field">
+<span class="lbl" id="presets-l">Recorded endpoints</span>
+<div class="chips" id="presets" role="group" aria-labelledby="presets-l"><span class="muted">Loading…</span></div>
+</div>
+
+<form id="pg-form" class="form" novalidate>
+<label>Name <input id="pg-name" name="name" required pattern="[a-zA-Z0-9_-]+" placeholder="book-price" autocomplete="off"></label>
+<label>URL <input id="pg-url" name="url" required type="url" placeholder="https://books.toscrape.com/" autocomplete="off"></label>
+<label>Sentence <textarea id="pg-sentence" name="sentence" required rows="4" placeholder="Click the book whose title is {{title}}, then store its price as 'price'."></textarea></label>
+<label>Inputs <span class="hint">Optional. key=sample, comma separated. Use them as {{key}}.</span><input id="pg-inputs" name="inputs" placeholder="title=A Light in the Attic" autocomplete="off"></label>
+<fieldset class="field" style="border:0;margin:0;padding:0">
+<legend class="lbl" style="padding:0;margin-bottom:4px">Kind</legend>
+<div class="seg">
+<label><input type="radio" name="kind" value="read" checked><span class="seg-face">Read</span></label>
+<label><input type="radio" name="kind" value="action"><span class="seg-face">Action</span></label>
+</div>
+</fieldset>
+<div class="actions"><button type="submit" class="pill pill-red run-btn" id="pg-run">Run ↵</button></div>
+<p class="hint" id="pg-hint" aria-live="polite"></p>
+</form>
+</section>
+
+<section class="panel output" aria-label="Output">
+<div class="tabs" role="tablist" aria-label="Output" id="tabs">
+<button type="button" class="pill" role="tab" id="tab-run" aria-controls="panel-run" aria-selected="true">Run</button>
+<button type="button" class="pill" role="tab" id="tab-shot" aria-controls="panel-shot" aria-selected="false" tabindex="-1">Screenshot</button>
+<button type="button" class="pill" role="tab" id="tab-json" aria-controls="panel-json" aria-selected="false" tabindex="-1">JSON</button>
+<button type="button" class="pill" role="tab" id="tab-use" aria-controls="panel-use" aria-selected="false" tabindex="-1">Use it</button>
+<span class="spacer"></span>
+<span class="pill pill-sm" id="run-status">Idle</span>
+</div>
+<div class="tabpanel" role="tabpanel" id="panel-run" aria-labelledby="tab-run" tabindex="0">
+<div class="run-meta" id="run-meta"></div>
+<ol class="log" id="log" aria-live="polite"><li class="empty" style="display:block;border:0">Pick a preset or write a sentence, then press Run.</li></ol>
+</div>
+<div class="tabpanel" role="tabpanel" id="panel-shot" aria-labelledby="tab-shot" tabindex="0" hidden>
+<div class="shot-list" id="shots"><p class="empty">No screenshot yet.</p></div>
+</div>
+<div class="tabpanel" role="tabpanel" id="panel-json" aria-labelledby="tab-json" tabindex="0" hidden>
+<pre class="json" id="json" style="margin:0;max-height:none">// Run to see the result.</pre>
+</div>
+<div class="tabpanel" role="tabpanel" id="panel-use" aria-labelledby="tab-use" tabindex="0" hidden>
+<div id="use"></div>
+</div>
+</section>
+</div>
+</main>
+
+<footer class="app-foot">
+<span>Kane CLI does the browser work. Sidedoor checks every result and runs the repair loop.</span>
+<a href="https://github.com/himxsh/Sidedoor">Source ↗</a>
+</footer>
+<script src="/playground.js" type="module"></script>
+</body>
+</html>

@@ -1,7 +1,37 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "sidedoor", "runtimeExecutable": "npx", "runtimeArgs": ["tsx", "src/cli.ts", "serve", "--port", "3030"], "port": 3030 },
-    { "name": "portal", "runtimeExecutable": "node", "runtimeArgs": ["portal/server.mjs"], "port": 4400 }
+    {
+      "name": "sidedoor",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "tsx",
+        "src/cli.ts",
+        "serve",
+        "--port",
+        "3030"
+      ],
+      "port": 3030
+    },
+    {
+      "name": "portal",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "portal/server.mjs"
+      ],
+      "port": 4400
+    },
+    {
+      "name": "sidedoor-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "tsx",
+        "src/cli.ts",
+        "serve",
+        "--port",
+        "3091"
+      ],
+      "port": 3091
+    }
   ]
 }

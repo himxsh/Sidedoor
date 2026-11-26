@@ -5,7 +5,7 @@
 //   POST     /api/endpoints       create {name,url,sentence,inputs:[{name,sample}],kind}
 //   GET      /api/events          live event stream (SSE); /api/events/history for the log
 //   GET      /evidence/...        screenshots and NDJSON logs of every run
-//   GET      /                    dashboard
+//   GET      /                    landing page; /dashboard operator dashboard; /playground playground
 import { existsSync, createReadStream } from "node:fs";
 import { readFile, stat } from "node:fs/promises";
 import http from "node:http";
@@ -21,6 +21,9 @@ const TYPES: Record<string, string> = {
   ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8",
   ".json": "application/json", ".png": "image/png", ".jpg": "image/jpeg", ".svg": "image/svg+xml", ".ndjson": "application/x-ndjson", ".ico": "image/x-icon",
 };
+
+// Extensionless page routes (Cloudflare Pages serves the same paths from web/ on its own).
+const PAGES: Record<string, string> = { "/": "index.html", "/dashboard": "dashboard.html", "/playground": "playground.html" };
 
 export function publicEndpoint(e: Endpoint) {
   const saved = Math.max(0, e.stats.calls - (e.stats.recordings - 1)) * e.stats.recordingCost;
@@ -101,7 +104,7 @@ export async function handle(req: http.IncomingMessage, res: http.ServerResponse
       return send(res, r.ok ? 200 : 502, r);
     }
     if (p.startsWith("/evidence/") && (await serveFile(res, EVIDENCE_DIR, p.slice("/evidence/".length)))) return;
-    if (await serveFile(res, WEB_DIR, p === "/" ? "index.html" : p.slice(1))) return;
+    if (await serveFile(res, WEB_DIR, PAGES[p] ?? p.slice(1))) return;
     return send(res, 404, { error: "not found" });
   } catch (e: any) {
     if (e instanceof SidedoorError) return send(res, e.status, { error: e.message, ...e.details });
@@ -116,6 +119,6 @@ export async function startServer(port: number) {
   server.requestTimeout = 0; // a repair can take several minutes
   server.headersTimeout = 0;
   await new Promise<void>((r) => server.listen(port, r));
-  console.log(`Sidedoor on http://localhost:${port}  (dashboard /, API /api/<name>)`);
+  console.log(`Sidedoor on http://localhost:${port}  (dashboard /dashboard, playground /playground, API /api/<name>)`);
   return server;
 }

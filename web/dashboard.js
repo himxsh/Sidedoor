@@ -1,31 +1,16 @@
-// Sidedoor dashboard. Live mode talks to the local server; playback mode (hosted copy)
-// reads snapshot.json, which holds real recorded runs, so judges can see it without installing anything.
+// Sidedoor dashboard (/dashboard). Live mode talks to the local server; playback mode (hosted copy)
+// reads /snapshot.json, which holds real recorded runs, so judges can see it without installing anything.
+import { esc, getJSON, detectMode, setModePill, label, shotUrl, NPX } from "/shared.js";
+
 const $ = (s) => document.querySelector(s);
-const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 const state = { mode: "live", endpoints: [], events: [], snapshot: null };
 
-async function getJSON(url, opts) {
-  const r = await fetch(url, opts);
-  const body = await r.json().catch(() => ({}));
-  if (!r.ok && !body.endpoint) throw Object.assign(new Error(body.error || r.statusText), { body, status: r.status });
-  return body;
-}
-
 async function boot() {
-  try {
-    state.endpoints = await getJSON("/api/endpoints");
-    state.events = await getJSON("/api/events/history?limit=400");
-    // Static hosts answer unknown paths with index.html, so check the shape, not just the status.
-    if (!Array.isArray(state.endpoints) || !Array.isArray(state.events)) throw new Error("no API");
-  } catch {
-    const snap = await getJSON("snapshot.json");
-    state.mode = "playback";
-    state.snapshot = snap;
-    state.endpoints = snap.endpoints;
-    state.events = snap.events;
-    const m = $("#mode");
-    m.hidden = false;
-    m.textContent = `Playback of real recorded runs (captured ${new Date(snap.capturedAt).toLocaleString()}). Run it locally to call endpoints live: npx @himeshjain/sidedoor serve`;
+  const r = await detectMode();
+  Object.assign(state, r);
+  setModePill($("#mode"), state.mode);
+  if (state.mode === "playback") {
+    $("#mode-note").innerHTML = `Playback of real recorded runs, captured ${esc(new Date(state.snapshot.capturedAt).toLocaleString())}. Live: <code>${esc(NPX)}</code>`;
     $("#live").textContent = "playback";
     $("#live").classList.add("off");
   }
@@ -48,8 +33,9 @@ async function refresh() {
 
 function connect() {
   const es = new EventSource("/api/events");
-  es.onopen = () => $("#live").classList.remove("off");
-  es.onerror = () => $("#live").classList.add("off");
+  const live = $("#live");
+  es.onopen = () => { live.textContent = "live"; live.classList.add("pill-ink"); };
+  es.onerror = () => { live.textContent = "reconnecting"; live.classList.remove("pill-ink"); };
   es.onmessage = (m) => {
     const ev = JSON.parse(m.data);
     state.events.push(ev);
@@ -83,13 +69,13 @@ function renderTotals() {
 function renderEndpoints() {
   const box = $("#endpoints");
   if (!state.endpoints.length) {
-    box.innerHTML = `<p class="muted">No endpoints yet. Create one on the right, or run <code>sidedoor create</code>.</p>`;
+    box.innerHTML = `<p class="muted">No endpoints yet. Create one with the form, or run <code>sidedoor create</code>.</p>`;
     return;
   }
   box.innerHTML = state.endpoints.map((e) => {
     const last = e.last?.ok ? JSON.stringify(e.last.data) : e.last?.problem ? `last call failed: ${e.last.problem}` : "";
     return `<article class="ep" data-endpoint="${esc(e.name)}">
-      <div class="ep-head"><span class="ep-name">${esc(e.name)}</span><span class="pill ${esc(e.health)}" data-testid="health-${esc(e.name)}">${esc(e.health)}</span><span class="pill kind">${esc(e.kind)}</span></div>
+      <div class="ep-head"><span class="ep-name">${esc(e.name)}</span><span class="pill pill-sm health-${esc(e.health)}" data-testid="health-${esc(e.name)}">${esc(e.health)}</span><span class="pill pill-sm pill-line">${esc(e.kind)}</span></div>
       <div class="ep-sentence">${esc(e.sentence)} <span class="muted">· ${esc(new URL(e.url.replace(/\{\{.*?\}\}/g, "x")).host)}</span></div>
       <div class="ep-meta">
         <span>inputs: ${e.inputs.length ? e.inputs.map((i) => esc(i.name)).join(", ") : "none"}</span>
@@ -101,10 +87,10 @@ function renderEndpoints() {
       </div>
       ${last ? `<div class="ep-last">${esc(last)}</div>` : ""}
       ${e.lastFailure?.remark && e.health !== "healthy" ? `<div class="ep-sentence">Kane: ${esc(e.lastFailure.remark.slice(0, 300))}</div>` : ""}
-      <div class="ep-actions"><button class="ghost" data-try="${esc(e.name)}">Try</button>${state.mode === "live" && e.health === "broken" ? `<button class="ghost" data-repair="${esc(e.name)}">Repair</button>` : ""}</div>
+      <div class="ep-actions"><button class="pill" data-try="${esc(e.name)}">Try</button>${state.mode === "live" && e.health === "broken" ? `<button class="pill pill-red" data-repair="${esc(e.name)}">Repair</button>` : ""}</div>
     </article>`;
   }).join("");
-  box.querySelectorAll("[data-try]").forEach((b) => (b.onclick = () => { $("#try-name").value = b.dataset.try; renderTryInputs(); $("#try").scrollIntoView({ behavior: "smooth", block: "nearest" }); }));
+  box.querySelectorAll("[data-try]").forEach((b) => (b.onclick = () => { $("#try-name").value = b.dataset.try; renderTryInputs(); $("#try").scrollIntoView({ block: "nearest" }); $("#try-name").focus(); }));
   box.querySelectorAll("[data-repair]").forEach((b) => (b.onclick = () => repair(b.dataset.repair, b)));
 }
 
@@ -178,14 +164,6 @@ async function repair(name, btn) {
   }
 }
 
-const LABEL = {
-  "create.start": ["record", "warn"], "create.recorded": ["recorded", "good"], "create.done": ["live", "good"], "create.failed": ["failed", "bad"],
-  "call.start": ["replay", ""], "call.cached": ["cache", ""], "call.ok": ["verified", "good"], "call.failed": ["contract", "bad"],
-  "guard.detect": ["detect", "bad"], "guard.rerecord": ["re-record", "warn"], "guard.check": ["check", ""], "guard.verify": ["verify", ""],
-  "guard.swap": ["swap", "good"], "guard.broken": ["broken", "bad"], "guard.failed": ["failed", "bad"],
-  "repair.start": ["repair", "warn"], "repair.done": ["repaired", "good"], "repair.failed": ["failed", "bad"], "kane.step": ["kane", ""],
-};
-
 function renderTimeline() {
   const groups = new Map();
   for (const e of state.events) {
@@ -193,7 +171,6 @@ function renderTimeline() {
     if (!groups.has(k)) groups.set(k, []);
     groups.get(k).push(e);
   }
-  const shotUrl = (s) => (state.mode === "playback" ? `evidence/${s}` : `/evidence/${s}`);
   const items = [...groups.values()].reverse().slice(0, 40).map((evs) => {
     const types = evs.map((e) => e.type);
     const isRepair = types.some((t) => t.startsWith("guard.") || t.startsWith("repair."));
@@ -205,9 +182,9 @@ function renderTimeline() {
     return `<li class="trace ${isRepair ? "repair" : ""} ${fixed ? "fixed" : ""}">
       <div class="trace-head"><span><b>${esc(first.endpoint)}</b> · ${esc(title)}</span><span class="muted">${new Date(first.at).toLocaleTimeString()}</span></div>
       <ul class="steps">${steps.map((e) => {
-        const [k, cls] = LABEL[e.type] ?? [e.type, ""];
+        const [k, cls] = label(e.type);
         const remark = e.data?.remark && /failed|broken|check/.test(e.type) ? `<div class="remark">Kane: ${esc(String(e.data.remark).slice(0, 280))}</div>` : "";
-        return `<li><span class="k ${cls}">${esc(k)}</span><span>${esc(e.message)}${remark}</span></li>`;
+        return `<li><span class="pill pill-sm k ${cls}">${esc(k)}</span><span>${esc(e.message)}${remark}</span></li>`;
       }).join("")}</ul>
       ${shots.length ? `<div class="shots">${shots.slice(-3).map((s) => `<a href="${esc(shotUrl(s))}" target="_blank" rel="noopener"><img loading="lazy" alt="Kane screenshot" src="${esc(shotUrl(s))}"></a>`).join("")}</div>` : ""}
     </li>`;
@@ -221,14 +198,14 @@ $("#create").onsubmit = async (ev) => {
   const out = $("#create-out");
   out.hidden = false;
   if (state.mode === "playback") {
-    out.textContent = "Creating needs Kane CLI on your machine: npx @himeshjain/sidedoor serve";
+    out.textContent = `Creating needs Kane CLI on your machine: ${NPX}`;
     return;
   }
   const inputs = String(f.get("inputs") || "").split(",").map((s) => s.trim()).filter(Boolean).map((s) => {
     const [name, ...rest] = s.split("=");
     return { name: name.trim(), sample: rest.join("=").trim() };
   });
-  const btn = ev.target.querySelector("button");
+  const btn = $("#create-go");
   btn.disabled = true;
   out.textContent = "Kane is recording the flow (about a minute)…";
   try {

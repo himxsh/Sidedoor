@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sidedoor Dashboard</title>
+<meta name="description" content="Endpoints, health, calls, credits and every self-repair, live from a local Sidedoor server or played back from real recorded runs.">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#C41E16">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&amp;family=Inter:wght@400;500&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site-head">
+<a class="brand" href="/"><img src="/icons/logo-96.png" alt="">Sidedoor</a>
+<div class="head-right">
+<nav class="navs" aria-label="Pages">
+<a class="pill" href="/">Home</a>
+<a class="pill" href="/dashboard" aria-current="page">Dashboard</a>
+<a class="pill" href="/playground">Playground</a>
+</nav>
+<span id="mode" class="pill mode-pill" hidden></span>
+</div>
+</header>
+
+<main class="app">
+<div class="app-title">
+<h1 class="d">Dashboard</h1>
+<p class="note" id="mode-note">Endpoints, health and every repair.</p>
+</div>
+
+<section class="totals" id="totals" aria-label="Totals"></section>
+
+<div class="grid">
+<section class="panel endpoints-panel">
+<div class="panel-head"><h2>Endpoints</h2><span class="muted" id="queue"></span></div>
+<div id="endpoints" class="endpoints" data-testid="endpoint-list"><p class="muted">Loading…</p></div>
+</section>
+
+<div class="stack">
+<section class="panel try-panel">
+<div class="panel-head"><h2>Try it</h2></div>
+<form id="try" class="form">
+<label>Endpoint <select id="try-name" name="name"></select></label>
+<div id="try-inputs" class="form"></div>
+<label class="check"><input type="checkbox" id="try-fresh"> Skip cache</label>
+<div class="actions"><button type="submit" class="pill pill-red" id="try-go">Call</button></div>
+</form>
+<div class="curl"><code id="try-curl"></code></div>
+<pre id="try-out" class="json" data-testid="try-output" aria-live="polite">Pick an endpoint and press Call.</pre>
+</section>
+
+<section class="panel create-panel">
+<div class="panel-head"><h2>Create an endpoint</h2><span class="muted">One recording, paid once</span></div>
+<form id="create" class="form">
+<label>Name <input name="name" required pattern="[a-zA-Z0-9_-]+" placeholder="book-price"></label>
+<label>URL <input name="url" required type="url" placeholder="https://books.toscrape.com/"></label>
+<label>Sentence <textarea name="sentence" required rows="3" placeholder="Search for {{title}}. Store its price as 'price'."></textarea></label>
+<label>Inputs <input name="inputs" placeholder="title=A Light in the Attic"></label>
+<label class="check"><input type="checkbox" name="action"> Action (has side effects, never cached)</label>
+<div class="actions"><button type="submit" class="pill pill-red" id="create-go">Record with Kane</button></div>
+</form>
+<pre id="create-out" class="json small" hidden></pre>
+</section>
+</div>
+
+<section class="panel timeline-panel" style="grid-column:1 / -1">
+<div class="panel-head"><h2>Activity and repairs</h2><span class="pill pill-sm" id="live">live</span></div>
+<ol id="timeline" class="timeline"></ol>
+</section>
+</div>
+</main>
+
+<footer class="app-foot">
+<span>Kane CLI does the browser work. Sidedoor checks every result and runs the repair loop.</span>
+<a href="https://github.com/himxsh/Sidedoor">Source ↗</a>
+</footer>
+<script src="/dashboard.js" type="module"></script>
+</body>
+</html>

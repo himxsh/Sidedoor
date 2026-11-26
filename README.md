@@ -6,7 +6,7 @@
 
 Plenty of useful data lives behind sites with no API: a college portal, a supplier catalogue, an internal dashboard. Sidedoor takes one sentence ("store the amount next to 'Amount due' as 'amount_due'"). Kane CLI records the browser flow once, and Sidedoor turns the recording into a typed endpoint (`GET /api/fees?student_id=S1002`) and an MCP tool any agent can call. Every call replays the recording and checks the result against a contract built from the first run. When the site changes and a replay breaks the contract, Sidedoor has Kane re-record the flow, checks the new result, replays it once more to prove it, and swaps it in. No human touches it, and Sidedoor has no AI key of its own.
 
-- **Live playback** (real recorded runs, nothing to install): https://getsidedoor.pages.dev
+- **Live playback** (real recorded runs, nothing to install): https://getsidedoor.pages.dev (dashboard at `/dashboard`, playground at `/playground`)
 - **Demo portal** (the made-up campus site the endpoints read): https://getsidedoor.pages.dev/campus/ (add `?layout=b` to see the redesign)
 - **Video** (under 3 minutes): _link added at upload_
 
@@ -40,7 +40,7 @@ npx @himeshjain/sidedoor call book-price --title "A Light in the Attic"
 npx @himeshjain/sidedoor serve
 ```
 
-`serve` opens the dashboard and HTTP API on http://localhost:3030. Endpoints live in `~/.sidedoor/` (created on first run), so every command finds the same ones wherever you run it. Set `SIDEDOOR_HOME` to use another folder. A fresh install starts with no endpoints; the six example endpoints are in the repo (`endpoints/`), and three of them read the demo portal, which only runs from a clone.
+`serve` opens the HTTP API on http://localhost:3030, with the dashboard at `/dashboard` and the playground at `/playground`. Endpoints live in `~/.sidedoor/` (created on first run), so every command finds the same ones wherever you run it. Set `SIDEDOOR_HOME` to use another folder. A fresh install starts with no endpoints; the six example endpoints are in the repo (`endpoints/`), and three of them read the demo portal, which only runs from a clone.
 
 Add it to any MCP client (Claude Code, Claude Desktop, Cursor, Codex...):
 
@@ -74,7 +74,7 @@ cd Sidedoor && npm install
 npm start
 ```
 
-That starts the demo Campus Portal on http://localhost:4400 and Sidedoor on http://localhost:3030 (dashboard, API, live event stream). The repo already includes six recorded endpoints, so calls work straight away:
+That starts the demo Campus Portal on http://localhost:4400 and Sidedoor on http://localhost:3030 (dashboard at `/dashboard`, playground at `/playground`, API, live event stream). The repo already includes six recorded endpoints, so calls work straight away:
 
 ```bash
 curl 'localhost:3030/api/fees?student_id=S1002'
@@ -183,7 +183,7 @@ On a hosted copy, add `?layout=b` to any URL instead.
 
 ## Hosted playback
 
-`npm run snapshot` writes `web/snapshot.json` (endpoints, the event log, one real call per endpoint) and copies Kane's screenshots to `web/evidence/`. When the dashboard can't reach `/api`, it switches to playback of those real runs. That is the hosted copy on Cloudflare Pages: `web/` is the static site, and `web/_worker.js` serves the portal under `/campus/` from the same `portal/app.mjs` handler. Kane never runs there.
+`npm run snapshot` writes `web/snapshot.json` (endpoints, the event log, one real call per endpoint) and copies Kane's screenshots to `web/evidence/`. When the dashboard or playground can't reach `/api`, they switch to playback of those real runs. That is the hosted copy on Cloudflare Pages: `web/` is the static site, and `web/_worker.js` serves the portal under `/campus/` from the same `portal/app.mjs` handler. Kane never runs there.
 
 ```bash
 npm run snapshot && npx wrangler pages deploy web --project-name getsidedoor
@@ -205,7 +205,7 @@ src/runner.ts     kane-cli wrapper: spawn, NDJSON parse, exit codes, variables
 src/contract.ts   contract from stored values; validation (empty, None, false-as-text)
 src/engine.ts     create / call / guard / repair; queue, locks, cache; Kane-fix retry
 src/server.ts     HTTP API, SSE events, dashboard; src/mcp.ts MCP server; src/cli.ts
-web/              dashboard (live + playback)      portal/   demo Campus Portal
+web/              landing (/), dashboard, playground (live + playback)      portal/   demo Campus Portal
 scripts/          kane-hook.ts (build hook), snapshot.ts, start.mjs
 endpoints/<name>/ endpoint.json + Kane test + recording
 evidence/         Kane logs and screenshots, build-hook failures, MCP session

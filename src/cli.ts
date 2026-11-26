@@ -14,7 +14,7 @@ const HELP = `Sidedoor: turn a web page with no API into a JSON endpoint and an 
   sidedoor repair <name> ["<sharper sentence>"] [--key value]...
       Re-record a broken endpoint, optionally with a new sentence.
   sidedoor list
-  sidedoor serve [--port 3030]        HTTP API + dashboard
+  sidedoor serve [--port 3030]        HTTP API, dashboard (/dashboard), playground (/playground)
   sidedoor mcp                        MCP server (stdio) for Claude Code, Cursor, Codex...
 `;
 

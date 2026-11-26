@@ -1,77 +1,181 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sidedoor</title>
-  <meta name="description" content="Any web page, as a JSON endpoint and an agent tool. Kane CLI records the flow once, replays it on every call, and re-records it when the site changes.">
-  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
-  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-  <meta name="theme-color" content="#b3121f">
-  <meta property="og:title" content="Sidedoor">
-  <meta property="og:description" content="Any web page, as a JSON endpoint and an agent tool. Kane CLI records the flow once, replays it on every call, and re-records it when the site changes.">
-  <meta property="og:image" content="https://getsidedoor.pages.dev/icons/logo-512.png">
-  <meta property="og:url" content="https://getsidedoor.pages.dev/">
-  <meta name="twitter:card" content="summary">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sidedoor — any web page, as an API</title>
+<meta name="description" content="One sentence in. A verified JSON endpoint and MCP tool out. Kane CLI records the flow once; Sidedoor checks every call and repairs itself when the site changes.">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#C41E16">
+<meta property="og:title" content="Sidedoor">
+<meta property="og:description" content="One sentence in. A verified JSON endpoint and MCP tool out.">
+<meta property="og:image" content="https://getsidedoor.pages.dev/icons/logo-512.png">
+<meta property="og:url" content="https://getsidedoor.pages.dev/">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&amp;family=Inter:wght@400;500&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <header class="top">
-    <div class="brand">
-      <img class="logo" src="icons/logo-96.png" width="44" height="44" alt="">
-      <div>
-        <h1>Sidedoor</h1>
-        <p class="tag">Any web page, as a JSON endpoint and an agent tool. Kane CLI records the flow once, replays it on every call, and re-records it when the site changes.</p>
-      </div>
-    </div>
-    <div class="top-right">
-      <div id="mode" class="mode" hidden></div>
-    </div>
-  </header>
 
-  <section class="totals" id="totals" aria-label="Totals"></section>
+<header class="site-head">
+<a class="brand" href="#top"><img src="/icons/logo-96.png" alt="">Sidedoor</a>
+<div class="navs">
+<nav class="nav" aria-label="Sections">
+<a class="pill" href="#repair">Self-repair</a>
+<a class="pill" href="#calls">Calls</a>
+<a class="pill" href="#how">How it works</a>
+<a class="pill" href="#run">Run it</a>
+</nav>
+<nav class="nav-app navs" aria-label="App">
+<a class="pill" href="/dashboard">Dashboard</a>
+<a class="pill" href="/playground">Playground</a>
+</nav>
+</div>
+<!-- TODO(video): replace href="#video" with the demo video URL once it is uploaded. -->
+<a class="pill pill-red" href="#video">▶ Watch demo</a>
+</header>
 
-  <main class="grid">
-    <section class="panel endpoints-panel">
-      <div class="panel-head"><h2>Endpoints</h2><span class="muted" id="queue"></span></div>
-      <div id="endpoints" class="endpoints" data-testid="endpoint-list"><p class="muted">Loading…</p></div>
-    </section>
+<main>
+<section id="top" class="wrap hero">
+<h1 class="d h-xl">Any web page, as an API<span class="red">.</span></h1>
+<div class="hero-row">
+<div class="hero-copy">
+<p class="lead">One sentence in. A verified JSON endpoint and MCP tool out.</p>
+<div class="ctas">
+<a class="pill pill-red" href="#repair">See it self-repair</a>
+<a class="pill" href="/playground">Open playground</a>
+<a class="pill" href="https://github.com/himxsh/Sidedoor">GitHub ↗</a>
+</div>
+</div>
 
-    <section class="panel try-panel">
-      <div class="panel-head"><h2>Try it</h2></div>
-      <form id="try" class="form">
-        <label>Endpoint <select id="try-name" name="name"></select></label>
-        <div id="try-inputs"></div>
-        <label class="check"><input type="checkbox" id="try-fresh"> Skip cache</label>
-        <button type="submit" id="try-go">Call</button>
-      </form>
-      <div class="curl"><code id="try-curl"></code></div>
-      <pre id="try-out" class="json" data-testid="try-output" aria-live="polite">Pick an endpoint and press Call.</pre>
-    </section>
+<figure class="door" aria-label="A web page with a side door that lets JSON out">
+<div class="door-page">
+<div class="door-bar">
+<span class="dot"></span><span class="dot"></span><span class="dot"></span>
+<span class="mono">portal.campus.edu/fees</span>
+</div>
+<div class="door-body">
+<div class="bar dark" style="width:40%"></div>
+<div class="bar" style="width:72%"></div>
+<div class="bar" style="width:60%"></div>
+<div class="door-field"><span>Amount due</span><span>₹18,000</span></div>
+<div class="bar" style="width:52%"></div>
+<div class="bar" style="width:66%"></div>
+</div>
+</div>
+<svg class="door-svg" aria-hidden="true" viewBox="0 0 120 220">
+<rect x="0" y="0" width="64" height="220" rx="4" fill="#1A1918"></rect>
+<polygon points="64,0 118,22 118,198 64,220" fill="#C41E16"></polygon>
+<circle cx="106" cy="114" r="4" fill="#F9F9F9"></circle>
+</svg>
+<pre class="mono door-json"><span class="req">GET /api/fees?student_id=S1002</span>
+{ "verified": true,
+  "amount_due": "₹18,000",
+  "due_date": "2026-12-05" }</pre>
+</figure>
+</div>
+</section>
 
-    <section class="panel timeline-panel">
-      <div class="panel-head"><h2>Activity and repairs</h2><span class="live" id="live">live</span></div>
-      <ol id="timeline" class="timeline"></ol>
-    </section>
+<section aria-label="Key numbers" class="wrap numbers">
+<dl>
+<div><dt>Self-repair, real run</dt><dd class="d">3:18</dd></div>
+<div><dt>Human steps</dt><dd class="d">0</dd></div>
+<div><dt>Endpoints shipped</dt><dd class="d">6</dd></div>
+<div><dt>AI keys needed</dt><dd class="d">0</dd></div>
+</dl>
+</section>
 
-    <section class="panel create-panel">
-      <div class="panel-head"><h2>Create an endpoint</h2><span class="muted">One recording, paid once</span></div>
-      <form id="create" class="form">
-        <label>Name <input name="name" required pattern="[a-zA-Z0-9_-]+" placeholder="book-price"></label>
-        <label>URL <input name="url" required type="url" placeholder="https://books.toscrape.com/"></label>
-        <label>Sentence <textarea name="sentence" required rows="3" placeholder="Search for {{title}}. Store its price as 'price'."></textarea></label>
-        <label>Inputs <input name="inputs" placeholder="title=A Light in the Attic"></label>
-        <label class="check"><input type="checkbox" name="action"> Action (has side effects, never cached)</label>
-        <button type="submit" id="create-go">Record with Kane</button>
-      </form>
-      <pre id="create-out" class="json small" hidden></pre>
-    </section>
-  </main>
+<section id="repair" class="band-white">
+<div class="wrap sec">
+<span class="pill">Self-repair</span>
+<h2 class="d h-sec">The site changed. Sidedoor fixed itself.</h2>
 
-  <footer class="foot">
-    <span>Kane CLI does the browser work. Sidedoor stores the recording, checks every result against a contract, and runs the repair loop.</span>
-    <a href="https://github.com/himxsh/Sidedoor">Source</a>
-  </footer>
-  <script src="app.js" type="module"></script>
+<div class="repair-now">
+<p class="d h-xl" id="r-time" aria-live="polite">Before</p>
+<span class="status" id="r-status" data-s="Healthy">Healthy</span>
+</div>
+
+<div class="track" role="tablist" aria-label="Repair timeline" id="r-track">
+<div class="track-base" aria-hidden="true"></div>
+<div class="track-ghost" aria-hidden="true"></div>
+<div class="track-fill" aria-hidden="true" id="r-fill" style="width:0%"></div>
+</div>
+
+<div class="step-panel" role="tabpanel" id="r-panel" tabindex="0">
+<figure class="step-fig">
+<div class="shot">
+<img id="r-img" src="/evidence/shots/notices-qdl1acat.png" alt="Original Campus Portal notice board table">
+<blockquote id="r-quote" hidden>
+<span class="mono">Kane remark</span>
+<span class="d" id="r-remark"></span>
+</blockquote>
+</div>
+<figcaption><span class="pill" id="r-source">Kane replay</span><span id="r-shot">Original layout, notices in a table.</span></figcaption>
+</figure>
+<div class="step-text">
+<p class="mono step-num" id="r-num">01 / 06</p>
+<h3 class="d" id="r-title">Recorded on the original layout</h3>
+<p class="lead" id="r-line">One sentence becomes the notices endpoint.</p>
+<pre class="mono code-dark" id="r-code">contract: { title: string, date: string }</pre>
+<div class="step-nav">
+<button type="button" class="pill" id="r-prev" disabled>← Back</button>
+<button type="button" class="pill pill-red" id="r-next">Next →</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="calls" class="wrap sec">
+<span class="pill">Recorded calls</span>
+<h2 class="d h-sec">Six endpoints. Real results.</h2>
+<div class="calls-row">
+<div class="calls-list" role="tablist" aria-label="Endpoints" aria-orientation="vertical" id="c-list"></div>
+<div class="call-panel" role="tabpanel" id="c-panel" tabindex="0">
+<p class="mono call-req" id="c-req"></p>
+<pre class="mono call-json" id="c-json"></pre>
+<p class="call-at" id="c-at"></p>
+</div>
+</div>
+</section>
+
+<section id="how" class="how">
+<div class="wrap sec">
+<span class="pill">How it works</span>
+<h2 class="d h-sec">Kane records. Sidedoor guards.</h2>
+<ol>
+<li><span class="d n" aria-hidden="true">01</span><h3 class="d">Create</h3><p>Kane records the flow once. Sidedoor sets the contract.</p></li>
+<li><span class="d n" aria-hidden="true">02</span><h3 class="d">Call</h3><p>Every replay is checked before you see it.</p></li>
+<li class="hot"><span class="d n" aria-hidden="true">03</span><h3 class="d">Guard</h3><p>Broken flows are re-recorded, verified and swapped.</p></li>
+</ol>
+</div>
+</section>
+
+<section id="run" class="run">
+<div class="wrap sec">
+<h2 class="d h-xl">Run it in two minutes<span class="red">.</span></h2>
+<div class="run-row">
+<div>
+<p class="lead">Node 20+ and a signed-in Kane CLI.</p>
+<div id="video" class="ctas">
+<!-- TODO(video): replace href="#video" and the [VIDEO LINK] label with the demo video URL once it is uploaded. -->
+<a class="pill pill-red" href="#video">[VIDEO LINK] Watch demo</a>
+<a class="pill" href="https://getsidedoor.pages.dev/campus/">Demo portal ↗</a>
+</div>
+</div>
+<pre class="mono"><span class="red">$</span> git clone https://github.com/himxsh/Sidedoor.git
+<span class="red">$</span> cd Sidedoor &amp;&amp; npm install &amp;&amp; npm start</pre>
+</div>
+</div>
+<footer class="wrap site-foot">
+<span>© 2026 Sidedoor · MIT</span>
+<span>Built for the Kane CLI Online Hackathon</span>
+</footer>
+</section>
+</main>
+<script src="/landing.js" type="module"></script>
 </body>
 </html>
