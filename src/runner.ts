@@ -4,7 +4,7 @@
 // - maps exit codes 0 passed, 1 failed, 2 did not start, 3 timed out
 // - sets KANE_CLI_USER_AGENT on every call
 import { spawn } from "node:child_process";
-import { createWriteStream } from "node:fs";
+import { createWriteStream, existsSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
 import path from "node:path";
 
@@ -54,6 +54,20 @@ export interface RunOptions {
 
 export const USER_AGENT = "sidedoor/0.1";
 const KANE_BIN = process.env.SIDEDOOR_KANE_BIN || "kane-cli";
+
+export const KANE_MISSING_HINT =
+  "Sidedoor drives Kane CLI, which you install and log in to yourself: `npm install -g @testmuai/kane-cli`, then `kane-cli login`. " +
+  "Or point SIDEDOOR_KANE_BIN at the kane-cli binary.";
+
+let kaneFound: boolean | undefined;
+/** Is the kane-cli binary on PATH (or at SIDEDOOR_KANE_BIN)? Checked once per process. */
+export function kaneInstalled(): boolean {
+  if (kaneFound !== undefined) return kaneFound;
+  if (KANE_BIN.includes(path.sep) || KANE_BIN.includes("/")) return (kaneFound = existsSync(KANE_BIN));
+  const exts = process.platform === "win32" ? (process.env.PATHEXT || ".EXE;.CMD;.BAT").split(";") : [""];
+  const dirs = (process.env.PATH || "").split(path.delimiter).filter(Boolean);
+  return (kaneFound = dirs.some((d) => exts.some((e) => existsSync(path.join(d, KANE_BIN + e)))));
+}
 
 export function toKaneVariables(vars: Variables = {}): string {
   const out: Record<string, { value: string }> = {};

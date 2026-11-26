@@ -4,7 +4,7 @@ import { copyFile, cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { buildContract, pickFields, storedNames, validate, type Violation } from "./contract.js";
 import { emit, newTrace } from "./events.js";
-import { record, replay, stripVariablesBlock, type RunResult, type Variables } from "./runner.js";
+import { KANE_MISSING_HINT, kaneInstalled, record, replay, stripVariablesBlock, type RunResult, type Variables } from "./runner.js";
 import {
   EVIDENCE_DIR, NAME_RE, emptyStats, endpointDir, loadEndpoint, saveEndpoint, testFile,
   type Endpoint, type InputSpec, type Kind,
@@ -42,6 +42,11 @@ export class SidedoorError extends Error {
   constructor(message: string, public status = 400, public details?: Record<string, unknown>) {
     super(message);
   }
+}
+
+/** Fail fast, with install steps, when kane-cli is not on this machine. */
+function assertKane() {
+  if (!kaneInstalled()) throw new SidedoorError("kane-cli not found", 503, { kane: "missing", hint: KANE_MISSING_HINT });
 }
 
 const stamp = () => new Date().toISOString().replace(/[:.]/g, "-");
@@ -145,6 +150,7 @@ export async function createEndpoint(o: CreateOptions) {
   const dir = endpointDir(name);
   if (existsSync(path.join(dir, "endpoint.json")) && !o.force) throw new SidedoorError(`endpoint "${name}" already exists`, 409);
   const inputs = o.inputs ?? [];
+  assertKane();
   const objective = objectiveFor(o.url, o.sentence);
   const used = placeholders(objective);
   const declared = inputs.map((i) => i.name);
@@ -246,6 +252,7 @@ export async function callEndpoint(name: string, given: Record<string, unknown> 
     const running = inflight.get(key);
     if (running) return running;
   }
+  assertKane();
   const p = withEndpointLock(name, () => doCall(name, inputs, opts));
   if (ep.kind === "read") {
     inflight.set(key, p);
@@ -415,6 +422,7 @@ async function guard(name: string, inputs: Variables, trace: string, detected: V
 
 // ---------- repair_endpoint (§4.5 step 5) ----------
 export async function repairEndpoint(name: string, opts: { sentence?: string; inputs?: Record<string, unknown> } = {}): Promise<CallResult & { attempt: number; attemptsLeft: number }> {
+  assertKane();
   return withEndpointLock(name, async () => {
     const ep = await loadEndpoint(name);
     const attempt = (ep.repairAttempts ?? 0) + 1;

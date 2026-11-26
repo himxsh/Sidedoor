@@ -13,9 +13,10 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { callEndpoint, createEndpoint, queueState, repairEndpoint, SidedoorError } from "./engine.js";
 import { bus, readEvents, type SidedoorEvent } from "./events.js";
-import { EVIDENCE_DIR, ROOT, listEndpoints, type Endpoint } from "./store.js";
+import { EVIDENCE_DIR, listEndpoints, type Endpoint } from "./store.js";
 
-const WEB_DIR = existsSync(path.join(ROOT, "web")) ? path.join(ROOT, "web") : path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "web");
+// Dashboard files ship inside the package (dist/../web), wherever it is installed.
+const WEB_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "web");
 const TYPES: Record<string, string> = {
   ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8",
   ".json": "application/json", ".png": "image/png", ".jpg": "image/jpeg", ".svg": "image/svg+xml", ".ndjson": "application/x-ndjson", ".ico": "image/x-icon",

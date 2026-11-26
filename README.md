@@ -14,9 +14,53 @@ Built for the Kane CLI Online Hackathon (TestMu AI).
 
 ---
 
-## Run it (about 2 minutes)
+## Install (npx, no clone)
 
-You need Node 20+ and [Kane CLI](https://www.npmjs.com/package/@testmuai/kane-cli), signed in (`kane-cli login`).
+You need **Node 20+** and **[Kane CLI](https://www.npmjs.com/package/@testmuai/kane-cli), signed in with your own account**. Sidedoor runs Kane on your machine, so recordings and repairs spend your Kane credits; replays are free.
+
+```bash
+npm install -g @testmuai/kane-cli
+```
+
+```bash
+kane-cli login
+```
+
+Then run any command with npx:
+
+```bash
+npx @himxsh/sidedoor create --name book-price --url https://books.toscrape.com/ --input title="A Light in the Attic" "Click the book whose title is {{title}} on the home page, then store its price as 'price' and its stock availability text as 'availability'."
+```
+
+```bash
+npx @himxsh/sidedoor call book-price --title "A Light in the Attic"
+```
+
+```bash
+npx @himxsh/sidedoor serve
+```
+
+`serve` opens the dashboard and HTTP API on http://localhost:3030. Endpoints live in `~/.sidedoor/` (created on first run), so every command finds the same ones wherever you run it. Set `SIDEDOOR_HOME` to use another folder. A fresh install starts with no endpoints; the six example endpoints are in the repo (`endpoints/`), and three of them read the demo portal, which only runs from a clone.
+
+Add it to any MCP client (Claude Code, Claude Desktop, Cursor, Codex...):
+
+```json
+{ "mcpServers": { "sidedoor": { "command": "npx", "args": ["-y", "@himxsh/sidedoor", "mcp"] } } }
+```
+
+For Claude Code, the same in one line:
+
+```bash
+claude mcp add sidedoor -- npx -y @himxsh/sidedoor mcp
+```
+
+The agent starts with `create_endpoint`, `repair_endpoint` and `list_endpoints`, and gets one typed tool per endpoint it (or you) creates.
+
+If `kane-cli` is not on your `PATH`, create, call and repair return an error that says how to install it (or set `SIDEDOOR_KANE_BIN` to the binary).
+
+## Run the demo from the repo (about 2 minutes)
+
+You need Node 20+ and [Kane CLI](https://www.npmjs.com/package/@testmuai/kane-cli), signed in (`kane-cli login`). Inside the clone, Sidedoor uses the repo folder itself instead of `~/.sidedoor`.
 
 ```bash
 git clone https://github.com/himxsh/Sidedoor.git
@@ -53,7 +97,7 @@ Or use the **Create an endpoint** form in the dashboard.
 
 ### Give it to an agent (MCP)
 
-`.mcp.json` is already in the repo root, so Claude Code picks it up in this folder. For any other MCP client:
+`.mcp.json` is already in the repo root, so Claude Code picks it up in this folder. To point another MCP client at the repo's endpoints (instead of `npx -y @himxsh/sidedoor mcp`, which uses `~/.sidedoor`):
 
 ```json
 { "mcpServers": { "sidedoor": { "command": "npx", "args": ["tsx", "src/cli.ts", "mcp"], "env": { "SIDEDOOR_HOME": "/path/to/Sidedoor" } } } }
@@ -76,7 +120,7 @@ The agent gets:
 | `sidedoor repair X "sharper sentence"` | Re-records with a new sentence, checked and verified |
 | `sidedoor list` / `serve [--port]` / `mcp` | List endpoints, run the HTTP server and dashboard, run the MCP server |
 
-(From the repo, `npx tsx src/cli.ts …`. `npm install` also builds `dist/` for the `sidedoor` bin.)
+(Installed: `npx @himxsh/sidedoor …`. From the repo: `npx tsx src/cli.ts …`; `npm install` also builds `dist/` for the `sidedoor` bin.)
 
 ---
 

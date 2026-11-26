@@ -50,7 +50,8 @@ export interface Endpoint {
   lastFailure?: { at: string; remark?: string; violations?: unknown[]; evidence?: string };
 }
 
-export const ROOT = path.resolve(process.env.SIDEDOOR_HOME || process.cwd());
+export { ROOT } from "./home.js";
+import { ROOT } from "./home.js";
 export const ENDPOINTS_DIR = path.join(ROOT, "endpoints");
 export const DATA_DIR = path.join(ROOT, "data");
 export const EVIDENCE_DIR = path.join(ROOT, "evidence");

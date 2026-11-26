@@ -1,7 +1,25 @@
 {
-  "name": "sidedoor",
+  "name": "@himxsh/sidedoor",
   "version": "0.1.0",
   "description": "Turn a website with no API into a JSON endpoint and an MCP tool from one plain-English sentence, powered by Kane CLI.",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "kane-cli",
+    "browser-automation",
+    "web-scraping",
+    "api",
+    "agent",
+    "testmu"
+  ],
+  "homepage": "https://getsidedoor.pages.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/himxsh/Sidedoor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/himxsh/Sidedoor/issues"
+  },
   "type": "module",
   "license": "MIT",
   "engines": {
@@ -9,6 +27,21 @@
   },
   "bin": {
     "sidedoor": "bin/sidedoor.js"
+  },
+  "files": [
+    "dist/",
+    "bin/",
+    "web/index.html",
+    "web/app.js",
+    "web/style.css",
+    "web/icons/favicon-32.png",
+    "web/icons/apple-touch-icon.png",
+    "web/icons/logo-96.png",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "tsc -p .",
@@ -18,7 +51,8 @@
     "portal": "node portal/server.mjs",
     "start": "node scripts/start.mjs",
     "snapshot": "tsx scripts/snapshot.ts",
-    "prepare": "tsc -p ."
+    "prepare": "tsc -p .",
+    "prepublishOnly": "npm run typecheck && npm test"
   },
   "devDependencies": {
     "@types/node": "^20.19.43",
