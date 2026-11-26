@@ -32,6 +32,18 @@
         "3091"
       ],
       "port": 3091
+    },
+    {
+      "name": "web-playback",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8788",
+        "--directory",
+        "web"
+      ],
+      "port": 8788
     }
   ]
 }

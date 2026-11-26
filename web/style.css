@@ -286,3 +286,29 @@ input[type=checkbox] { width: auto; accent-color: var(--accent); }
   .log li .msg { grid-column: 2; }
   .steps li { grid-template-columns: 1fr; }
 }
+
+/* Dashboard playback: recorded runs with Kane's screenshots */
+.pb { display: grid; gap: 24px; }
+.pb-picks { display: flex; flex-wrap: wrap; gap: 16px 32px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.pb-group { display: grid; gap: 8px; }
+.pb-detail { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 32px; padding-top: 24px; align-items: start; }
+.pb-media { display: grid; gap: 20px; }
+.pb-fig { margin: 0; }
+.pb-fig img { display: block; width: 100%; border: 1px solid var(--line); border-radius: 16px; }
+.pb-fig figcaption { margin-top: 8px; display: flex; gap: 8px; align-items: center; font-size: 13px; color: var(--muted); }
+.pb-info { display: grid; gap: 16px; align-content: start; position: sticky; top: 24px; }
+.pb-info .lbl { display: block; margin-bottom: 6px; font-size: 13px; }
+.pb-tags { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.pb-tags .muted { font-size: 13px; }
+.pb-title { margin: 0; font-family: var(--mono); font-weight: 500; font-size: 20px; }
+.pb-text { margin: 0; font-size: 15px; line-height: 1.55; max-width: 60ch; }
+.pb-text code { font-size: 13px; }
+.pb-sentence { margin: 0; padding: 12px 16px; background: var(--surface); border-radius: 12px; font-size: 14px; line-height: 1.5; }
+.pb-kv { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px; font-size: 14px; }
+.pb-kv dt { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.pb-kv dd { margin: 0; overflow-wrap: anywhere; }
+.pb-steps summary { cursor: pointer; font-size: 14px; color: var(--muted); }
+.pb-steps .steps { margin-top: 12px; }
+.pb-cta .json { margin-top: 16px; }
+.pb-cta .hint { margin-top: 12px; }
+@media (max-width: 900px) { .pb-detail { grid-template-columns: 1fr; } .pb-info { position: static; } }
